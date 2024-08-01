@@ -9,7 +9,7 @@
 
 **NAME**
 
-    Elderly, Handicap, Criminal, Wicked
+    ``OTP-CR-117/19``
 
 
 **SYNOPSIS**
@@ -45,7 +45,7 @@
 
     Current status is a :ref:`"no basis to proceed"
     <writings>` judgement of the prosecutor which
-    requires a :ref:`"basis to prosecute" <reconsider>`
+    requires a :ref:`"basis to prosecute" <home>`
     to have the king actually arrested.
 
 
@@ -53,11 +53,12 @@ INSTALL
 
 ::
 
-    pipx install otpcr
-    pipx ensurepath
-    otpcr srv > otpcr.service
-    mv *.service /etc/systemd/system/
-    systemctl enable otpcr --now
+    $ pipx install otpcr
+    $ pipx ensurepath
+
+    $ otpcr srv > otpcr.service
+    # mv *.service /etc/systemd/system/
+    # systemctl enable otpcr --now
 
     #otpcr on localhost
 
