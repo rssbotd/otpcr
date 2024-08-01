@@ -73,7 +73,7 @@ html_sidebars = {
 }
 html_theme = "alabaster"
 html_theme_options = {
-    'github_user': 'bthate',
+    'github_user': 'rssbotd',
     'github_repo': NAME,
     'github_button': False,
     'github_banner': False,
@@ -119,11 +119,11 @@ rst_prolog = '''.. image:: genocide.png
     Elderly, Handicapped, Criminals, Wicked
     </i>
     </center>
+
 '''
 
 rst_epilog = '''.. raw:: html
 
-    <br>
     <center>
     <b>
 
@@ -133,6 +133,7 @@ rst_epilog = '''.. raw:: html
 
     </b>
     </center>
+
 '''
 
 autosummary_generate = True
