@@ -49,7 +49,7 @@
     to have the king actually arrested.
 
 
-INSTALL
+**INSTALL**
 
 ::
 
