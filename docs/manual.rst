@@ -2,7 +2,7 @@
 
 .. raw:: html
 
-    <br>
+    <br><br>
 
 .. title:: Manual
 
@@ -14,11 +14,11 @@
 
 **SYNOPSIS**
 
-::
+    ::
 
-    otpcr  <cmd> [key=val] [key==val]
-    otpcrc [-i] [-v]
-    otpcrd 
+        otpcr  <cmd> [key=val] [key==val]
+        otpcrc [-i] [-v]
+        otpcrd 
 
 
 **DESCRIPTION**
@@ -51,16 +51,16 @@
 
 **INSTALL**
 
-::
+    ::
 
-    $ pipx install otpcr
-    $ pipx ensurepath
+        $ pipx install otpcr
+        $ pipx ensurepath
 
-    $ otpcr srv > otpcr.service
-    # mv *.service /etc/systemd/system/
-    # systemctl enable otpcr --now
+        $ otpcr srv > otpcr.service
+        # mv *.service /etc/systemd/system/
+        # systemctl enable otpcr --now
 
-    #otpcr on localhost
+        #otpcr on localhost
 
 
 **USAGE**
