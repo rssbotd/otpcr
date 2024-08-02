@@ -124,10 +124,11 @@ rst_prolog = '''.. image:: genocide.png
 
 rst_epilog = '''.. raw:: html
 
+    <br>
     <center>
     <b>
 
-:ref:`home <home>` - :ref:`evidence <evidence>` - :ref:`guilty <guilty>` - :ref:`writing <writings>` - `! <manual.html>`_
+:ref:`reconsider <home>` - :ref:`evidence <evidence>` - :ref:`guilty <guilty>` - :ref:`writing <writings>`
 
 .. raw: html
 
