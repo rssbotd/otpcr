@@ -36,10 +36,10 @@ netherlands are poison, see copies of the ECHA <`European Chemical Agency`>
 website for:
 
 
-(1) :ref:`haldol <haldol>`
-(2) :ref:`clozapine <clozapine>`
-(3) :ref:`zyprexa <zyprexa>`
-(4) :ref:`abilify <abilify>`
+(1) :ref:`haldol <haldol>` 
+(2) :ref:`clozapine <clozapine>` 
+(3) :ref:`zyprexa <zyprexa>` 
+(4) :ref:`abilify <abilify>` 
 
 
 With the mass scale torture with poison the king of the netherlands and 
