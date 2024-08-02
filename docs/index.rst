@@ -36,26 +36,26 @@ netherlands are poison, see copies of the ECHA <`European Chemical Agency`>
 website for:
 
 
-(1) :ref:`haldol <haldol>` 
-(2) :ref:`clozapine <clozapine>` 
-(3) :ref:`zyprexa <zyprexa>` 
-(4) :ref:`abilify <abilify>` 
+#. :ref:`haldol <haldol>` 
+#. :ref:`clozapine <clozapine>` 
+#. :ref:`zyprexa <zyprexa>` 
+#. :ref:`abilify <abilify>` 
 
 
 With the mass scale torture with poison the king of the netherlands and 
 his chamber:
 
-(1) kills
-(2) does grave bodily and mental harm
-(3) makes impotent
+#. kills
+#. does grave bodily and mental harm
+#. makes impotent
 
 on the following victim groups here in the Netherlands:
 
-(1) verslaafden (addicts)
-(2) bejaarden (elderly)
-(3) ggz patienten (psychiatric patients)
-(4) criminelen (criminials)
-(5) gehandicapten (handicapped)
+#. verslaafden (addicts)
+#. bejaarden (elderly)
+#. ggz patienten (psychiatric patients)
+#. criminelen (criminials)
+#. gehandicapten (handicapped)
 
 Since the members of the :ref:`chamber <chamber>` and the :ref:`king <king>`
 were aware that these medicine are poison at the time they voted for this law
@@ -67,8 +67,8 @@ prosecute the king for making the commiting of the above mentioned crimes
 p.s.
 
 
-(1) Entered in the Communications Register of the Office on 4 march 2019
-(2) Your reference ``OTP-CR-117/19``
+#. Entered in the Communications Register of the Office on 4 march 2019
+#. Your reference ``OTP-CR-117/19``
 
 
 .. toctree::
