@@ -35,10 +35,12 @@ There is proof the medication used in forced treatements in the
 netherlands are poison, see copies of the ECHA <`European Chemical Agency`>
 website for:
 
+
 (1) :ref:`haldol <haldol>`
 (2) :ref:`clozapine <clozapine>`
 (3) :ref:`zyprexa <zyprexa>`
 (4) :ref:`abilify <abilify>`
+
 
 With the mass scale torture with poison the king of the netherlands and 
 his chamber:
