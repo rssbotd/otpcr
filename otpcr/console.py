@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # This file is placed in the Public Domain.
 # pylint: disable=C0413,W0212,E0401
 
@@ -13,19 +12,16 @@ import termios
 import time
 
 
-sys.path.insert(0, os.getcwd())
+from .cfg    import Config
+from .errors import errors
+from .disk   import Persist, skel
+from .main   import cmnd, enable, init, scan
+from .parse  import parse
+from .term   import Console
+from .utils  import forever, modnames
 
 
-from otpcr.cfg    import Config
-from otpcr.errors import errors
-from otpcr.disk   import Persist, skel
-from otpcr.main   import cmnd, enable, init, scan
-from otpcr.parse  import parse
-from otpcr.term   import Console
-from otpcr.utils  import forever, modnames
-
-
-from otpcr import modules, user
+from . import modules, user
 
 
 if os.path.exists("mods"):
@@ -36,7 +32,7 @@ else:
 
 Cfg         = Config()
 Cfg.mod     = "cmd,mod,thr,err"
-Cfg.name    = "otcpr"
+Cfg.name    = __file__.split(os.sep)[-2]
 Cfg.wdr     = os.path.expanduser(f"~/.{Cfg.name}")
 Cfg.pidfile = os.path.join(Cfg.wdr, f"{Cfg.name}.pid")
 
@@ -69,10 +65,6 @@ def main():
     readline.redisplay()
     enable(print)
     skel()
-    if "v" in Cfg.opts:
-        dte = " ".join(time.ctime(time.time()).replace("  ", " ").split()[1:])
-        modiess = ",".join([x.upper() for x in modnames(modules, user, MODS)])
-        print(f'{dte} {Cfg.name.upper()} {Cfg.opts.upper()} {modiess}'.replace("  ", " "))
     scan(Cfg.mod, modules, user, MODS)
     csl = Console(print, input)
     if "i" in Cfg.opts:
@@ -82,5 +74,9 @@ def main():
     forever()
 
 
-if __name__ == "__main__":
+def wrapped():
     wrap(main)
+
+
+if __name__ == "__main__":
+    wrapped()

@@ -24,6 +24,11 @@ classifiers=[
 dev = []
 
 
+[project.scripts]
+"otpcr"  = "otpcr.__main__:wrapped"
+"otpcrc" = "otpcr.console:wrapped"
+"otpcrd" = "otpcr.daemon:wrapped"
+
 [project.urls]
 "home" = "https://pypi.org/project/otpcr"
 "bugs" = "https://github.com/rssbotd/otpcr/issues"
@@ -31,11 +36,6 @@ dev = []
 
 
 [tool.setuptools]
-script-files = [
-    "bin/otpcr",
-    "bin/otpcrc",
-    "bin/otpcrd"
-]
 packages = [
    "otpcr",
    "otpcr.modules",

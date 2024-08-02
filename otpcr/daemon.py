@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # This file is placed in the Public Domain.
 # pylint: disable=C0411,C0413,W0212,W0718,E0401
 
@@ -11,19 +10,19 @@ import os
 import sys
 
 
-from otpcr.cfg    import Config
-from otpcr.errors import errors, later
-from otpcr.disk   import Persist, skel
-from otpcr.main   import enable, init, scan
-from otpcr.utils  import forever, pidfile, privileges
+from .cfg    import Config
+from .errors import errors, later
+from .disk   import Persist, skel
+from .main   import enable, init, scan, wrap
+from .utils  import forever, pidfile, privileges
 
 
-from otpcr import modules, user
+from . import modules, user
 
 
 Cfg         = Config()
 Cfg.mod     = "irc,rss"
-Cfg.name    = "otpcr"
+Cfg.name    = __file__.split(os.sep)[-2]
 Cfg.user    = getpass.getuser()
 Cfg.wdr     = os.path.expanduser(f"~/.{Cfg.name}")
 Cfg.pidfile = os.path.join(Cfg.wdr, f"{Cfg.name}.pid")
@@ -53,29 +52,20 @@ def daemon(verbose=False):
     os.nice(10)
 
 
-def wrap(func):
-    "catch exceptions"
-    try:
-        func()
-    except (KeyboardInterrupt, EOFError):
-        print("")
-    except Exception as ex:
-        later(ex)
-    errors()
-
-
 def main():
     "main"
-    daemon("-v" in sys.argv)
+    daemon()
     privileges(Cfg.user)
     skel()
     pidfile(Cfg.pidfile)
-    if "-v" in sys.argv:
-        enable(print)
     scan(Cfg.mod, modules, user)
     init(Cfg.mod, modules, user)
     forever()
 
 
-if __name__ == "__main__":
+def wrapped():
     wrap(main)
+
+
+if __name__ == "__main__":
+    wrapped()

@@ -20,20 +20,23 @@ sys.path.insert(0, os.getcwd())
 
 
 from otpcr.cmds   import Commands
-from otpcr.cli    import CLI
+from otpcr.client import Client
 from otpcr.dft    import Default
 from otpcr.disk   import Persist
-from otpcr.defer  import Errors, errors
+from otpcr.errors import Errors, errors
 from otpcr.event  import Event
 from otpcr.log    import Logging
+from otpcr.main   import scan
 from otpcr.object import Object, keys
 from otpcr.parse  import parse
-from otpcr.launch import launch
-from otpcr.utils  import laps
+from otpcr.thread import launch
+from otpcr.utils  import laps, spl
 
 
-from otpcr import modules
-from otpcr import user
+from otpcr import modules, user
+
+
+modules.rss.DEBUG = True
 
 
 if os.path.exists("mods"):
@@ -44,14 +47,15 @@ else:
 
 LAP = 1
 NRS = 1
-NRCOMMAND = 1
-PERCALL   = 1
-STARTTIME = time.time()
-CLI.out   = print
+NRCOMMAND  = 1
+PERCALL    = 1
+STARTTIME  = time.time()
+Client.out = print
 
 
 Cfg         = Default()
 Cfg.debug   = True
+Cfg.dis     = ""
 Cfg.mod     = ""
 Cfg.name    = "tinder"
 Cfg.silent  = False
@@ -83,7 +87,7 @@ param.tdo = ["mekker"]
 param.ver = [""]
 
 
-class CLII(CLI):
+class CLI(Client):
 
     "command line interface"
 
@@ -109,7 +113,7 @@ def consume(evts):
 
 def modnames():
     "list all modules."
-    return sorted({x for x in dir(modules) + dir(user) + dir(MODS) if not x.startswith("__")})
+    return sorted({x for x in dir(modules) + dir(user) + dir(MODS) if not x.startswith("__") and x not in spl(Cfg.dis)})
 
 
 def payload(clt):
@@ -150,13 +154,11 @@ def main():
     "main"
     Logging.out = Errors.out = print
     Cfg.dis = Cfg.sets.dis
-    Cfg.mod = ",".join(Commands.modnames)
-    if "v" in Cfg.opts:
-        dte = " ".join(time.ctime(time.time()).replace("  ", " ").split()[1:])
-        print(f'{dte} {Cfg.name.upper()} {Cfg.opts.upper()} {Cfg.mod.upper()}'.replace("  ", " "))
+    Cfg.mod = ",".join(modnames())
     nrs = Cfg.index or 1
     nrcommand = len(Commands.cmds) or 1
-    cli = CLII()
+    scan(Cfg.mod, modules, user, MODS)
+    cli = CLI()
     cli.start()
     cli.threaded = "t" in Cfg.opts
     thrs = []

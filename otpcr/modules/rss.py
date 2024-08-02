@@ -47,7 +47,7 @@ TEMPLATE = """<opml version="1.0">
         <title>rssbot opml</title>
     </head>
     <body>
-        <outline title="rssbot opml" text="24/7 feed fetcher">"""
+        <outline title="rssbot opml" text="24/7 Feed Fetcher">"""
 
 
 
@@ -77,6 +77,7 @@ class Urls(OoL):
     def __init__(self):
         OoL.__init__(self)
         self.nrlinks = Object()
+
 
 def append_url(obj, url, item):
     "urls add."

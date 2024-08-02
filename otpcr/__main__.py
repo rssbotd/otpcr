@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # This file is placed in the Public Domain.
 # pylint: disable=C0413,W0212,W0613,E0401
 
@@ -11,34 +10,27 @@ import os
 import sys
 
 
-sys.path.insert(0, os.getcwd())
+from .cfg    import Config
+from .cmds   import Commands
+from .errors import errors
+from .disk   import Persist, skel
+from .main   import cmnd, enable, scan, wrap
+from .parse  import parse
+from .utils  import modnames, privileges
 
 
-from otpcr.cfg    import Config
-from otpcr.cmds   import Commands
-from otpcr.errors import errors
-from otpcr.disk   import Persist, skel
-from otpcr.main   import cmnd, enable, scan
-from otpcr.parse  import parse
-from otpcr.utils  import modnames, privileges
-
-
-from otpcr import modules, user
+from . import modules, user
 
 
 Cfg         = Config()
 Cfg.mod     = "cmd,skl,req,srv"
-Cfg.name    = "otpcr"
+Cfg.name    = __file__.split(os.sep)[-2]
 Cfg.user    = getpass.getuser()
 Cfg.wdr     = os.path.expanduser(f"~/.{Cfg.name}")
 Cfg.pidfile = os.path.join(Cfg.wdr, f"{Cfg.name}.pid")
 
 
 Persist.workdir = Cfg.wdr
-
-
-
-import getpass
 
 
 def srv(event):
@@ -81,6 +73,9 @@ def main():
     cmnd(Cfg.otxt, print)
 
 
+def wrapped():
+    wrap(main)
+
+
 if __name__ == "__main__":
-    main()
-    errors()
+    wrapped()

@@ -20,5 +20,4 @@ def __dir__():
         'skl',
         'tdo',
         'thr',
-        'upt'
     )
