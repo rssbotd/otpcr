@@ -119,7 +119,6 @@ rst_prolog = '''.. image:: genocide.png
     Elderly, Handicapped, Criminals, Wicked
     </i>
     </center>
-
 '''
 
 rst_epilog = '''.. raw:: html
