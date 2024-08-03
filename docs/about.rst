@@ -8,15 +8,6 @@
 .. title:: About
 
 
-.. raw:: html
-
-    <center>
-    <b>
-    OTP-CR-117/19
-    </b>
-    </center>
-    <br>
-
 In 2018 i informed the king of the netherlands that what he calls
 medicine in his "care" laws are not medicine but poison. Proof of
 these medicine being poison were shown to the king, who's (personal)
