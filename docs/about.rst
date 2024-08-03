@@ -33,7 +33,7 @@ stop), the prosecutor decided to call it a "no basis to proceed".
 
 .. raw:: html
 
-    <br><br><br>
+    <br><br>
     <center>
     <b>
 
@@ -44,7 +44,7 @@ to get the king in his cell and his genocide, thereby, stopped.
 
     </center>
     </b>
-    <br>
+    <br><br>
 
 .. raw:: html
 
