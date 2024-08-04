@@ -17,8 +17,8 @@
 
 Hello Office of the Prosecutor, 
 
-i write you in the context of communications and claims under art.15 of 
-the Rome Statute. i want to inform the prosecutor that the king of the 
+I write you in the context of communications and claims under art.15 of 
+the Rome Statute. I want to inform the prosecutor that the king of the 
 netherlands and his government are commiting 3 of the 5 crimes defined 
 in the Rome Statute. 
 
