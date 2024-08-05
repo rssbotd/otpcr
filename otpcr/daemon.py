@@ -11,9 +11,8 @@ import sys
 
 
 from .cfg    import Config
-from .errors import errors, later
 from .disk   import Persist, skel
-from .main   import enable, init, scan, wrap
+from .main   import init, scan, wrap
 from .utils  import forever, pidfile, privileges
 
 
@@ -23,8 +22,8 @@ from . import modules, user
 Cfg         = Config()
 Cfg.mod     = "irc,rss"
 Cfg.name    = __file__.split(os.sep)[-2]
-Cfg.user    = getpass.getuser()
 Cfg.wdr     = os.path.expanduser(f"~/.{Cfg.name}")
+Cfg.user    = getpass.getuser()
 Cfg.pidfile = os.path.join(Cfg.wdr, f"{Cfg.name}.pid")
 
 
@@ -64,6 +63,7 @@ def main():
 
 
 def wrapped():
+    "wrap main function"
     wrap(main)
 
 

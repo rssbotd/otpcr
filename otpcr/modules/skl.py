@@ -1,11 +1,11 @@
 # This file is placed in the Public Domain.
+# pylint: disable=W0613
 
 
 "create service file."
 
 
 import getpass
-import os
 
 
 from ..disk  import skel

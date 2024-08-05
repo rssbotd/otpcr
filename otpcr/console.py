@@ -9,7 +9,6 @@ import os
 import readline
 import sys
 import termios
-import time
 
 
 from .cfg    import Config
@@ -31,8 +30,8 @@ else:
 
 
 Cfg         = Config()
-Cfg.mod     = "cmd,mod,thr,err"
 Cfg.name    = __file__.split(os.sep)[-2]
+Cfg.mod     = "cmd,mod,thr,err"
 Cfg.wdr     = os.path.expanduser(f"~/.{Cfg.name}")
 Cfg.pidfile = os.path.join(Cfg.wdr, f"{Cfg.name}.pid")
 
@@ -75,6 +74,7 @@ def main():
 
 
 def wrapped():
+    "wrap main function."
     wrap(main)
 
 

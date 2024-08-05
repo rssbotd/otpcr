@@ -12,20 +12,19 @@ import sys
 
 from .cfg    import Config
 from .cmds   import Commands
-from .errors import errors
 from .disk   import Persist, skel
 from .main   import cmnd, enable, scan, wrap
 from .parse  import parse
-from .utils  import modnames, privileges
+from .utils  import modnames
 
 
 from . import modules, user
 
 
 Cfg         = Config()
-Cfg.mod     = "cmd,skl,req,srv"
 Cfg.name    = __file__.split(os.sep)[-2]
 Cfg.user    = getpass.getuser()
+Cfg.mod     = "cmd,skl,req,srv"
 Cfg.wdr     = os.path.expanduser(f"~/.{Cfg.name}")
 Cfg.pidfile = os.path.join(Cfg.wdr, f"{Cfg.name}.pid")
 
@@ -65,6 +64,7 @@ def main():
     "main"
     Commands.add(srv)
     parse(Cfg, " ".join(sys.argv[1:]))
+    skel()
     enable(print)
     Cfg.dis = Cfg.sets.dis
     if "a" in Cfg.opts:
@@ -74,6 +74,7 @@ def main():
 
 
 def wrapped():
+    "wrap main function."
     wrap(main)
 
 

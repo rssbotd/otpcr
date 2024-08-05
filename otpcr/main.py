@@ -7,7 +7,7 @@
 
 from .client import Client, command
 from .cmds   import Commands
-from .errors import Errors, errors
+from .errors import Errors, later, errors
 from .disk   import Persist
 from .event  import Event
 from .log    import Logging
