@@ -60,7 +60,7 @@
         # mv *.service /etc/systemd/system/
         # systemctl enable otpcr --now
 
-        #otpcr on localhost
+        joins #otpcr on localhost
 
 
 **USAGE**
