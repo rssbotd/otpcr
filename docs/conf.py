@@ -5,11 +5,11 @@
 # ruff: noqa: E402, E501
 
 
-"Office of the Prosecutor's Communication Record 117 of 2019."
+"Office of the Prosecutor's Communication Record 117 of the year 2019."
 
 
 NAME = "otpcr"
-VERSION = "25"
+VERSION = "26"
 
 
 import os
@@ -60,7 +60,7 @@ extensions = [
 # -- Options for HTML output -------------------------------------------------
 
 
-html_title = "Office of the Prosecutor's Communication Record 117 of 2019."
+html_title = "Office of the Prosecutor's Communication Record 117 of the year 2019."
 html_style = 'otpcr.css'
 html_static_path = ["_static", "files/sitemap.xml"]
 html_css_files = ["otpcr.css",]
@@ -116,7 +116,7 @@ rst_prolog = '''.. image:: genocide.png
 
     <center>
     <i>
-    Elderly, Handicapped, Criminals, Wicked
+    Elderly, Handicapped, Criminals, Wicked.
     </i>
     </center>
 '''
@@ -140,7 +140,7 @@ rst_epilog = '''.. raw:: html
 autosummary_generate = True
 autodoc_default_flags = ['members', 'undoc-members', 'private-members', "imported-members"]
 autodoc_member_order = 'groupwise'
-autodoc_docstring_signature = True
+autodoc_docstring_signature = False
 autoclass_content = "class"
 nitpick_ignore = [
                   ('py:class', 'builtins.BaseException'),
