@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "otpcr"
-description = "Elderly, Handicapped, Criminals, Wicked"
-version = "25"
+description = "Reconsider OTP-CR-117/19. Elderly, Handicapped, Criminals, Wicked"
+version = "26"
 authors = [
     {name = "Bart Thate", email = "rssbotd@gmail.com" },
 ]
