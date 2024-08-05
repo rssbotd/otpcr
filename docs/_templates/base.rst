@@ -23,10 +23,6 @@
     :special-members:
     :undoc-members:
 
-    .. raw:: html
-
-        <br>
-
     {% block exceptions %}
     {% if exceptions %}
     .. rubric:: exceptions
@@ -62,7 +58,7 @@
 
     .. raw:: html
 
-        <br>
+        <br><br>
 
 
 .. currentmodule:: {{ fullname }}
