@@ -116,7 +116,7 @@ rst_prolog = '''.. image:: genocide.png
 
     <center>
     <i>
-    Elderly, Handicapped, Criminals, Wicked.
+    Elderly, Handicapped, Criminals, Wicked
     </i>
     </center>
 '''
