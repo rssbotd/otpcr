@@ -65,18 +65,8 @@ html_style = 'otpcr.css'
 html_static_path = ["_static", "_static/otpcr.css", "files/sitemap.xml"]
 html_css_files = ["otpcr.css",]
 html_short_title = "%s %s" % (NAME, VERSION)
-html_sidebars = {
-    '**': [
-        'searchbox.html',
-        'navigation.html'
-    ]
-}
 html_theme = "alabaster"
 html_theme_options = {
-    'github_user': 'rssbotd',
-    'github_repo': NAME,
-    'github_button': False,
-    'github_banner': False,
     'logo': 'skull3.png',
     'link': '#000',
     'link_hover': '#000',
@@ -146,3 +136,8 @@ autoclass_content = "class"
 nitpick_ignore = [
                   ('py:class', 'builtins.BaseException'),
                  ]
+
+
+def setup(app):
+   app.add_css_file("custom.css")
+   app.add_css_file("otpcr.css")
