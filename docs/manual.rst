@@ -9,7 +9,7 @@
 
 **NAME**
 
-    **OTPCR** - Reconsider ``OTP-CR-117/19``. Elderly, Handicapped, Criminals, Wicked `! <source.html>`_
+    **otpcr** - Elderly, Handicapped, Criminals, Wicked `! <source.html>`_
 
 
 **SYNOPSIS**
