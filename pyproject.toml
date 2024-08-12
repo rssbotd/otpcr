@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "otpcr"
-description = "Reconsider OTP-CR-117/19. Elderly, Handicapped, Criminals, Wicked !"
-version = "26"
+description = "Elderly, Handicapped, Criminals, Wicked"
+version = "27"
 authors = [
     {name = "Bart Thate", email = "rssbotd@gmail.com" },
 ]
@@ -24,11 +24,6 @@ classifiers=[
 dev = []
 
 
-[project.scripts]
-"otpcr"  = "otpcr.__main__:wrapped"
-"otpcrc" = "otpcr.console:wrapped"
-"otpcrd" = "otpcr.daemon:wrapped"
-
 [project.urls]
 "home" = "https://pypi.org/project/otpcr"
 "bugs" = "https://github.com/rssbotd/otpcr/issues"
@@ -36,10 +31,14 @@ dev = []
 
 
 [tool.setuptools]
+script-files = [
+    "bin/otpcr",
+    "bin/otpcrc",
+    "bin/otpcrd"
+]
 packages = [
    "otpcr",
-   "otpcr.modules",
-   "otpcr.user"
+   "otpcr.modules"
 ]
 zip-safe = true
 
