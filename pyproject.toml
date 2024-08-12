@@ -9,7 +9,7 @@ version = "27"
 authors = [
     {name = "Bart Thate", email = "rssbotd@gmail.com" },
 ]
-readme = "README.rst"
+readme = "files/README.rst"
 license = { text="Public Domain"}
 classifiers=[
     'Development Status :: 3 - Alpha',
@@ -45,8 +45,6 @@ zip-safe = true
 
 [tool.setuptools.data-files]
 "share/doc/otpcr/docs" = [
-    "README.rst",
-    "MANUAL.rst",
     "docs/about.rst",
     "docs/ack3.png",
     "docs/bevestigd.jpg",
@@ -78,6 +76,8 @@ zip-safe = true
 
 "share/doc/otpcr/docs/files" = [
     "docs/files/sitemap.xml",
+    "README.rst",
+    "MANUAL.rst",
 ]
 
 "share/doc/otpcr/docs/_static" = [
