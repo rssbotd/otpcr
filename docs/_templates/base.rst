@@ -20,7 +20,6 @@
 .. auto{{ objtype }}:: {{ fullname }}
     :members:
     :private-members:
-    :special-members:
     :undoc-members:
 
     {% block exceptions %}

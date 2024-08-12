@@ -21,24 +21,24 @@
     :template: base.rst
 
     otpcr.cache
-    otpcr.cfg
+    otpcr.config
     otpcr.client
     otpcr.cmds
-    otpcr.decode
-    otpcr.dft
-    otpcr.disk
-    otpcr.encode
+    otpcr.console
+    otpcr.decoder
+    otpcr.default
+    otpcr.encoder
     otpcr.errors
     otpcr.event
     otpcr.fleet
+    otpcr.group
     otpcr.log
     otpcr.main
     otpcr.object
-    otpcr.ool
     otpcr.parse
-    otpcr.react
-    otpcr.repeat
-    otpcr.term
+    otpcr.persist
+    otpcr.reactor
+    otpcr.repeater
     otpcr.thread
     otpcr.timer
     otpcr.utils
@@ -67,7 +67,6 @@
     otpcr.modules.mod
     otpcr.modules.req
     otpcr.modules.rss
-    otpcr.modules.skl
     otpcr.modules.tdo
     otpcr.modules.thr
     otpcr.modules.upt

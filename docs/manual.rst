@@ -9,7 +9,7 @@
 
 **NAME**
 
-    **otpcr** - Elderly, Handicapped, Criminals, Wicked `! <source.html>`_
+    **OTPCR** - Elderly, Handicapped, Criminals, Wicked `! <source.html>`_
 
 
 **SYNOPSIS**
