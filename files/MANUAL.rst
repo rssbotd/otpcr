@@ -6,7 +6,7 @@ README
 
 ::
 
-   OTPCR - Office of the Prosecutor's Communication Rercord 117 of 2019
+   OTPCR - Elderly, Handicapped, Criminals, Wicked
 
 
 **SYNOPSIS**
@@ -14,10 +14,12 @@ README
 ::
 
     otpcr <cmd> [key=val] [key==val]
-    otpcr [-a] [-c] [-d] [-i] [-v]
+    otpcrc [-a] [-i] [-v]
+    otpcrd
 
 
 **DESCRIPTION**
+
 
 ``OTPCR`` holds evidence that king netherlands
 is doing a genocide, a written response
@@ -42,13 +44,20 @@ actually arrested and, thereby, his genocide
 stopped.
 
 
-**INSTALL**
+INSTALL
 
-you can install ``otpcr`` with the use of pipx::
+::
 
     $ pipx install otpcr
     $ pipx ensurepath
-    $ mkdir ~/.otpcr
+
+    <new terminal>
+
+    $ nixt srv > otpcr.service
+    $ sudo mv otpcr.service /etc/systemd/system/
+    $ sduo systemctl enable otpcr --now
+
+    joins #otpcr on localhost
 
 
 **USAGE**
@@ -65,22 +74,17 @@ see list of commands::
 
 start a console::
 
-    $ otpcr -c 
+    $ otpcrc
     >
 
-use -v for verbose::
-
-    $ otpcr -cv
-    May 12 05:51:49 2024 OTPCR CV CMD,ERR,LOG,MOD,REQ,TDO,THR,TMR
-    >
 
 use -i to run init on modules::
 
-    $ otpcr -caiv 
+    $ otpcrc -ai
 
 start daemon::
 
-    $ otpcr -d
+    $ otpcrd
 
 show request to the prosecutor::
 
@@ -123,9 +127,6 @@ opml::
 here is a list of commandline options ``otpcr`` provides::
 
     -a     load all modules
-    -c     start console
-    -d     run in the background
-    -h     show help
     -i     start services
     -v     use verbose
 
@@ -151,39 +152,14 @@ commands are mostely for irc and rss management::
     thr - show the running threads
 
 
-**SYSTEMD**
-
-save the following it in /etc/systemd/system/otpcr.service and replace "<user>" with the user running pipx::
- 
-    [Unit]
-    Description=Office of the Prosecutor's Communication Record 117 of 2019.
-    Requires=network-online.target
-    After=network-online.target
-
-    [Service]
-    Type=simple
-    User=<user>
-    Group=<user>
-    WorkingDirectory=/home/<user>/.otpcr
-    ExecStart=/home/<user>/.local/pipx/venvs/otpcr/bin/otpcr -d
-    RemainAfterExit=yes
-
-    [Install]
-    WantedBy=default.target
-
-then run this::
-
-    $ sudo systemctl enable otpcr --now
-
-default channel/server is #otpcr on localhost
-
-
 **FILES**
 
 pipx stores the ``otpcr`` documentation in it;s local pipx environment::
 
     ~/.otpcr
     ~/.local/bin/otpcr
+    ~/.local/bin/otpcrc
+    ~/.local/bin/otpcrd
     ~/.local/pipx/venvs/otpcr/*
 
 
