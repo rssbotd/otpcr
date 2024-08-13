@@ -69,4 +69,3 @@
     otpcr.modules.rss
     otpcr.modules.tdo
     otpcr.modules.thr
-    otpcr.modules.upt
