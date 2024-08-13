@@ -139,5 +139,5 @@ nitpick_ignore = [
 
 
 def setup(app):
-   app.add_css_file("custom.css")
-   app.add_css_file("otpcr.css")
+    app.add_css_file("custom.css")
+    app.add_css_file("otpcr.css")
