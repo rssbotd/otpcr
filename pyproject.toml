@@ -77,8 +77,7 @@ zip-safe = true
 
 "share/doc/otpcr/docs/files" = [
     "docs/files/sitemap.xml",
-    "files/README.rst",
-    "files/MANUAL.rst"
+    "README.rst"
 ]
 
 "share/doc/otpcr/docs/_static" = [
