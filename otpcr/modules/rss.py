@@ -24,7 +24,7 @@ from ..default  import Default
 from ..fleet    import Fleet
 from ..object   import Object, construct, fmt, update
 from ..persist  import find, last, sync
-from ..group    import Group, append
+from ..group    import Group
 from ..repeater import Repeater
 from ..thread   import launch
 from ..log      import debug
