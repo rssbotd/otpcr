@@ -27,7 +27,7 @@ from otpcr.errors  import errors
 from otpcr.main    import cmnd, enable, init
 from otpcr.modules import face
 from otpcr.parse   import parse
-from otpcr.utils   import forever
+from otpcr.utils   import forever, modnames
 
 
 def wrap(func):
@@ -53,6 +53,7 @@ def main():
         enable(print)
     csl = Console(print, input)
     if "i" in Cfg.opts:
+        Cfg.mod = ",".join(modnames(face))
         init(Cfg.mod, face)
     csl.start()
     forever()
