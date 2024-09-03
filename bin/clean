@@ -43,7 +43,7 @@ def main():
     popen("rm -fR .*~ *~")
     if "-f" in sys.argv:
         popen("rm -fR html store env")
-        popen('rm -fR docs/nixt.*.rst')
+        popen('rm -fR docs/otpcr.*.rst')
     loop(".", "rm -fR *~")
     loop(".", "rm -fR __pycache__")
 
