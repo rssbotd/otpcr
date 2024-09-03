@@ -27,22 +27,23 @@
     otpcr.console
     otpcr.decoder
     otpcr.default
+    otpcr.disk
     otpcr.encoder
     otpcr.errors
     otpcr.event
+    otpcr.find
     otpcr.fleet
     otpcr.group
     otpcr.log
     otpcr.main
     otpcr.object
     otpcr.parse
-    otpcr.persist
     otpcr.reactor
     otpcr.repeater
     otpcr.thread
     otpcr.timer
     otpcr.utils
-
+    otpcr.workdir
 
 .. raw:: html
 

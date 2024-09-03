@@ -6,4 +6,4 @@
 "all modules"
 
 
-from . import cmd, err, mod, thr, upt
+from . import cmd, err, irc, mod, req, rss, thr, upt
