@@ -10,7 +10,7 @@ import sys
 import unittest
 
 
-from otpcr.interface import *
+from otpcr.face import *
 
 
 import otpcr
@@ -26,26 +26,27 @@ PACKAGE = [
     '__package__',
     '__path__',
     '__spec__',
-    'cache',
     'client',
-    'cmds',
+    'command',
     'decoder',
     'default',
+    'disk',
     'encoder',
     'errors',
     'event',
-    'interface',
+    'find',
+    'face',
     'lock',
     'log',
     'main',
     'object',
     'parse',
-    'persist',
     'reactor',
     'repeater',
     'thread',
     'timer',
-    'utils'
+    'utils',
+    'workdir'
 ]
 
 

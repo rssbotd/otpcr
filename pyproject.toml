@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "otpcr"
 description = "Elderly, Handicapped, Criminals, Wicked"
-version = "28"
+version = "30"
 authors = [
     {name = "Bart Thate", email = "rssbotd@gmail.com" },
 ]

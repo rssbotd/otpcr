@@ -20,10 +20,9 @@
     :toctree: 
     :template: base.rst
 
-    otpcr.cache
     otpcr.config
     otpcr.client
-    otpcr.cmds
+    otpcr.command
     otpcr.console
     otpcr.decoder
     otpcr.default
@@ -33,7 +32,6 @@
     otpcr.event
     otpcr.find
     otpcr.fleet
-    otpcr.group
     otpcr.log
     otpcr.main
     otpcr.object

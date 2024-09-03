@@ -6,14 +6,15 @@
 
 .. raw:: html
 
+    <br>
     <center>
-    <h3>
+    <b>
 
 :ref:`src <source>`/**{{ name }}**
 
 .. raw:: html
 
-    </h3>
+    </b>
     </center>
 
 

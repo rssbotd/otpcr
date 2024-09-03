@@ -9,8 +9,8 @@
 import unittest
 
 
-from otpcr.object import Object, fmt, fqn, items, keys, update, values
-
+from otpcr.object import Object, fmt, items, keys, update, values
+from otpcr.utils  import fqn 
 
 VALIDJSON = '{"test": "bla"}'
 
