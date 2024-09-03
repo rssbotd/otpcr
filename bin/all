@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+# This file is placed in the Public Domain
+
+
+"run all scripts"
+
+
+import os
+import sys
+
+
+NAME = "nixt"
+
+
+def popen(txt):
+    "run text in popen."
+    for line in os.popen(txt).readlines():
+        if "-v" in sys.argv:
+            print(line.rstrip())
+            sys.stdout.flush()
+
+
+popen("bin/clean")
+popen("bin/check")
+popen('pytest')
+popen("bin/lint")
+popen("bin/tinder")
+popen('bin/clean -f')
+popen('git status')
+#popen('python3 setup.py sdist')
+#popen('twine check dist/')

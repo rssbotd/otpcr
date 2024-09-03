@@ -1,5 +1,5 @@
 # This file is placed in the Public Domain.
-# pylint: disable=R0902,W0718
+# pylint: disable=W0718
 
 
 "threads"
@@ -15,9 +15,6 @@ from .event  import Event
 from .utils  import named
 
 
-rpr = object.__repr__
-
-
 class Thread(threading.Thread):
 
     "Thread"
@@ -30,7 +27,6 @@ class Thread(threading.Thread):
         self.queue     = queue.Queue()
         self.sleep     = None
         self.starttime = time.time()
-        self.throttle  = 0.002
         if func:
             self.queue.put_nowait((func, args))
 
@@ -52,7 +48,6 @@ class Thread(threading.Thread):
     def run(self):
         "run this thread's payload."
         func, args = self.queue.get()
-        time.sleep(self.throttle)
         try:
             self._result = func(*args)
         except Exception as ex:

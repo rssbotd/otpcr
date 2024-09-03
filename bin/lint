@@ -1,1 +1,24 @@
-pylint otpcr bin/tinder tests
+#!/usr/bin/env python3
+# This file is placed in the Public Domain
+
+
+"linted"
+
+
+import os
+import sys
+
+
+NAME = "nixt"
+
+
+def popen(txt):
+    "run text in popen."
+    for line in os.popen(txt).readlines():
+        print(line.rstrip())
+        sys.stdout.flush()
+
+
+if os.path.exists("bin/clean"):
+    popen("bin/clean")
+popen(f"pylint {NAME}/*.py {NAME}/modules/*.py bin/* tests/*.py")

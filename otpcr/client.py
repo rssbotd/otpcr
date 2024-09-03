@@ -1,13 +1,11 @@
 # This file is placed in the Public Domain.
-# pylint: disable=W0125
 
 
 "client"
 
 
-from .cache   import Cache
-from .cmds    import Commands
-from .fleet   import Fleet
+from .command import Commands
+from .object  import Object
 from .parse   import parse
 from .reactor import Reactor
 
@@ -16,21 +14,20 @@ class Client(Reactor):
 
     "Client"
 
-    cache = Cache()
+    cache = Object()
     out = None
 
     def __init__(self, outer=None):
         Reactor.__init__(self)
         self.register("command", command)
         self.out = outer
-        Fleet.register(self)
 
     def say(self, _channel, txt):
         "echo on verbose."
         self.raw(txt)
 
     def raw(self, txt):
-        "echo to screen."
+        "print to screen."
         if self.out:
             txt = txt.encode('utf-8', 'replace').decode()
             self.out(txt)

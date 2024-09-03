@@ -18,7 +18,8 @@ class Console(Client):
         self.prompt = prompt
 
     def announce(self, txt):
-        "echo text"
+        "echo text."
+        self.raw(txt)
 
     def callback(self, evt):
         "wait for callback."
@@ -31,3 +32,9 @@ class Console(Client):
         evt.txt = self.inner(self.prompt)
         evt.type = "command"
         return evt
+
+
+def __dir__():
+    return (
+        'Console',
+    )

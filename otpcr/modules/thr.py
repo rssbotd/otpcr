@@ -1,22 +1,23 @@
 # This file is placed in the Public Domain.
 
 
-"show running threads."
+"show running threads"
 
 
 import threading
 import time
 
 
-from ..object import Object, update
-from ..utils  import laps
+from ..command import Commands
+from ..object  import Object, update
+from ..utils   import laps
 
 
 STARTTIME = time.time()
 
 
 def thr(event):
-    "show running threads."
+    "list threads."
     result = []
     for thread in sorted(threading.enumerate(), key=lambda x: x.name):
         if str(thread).startswith('<_'):
@@ -40,3 +41,6 @@ def thr(event):
         event.reply(' '.join(res))
     else:
         event.reply('no threads')
+
+
+Commands.add(thr)
