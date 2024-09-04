@@ -37,6 +37,7 @@ class Errors:
         "check if output function is set."
         if Errors.out:
             text = Errors.format(exc)
+            print(text)
             if text not in Errors.cache:
                 Errors.cache.append(text)
                 Errors.out(text)

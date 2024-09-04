@@ -15,10 +15,15 @@ class Config(Default):
 
     "Config"
 
-
     name    = Default.__module__.rsplit(".", maxsplit=2)[-2]
     wdr     = os.path.expanduser(f"~/.{name}")
     pidfile = os.path.join(wdr, f"{name}.pid")
+
+    def __init__(self):
+        Default.__init__(self)
+        self.name = Config.name
+        self.wdr  = Config.wdr
+        self.pidfile = Config.pidfile
 
 
 def __dir__():

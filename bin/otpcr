@@ -43,7 +43,7 @@ Group={username}
 ExecStart={path}/{Cfg.name}s
 
 [Install]
-WantedBy=network.target"""
+WantedBy=multi-user.target"""
     event.reply(txt)
 
 

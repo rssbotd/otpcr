@@ -34,7 +34,8 @@ dev = []
 script-files = [
     "bin/otpcr",
     "bin/otpcrc",
-    "bin/otpcrd"
+    "bin/otpcrd",
+    "bin/otpcrs"
 ]
 packages = [
    "otpcr",

@@ -27,6 +27,7 @@ class Thread(threading.Thread):
         self.queue     = queue.Queue()
         self.sleep     = None
         self.starttime = time.time()
+        print(func)
         if func:
             self.queue.put_nowait((func, args))
 

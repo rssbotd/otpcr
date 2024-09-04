@@ -18,7 +18,7 @@ class Workdir:
     "Workdir"
 
     fqns = []
-    wdr = ""
+    wdr = Config.wdr
 
 
 def long(name):
