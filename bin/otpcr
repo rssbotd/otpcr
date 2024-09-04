@@ -34,10 +34,10 @@ def srv(event):
     path = os.path.normpath(f"/home/{username}/.local/bin/")
     txt = f"""[Unit]
 Description={Cfg.name.upper()}
-Requires=network-online.target
-After=network-online.target
+After=network.target
 
 [Service]
+Type=exec
 User={username}
 Group={username}
 ExecStart={path}/{Cfg.name}s
