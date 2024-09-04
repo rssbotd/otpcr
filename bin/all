@@ -12,6 +12,12 @@ import sys
 NAME = "otpcr"
 
 
+def cprint(txt):
+    if "-v" in sys.argv:
+        print(txt)
+        sys.stdout.flush()
+
+
 def popen(txt):
     "run text in popen."
     for line in os.popen(txt).readlines():
@@ -20,12 +26,19 @@ def popen(txt):
             sys.stdout.flush()
 
 
+cprint("cleaning")
 popen("bin/clean")
+cprint("checking")
 popen("bin/check")
+cprint("testing")
 popen('pytest')
+cprint("linting")
 popen("bin/lint")
+cprint("tinder")
 popen("bin/tinder")
+cprint("cleanup")
 popen('bin/clean -f')
+cprint("status")
 popen('git status')
 #popen('python3 setup.py sdist')
 #popen('twine check dist/')
