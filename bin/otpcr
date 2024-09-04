@@ -37,7 +37,7 @@ Description={Cfg.name.upper()}
 After=network.target
 
 [Service]
-Type=exec
+Type=simple
 User={username}
 Group={username}
 ExecStart={path}/{Cfg.name}s
