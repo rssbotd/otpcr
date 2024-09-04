@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "otpcr"
 description = "Elderly, Handicapped, Criminals, Wicked"
-version = "30"
+version = "31"
 authors = [
     {name = "Bart Thate", email = "rssbotd@gmail.com" },
 ]
@@ -45,7 +45,13 @@ zip-safe = true
 
 
 [tool.setuptools.data-files]
+"share/doc/otpcr/" = [
+    "README.rst",
+]
+
+
 "share/doc/otpcr/docs" = [
+    "docs/googlea6568bcc05c8d50b.html",
     "docs/about.rst",
     "docs/ack.png",
     "docs/ack3.png",
@@ -71,6 +77,7 @@ zip-safe = true
     "docs/request.rst",
     "docs/robots.txt",
     "docs/since.png",
+    "docs/source.rst",
     "docs/skull3.png",
     "docs/verbatim7.png",
     "docs/writings.rst"
@@ -78,7 +85,7 @@ zip-safe = true
 
 "share/doc/otpcr/docs/files" = [
     "docs/files/sitemap.xml",
-    "README.rst"
+    "docs/files/genocide.png"
 ]
 
 "share/doc/otpcr/docs/_static" = [
