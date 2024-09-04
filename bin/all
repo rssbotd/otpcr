@@ -9,7 +9,7 @@ import os
 import sys
 
 
-NAME = "nixt"
+NAME = "otpcr"
 
 
 def popen(txt):

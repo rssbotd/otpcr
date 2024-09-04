@@ -18,7 +18,7 @@ import _thread
 sys.path.insert(0, os.getcwd())
 
 
-from nixt.face   import *
+from otpcr.face   import *
 
 
 Cfg         = Config()
@@ -30,7 +30,7 @@ Cfg.silent  = False
 Cfg.skip    = ["debug",]
 
 
-from nixt.modules import face
+from otpcr.modules import face
 
 
 LAP = 1
