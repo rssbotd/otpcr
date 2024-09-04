@@ -19,6 +19,7 @@
         otpcr  <cmd> [key=val] [key==val]
         otpcrc [-i] [-v]
         otpcrd 
+        otpcrs
 
 
 **DESCRIPTION**
@@ -56,12 +57,6 @@
         $ pipx install otpcr
         $ pipx ensurepath
 
-        $ otpcr srv > otpcr.service
-        # mv *.service /etc/systemd/system/
-        # systemctl enable otpcr --now
-
-        joins #otpcr on localhost
-
 
 **USAGE**
 
@@ -77,7 +72,8 @@
     ::
 
         $ otpcr cmd
-        cmd,req,skl,srv
+        cfg,cmd,dne,dpl,err,exp,imp,log,mod,mre,nme,
+        pwd,rem,req,res,rss,srv,syn,tdo,thr,upt
 
 
     start a console
@@ -87,12 +83,11 @@
         $ otpcrc 
         >
 
-    use -v for verbose
+    use -i to init modules
 
     ::
 
-        $ otpcrc -v
-        May 12 05:51:49 2024 OTPCR CV 
+        $ otpcrc -i
         >
 
     start daemon
@@ -102,6 +97,12 @@
         $ otpcrd
         $ 
 
+    start service
+
+    ::
+    
+        $ otpcrs
+        <runs until ctrl-c>
 
     show request to the prosecutor
 
@@ -113,6 +114,29 @@
         Post Office Box 19519
         2500 CM The Hague
         The Netherlands
+
+**COMMANDS**
+
+    ::
+
+        cfg - irc configuration
+        cmd - commands
+        dpl - sets display items
+        err - show errors
+        exp - export opml (stdout)
+        imp - import opml
+        log - log text
+        mre - display cached output
+        pwd - sasl nickserv name/pass
+        rem - removes a rss feed
+        res - restore deleted feeds
+        req - reconsider
+        rss - add a feed
+        srv - create service file
+        syn - sync rss feeds
+        tdo - add todo item
+        thr - show running threads
+        upt - show uptime
 
 
 **CONFIGURATION**
@@ -141,16 +165,23 @@
         $ otpcr rem <url>
         $ otpcr nme <url> <name>
 
-
-**COMMANDS**
+    opml
 
     ::
 
-        cfg - irc configuration
-        cmd - commands
-        mre - displays cached output
-        pwd - sasl nickserv name/pass
-        req - reconsider
+        $ otpcr exp
+        $ otpcr imp <filename>
+
+
+**SYSTEMD**
+
+    ::
+
+        $ otpcr srv > otpcr.service
+        $ sudo mv *.service /etc/systemd/system/
+        $ sudo systemctl enable otpcr --now
+
+        joins #otpcr on localhost
 
 
 **SOURCE**
@@ -165,6 +196,9 @@
 
         ~/.otpcr
         ~/.local/bin/otpcr
+        ~/.local/bin/otpcrc
+        ~/.local/bin/otpcrd
+        ~/.local/bin/otpcrs
         ~/.local/pipx/venvs/otpcr/*
 
 
