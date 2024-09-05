@@ -50,6 +50,11 @@
     requires a :ref:`"basis to prosecute" <home>`
     to have the king actually arrested.
 
+    ``OTP-CR-117/19`` has been duly entered in the 
+    Communications Register of the Office.
+
+    Since ``4 march 2019``
+
 **INSTALL**
 
     installation is done with pipx
@@ -151,7 +156,7 @@
 **SYSTEMD**
 
     put the following in ``/etc/systemd/system/otpcr.service`` and
-    replace {name} with the user running pipx
+    replace ``{name}`` with the user running ``pipx``
 
     | ``[Unit]``
     | ``Description=OTPCR``
