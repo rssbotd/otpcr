@@ -1,16 +1,18 @@
 **NAME**
 
+::
 
-    ``OTPCR`` - Since ``4 march 2019``
+    OTPCR - Since 4 march 2019
 
 
 **SYNOPSIS**
 
+::
 
-    | ``otpcr  <cmd> [key=val] [key==val]``
-    | ``otpcrc [-i] [-v]``
-    | ``otpcrd`` 
-    | ``otpcrs``
+    otpcr  <cmd> [key=val] [key==val]
+    otpcrc [-i] [-v]
+    otpcrd
+    otpcrs
 
 
 **DESCRIPTION**
@@ -58,39 +60,50 @@ installation is done with pipx
 
 without any argument the bot does nothing
 
-    | ``$ otpcr``
-    | ``$``
+::
+
+    $ otpcr
+    $
 
 see list of commands
 
-    | ``$ otpcr cmd``
-    | ``cfg,cmd,dne,dpl,err,exp,imp,log,mod,mre,nme,``
-    | ``pwd,rem,req,res,rss,srv,syn,tdo,thr,upt``
+::
+    $ otpcr cmd
+    cfg,cmd,dne,dpl,err,exp,imp,log,mod,mre,nme,
+    pwd,rem,req,res,rss,srv,syn,tdo,thr,upt
 
 
 start a console
 
-    | ``$ otpcrc``
-    | ``>``
+::
+
+    $ otpcrc``
+    >
 
 use -i to init modules
 
-    | ``$ otpcrc -i``
-    | ``>``
+::
+
+    $ otpcrc -i
+    >
 
 start daemon
 
-    | ``$ otpcrd``
-    | ``$``
+::
+
+    $ otpcrd
+    $
 
 start service
 
-   | ``$ otpcrs``
-   | ``<runs until ctrl-c>``
+::
+
+   otpcrs
+   <runs until ctrl-c>
 
 show request to the prosecutor
 
-   | $ ``otpcr req``
+   | $ otpcr req
    | Information and Evidence Unit
    | Office of the Prosecutor
    | Post Office Box 19519
@@ -102,6 +115,7 @@ show request to the prosecutor
 
 
 here is a list of available commands
+
 
     | ``cfg`` - irc configuration
     | ``cmd`` - commands
@@ -125,23 +139,27 @@ here is a list of available commands
 **CONFIGURATION**
 
 
-    irc
+irc
 
-    | ``$ otpcr cfg server=<server>``
-    | ``$ otpcr cfg channel=<channel>``
-    | ``$ otpcr cfg nick=<nick>``
+::
+
+    $ otpcr cfg server=<server>
+    $ otpcr cfg channel=<channel>``
+    $ otpcr cfg nick=<nick>
 
 sasl
 
-    | ``$ otpcr pwd <nsvnick> <nspass>``
-    | ``$ otpcr cfg password=<frompwd>``
+::
+
+    $ otpcr pwd <nsvnick> <nspass>
+    $ otpcr cfg password=<frompwd>4
 
 rss
  
-    | ``$ otpcr rss <url>``
-    | ``$ otpcr dpl <url> <item1,item2>``
-    | ``$ otpcr rem <url>``
-    | ``$ otpcr nme <url> <name>``
+    $ otpcr rss <url>
+    $ otpcr dpl <url> <item1,item2>
+    $ otpcr rem <url>
+    $ otpcr nme <url> <name>
 
 opml
 
@@ -155,23 +173,28 @@ opml
 edit ``/etc/systemd/system/otpcr.service`` and
 replace {name} with the user running pipx
 
-    | ``[Unit]``
-    | ``Description=OTPCR``
-    | ``After=network-online.target``
-    |
-    | ``[Service]``
-    | ``Type=simple``
-    | ``User={name}``
-    | ``Group={name}``
-    | ``ExecStart=/home/{name}/.local/bin/otpcrs``
-    |
-    | ``[Install]``
-    | ``WantedBy=multi-user.target``
+::
+
+    [Unit]
+    Description=OTPCR
+    After=network-online.target
+
+    [Service]
+    Type=simple
+    User={name}
+    Group={name}
+    ExecStart=/home/{name}/.local/bin/otpcrs
+
+    [Install]
+    WantedBy=multi-user.target
 
 
 then run the following
 
-    | ``$ sudo systemctl enable otpcr --now``
+::
+
+    $ sudo systemctl enable otpcr --now
+
 
 joins #otpcr on localhost
 
@@ -184,22 +207,25 @@ source is at https://github.com/rssbotd/otpcr
 
 **FILES**
 
+::
 
-    | ``~/.otpcr``
-    | ``~/.local/bin/otpcr``
-    | ``~/.local/bin/otpcrc``
-    | ``~/.local/bin/otpcrd``
-    | ``~/.local/bin/otpcrs``
-    | ``~/.local/pipx/venvs/otpcr/*``
+    ~/.otpcr
+    ~/.local/bin/otpcr
+    ~/.local/bin/otpcrc
+    ~/.local/bin/otpcrd
+    ~/.local/bin/otpcrs
+    ~/.local/pipx/venvs/otpcr/*
 
 
 **AUTHOR**
 
+::
 
-| Bart Thate ``<rssbotd@gmail.com>``
+    Bart Thate <rssbotd@gmail.com>
 
 
 **COPYRIGHT**
 
+::
 
-| ``OTPCR`` is Public Domain.
+    OTPCR is Public Domain.
