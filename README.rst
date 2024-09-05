@@ -103,12 +103,14 @@ start service
 
 show request to the prosecutor
 
-   | $ otpcr req
-   | Information and Evidence Unit
-   | Office of the Prosecutor
-   | Post Office Box 19519
-   | 2500 CM The Hague
-   | The Netherlands
+::
+
+   $ otpcr req
+   Information and Evidence Unit
+   Office of the Prosecutor
+   Post Office Box 19519
+   2500 CM The Hague
+   The Netherlands
 
 
 **COMMANDS**
@@ -116,24 +118,25 @@ show request to the prosecutor
 
 here is a list of available commands
 
+::
 
-    | ``cfg`` - irc configuration
-    | ``cmd`` - commands
-    | ``dpl`` - sets display items
-    | ``err`` - show errors
-    | ``exp`` - export opml (stdout)
-    | ``imp`` - import opml
-    | ``log`` - log text
-    | ``mre`` - display cached output
-    | ``pwd`` - sasl nickserv name/pass
-    | ``rem`` - removes a rss feed
-    | ``res`` - restore deleted feeds
-    | ``req`` - reconsider
-    | ``rss`` - add a feed
-    | ``syn`` - sync rss feeds
-    | ``tdo`` - add todo item
-    | ``thr`` - show running threads
-    | ``upt`` - show uptime
+    cfg - irc configuration
+    cmd - commands
+    dpl - sets display items
+    err - show errors
+    exp - export opml (stdout)
+    imp - import opml
+    log - log text
+    mre - display cached output
+    pwd - sasl nickserv name/pass
+    rem - removes a rss feed
+    res - restore deleted feeds
+    req - reconsider
+    rss - add a feed
+    syn - sync rss feeds
+    tdo - add todo item
+    thr - show running threads
+    upt - show uptime
 
 
 **CONFIGURATION**
