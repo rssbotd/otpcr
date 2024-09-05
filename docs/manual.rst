@@ -1,19 +1,19 @@
 .. _home:
 
-.. raw:: html
-
-    <br><br>
 
 .. title:: Home
 
 
 .. raw:: html
 
+    <br>
     <center>
 
+
 .. image:: skull3.png
-    :width: 100%
+    :width: 500px
     :target: source.html
+
 
 .. raw:: html
 
