@@ -145,33 +145,25 @@ here is a list of available commands
 **CONFIGURATION**
 
 
-::
-
-    irc
+irc
 
     $ otpcr cfg server=<server>
-    $ otpcr cfg channel=<channel>``
+    $ otpcr cfg channel=<channel>
     $ otpcr cfg nick=<nick>
 
-::
-
-    sasl
+sasl
 
     $ otpcr pwd <nsvnick> <nspass>
     $ otpcr cfg password=<frompwd>4
 
-::
-
-    rss
+rss
  
     $ otpcr rss <url>
     $ otpcr dpl <url> <item1,item2>
     $ otpcr rem <url>
     $ otpcr nme <url> <name>
 
-::
-
-    opml
+opml
 
     $ otpcr exp
     $ otpcr imp <filename>
@@ -179,10 +171,10 @@ here is a list of available commands
 
 **SYSTEMD**
 
-::
+paste this into /etc/systemd/system/otpcr.service
+and replace {name} with the user running pipx
 
-    paste this into /etc/systemd/system/otpcr.service
-    and replace {name} with the user running pipx
+::
 
     [Unit]
     Description=OTPCR
@@ -197,19 +189,20 @@ here is a list of available commands
     [Install]
     WantedBy=multi-user.target
 
-    then run the following
+then run the following
+
+
+::
 
     $ sudo systemctl enable otpcr --now
 
-    joins #otpcr on localhost
+joins #otpcr on localhost
 
 
 **SOURCE**
 
 
-::
-
-    source is at https://github.com/rssbotd/otpcr
+source is at ``https://github.com/rssbotd/otpcr``
 
 
 **FILES**
@@ -226,13 +219,10 @@ here is a list of available commands
 
 **AUTHOR**
 
-::
-
-    Bart Thate <rssbotd@gmail.com>
+Bart Thate ``<rssbotd@gmail.com>``
 
 
 **COPYRIGHT**
 
-::
 
-    OTPCR is Public Domain.
+``OTPCR`` is Public Domain.
