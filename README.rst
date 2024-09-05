@@ -211,7 +211,7 @@ then run the following
     $ sudo systemctl enable otpcr --now
 
 
-joins #otpcr on localhost
+joins ``#otpcr`` on localhost
 
 
 **SOURCE**
