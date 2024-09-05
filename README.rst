@@ -17,7 +17,7 @@
 
 **DESCRIPTION**
 
-``OTPCR`` has a python3 bot, it can connect
+``OTPCR`` is a IRC bot, it can connect
 to IRC, fetch and display RSS feeds, take
 todo notes, keep a shopping list and log
 text. You can also copy/paste the service
@@ -86,7 +86,7 @@ start a console
 
 ::
 
-    $ otpcrc``
+    $ otpcrc
     >
 
 use -i to init modules
@@ -186,7 +186,7 @@ here is a list of available commands
 **SYSTEMD**
 
 paste this into ``/etc/systemd/system/otpcr.service``
-and replace {name} with the user running pipx
+and replace ``{name}`` with the user running ``pipx``
 
 ::
 
@@ -202,6 +202,7 @@ and replace {name} with the user running pipx
 
     [Install]
     WantedBy=multi-user.target
+
 
 then run the following
 
