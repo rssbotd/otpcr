@@ -1,23 +1,11 @@
 .. _home:
 
 
-.. title:: Home
-
-
 .. raw:: html
 
     <br>
-    <center>
 
-
-.. image:: skull3.png
-    :scale: 30%
-    :target: source.html
-
-
-.. raw:: html
-
-    </center>
+.. title:: Home
 
 
 **NAME**
