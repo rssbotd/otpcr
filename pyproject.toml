@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "otpcr"
-description = "Since 04 march 2019"
+description = "Since 4 March 2019 (OTP-CR-117/19"
 version = "31"
 authors = [
     {name = "Bart Thate", email = "rssbotd@gmail.com" },

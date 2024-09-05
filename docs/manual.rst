@@ -1,4 +1,4 @@
-.. _home:
+.. _manual:
 
 
 .. raw:: html

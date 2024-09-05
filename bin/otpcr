@@ -1,50 +1,44 @@
 #!/usr/bin/env python3
 # This file is placed in the Public Domain.
-# pylint: disable=C0413
+# pylint: disable=C0413,W0611
 
 
 "cli"
 
 
 import getpass
-import os
 import sys
 
 
-from otpcr.config import Config
+from otpcr.command import Commands
+from otpcr.config  import Config
+from otpcr.errors  import Errors, errors
+from otpcr.main    import cmnd, enable, init, wrap
+from otpcr.modules import face
+from otpcr.parse   import parse
 
 
 Cfg = Config()
-
-
-from otpcr.command import Commands
-from otpcr.errors  import errors
-from otpcr.main    import cmnd, enable, wrap
-from otpcr.modules import face
-from otpcr.parse   import parse
-from otpcr.utils   import modnames
-
-
-Cfg.mod = ",".join(modnames(face))
-
-
-def srv(event):
-    "create service file (pipx)."
-    username  = getpass.getuser()
-    path = os.path.normpath(f"/home/{username}/.local/bin/")
-    txt = f"""[Unit]
-Description={Cfg.name.upper()}
-After=network.target
+TXT = """[Unit]
+Description=Since 4 March 2019 (OTP-CR-117/19)
+After=network-online.target
 
 [Service]
 Type=simple
-User={username}
-Group={username}
-ExecStart={path}/{Cfg.name}s
+User=%s
+Group=%s
+ExecStart=/home/%s/.local/bin/otpcrs
 
 [Install]
 WantedBy=multi-user.target"""
-    event.reply(txt)
+
+def srv(event):
+    "create service file (pipx)."
+    if event.args:
+        name = event.args[0]
+    else:
+        name  = getpass.getuser()
+    event.reply(TXT % (name, name, name))
 
 
 Commands.add(srv)
@@ -55,10 +49,13 @@ def main():
     parse(Cfg, " ".join(sys.argv[1:]))
     if "v" in Cfg.opts:
         enable(print)
-    if Cfg.txt:
+    if "h" in Cfg.opts:
+        cmnd("hlp", print)
+    elif Cfg.txt:
         cmnd(Cfg.otxt, print)
 
 
 if __name__ == "__main__":
+    Errors.out = print
     wrap(main)
     errors()

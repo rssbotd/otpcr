@@ -184,33 +184,14 @@ here is a list of available commands
 
 **SYSTEMD**
 
-paste this into ``/etc/systemd/system/otpcr.service``
-and replace ``{name}`` with the user running ``pipx``
-
 ::
 
-    [Unit]
-    Description=OTPCR
-    After=network-online.target
-
-    [Service]
-    Type=simple
-    User={name}
-    Group={name}
-    ExecStart=/home/{name}/.local/bin/otpcrs
-
-    [Install]
-    WantedBy=multi-user.target
-
-
-then run the following
-
-::
-
+    $ otpcr srv > otpcr.service
+    $ sudo mv otpcr.service /etc/systemd/system/
     $ sudo systemctl enable otpcr --now
 
 
-joins ``#otpcr`` on localhost
+    joins #otpcr on localhost
 
 
 **SOURCE**
