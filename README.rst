@@ -167,7 +167,7 @@
 
 **SOURCE**
 
-    source is :ref:`here <source>`
+    source is at https://github.com/rssbotd/otpcr
 
 **FILES**
 
