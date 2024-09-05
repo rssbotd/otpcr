@@ -68,6 +68,7 @@ without any argument the bot does nothing
 see list of commands
 
 ::
+
     $ otpcr cmd
     cfg,cmd,dne,dpl,err,exp,imp,log,mod,mre,nme,
     pwd,rem,req,res,rss,srv,syn,tdo,thr,upt
@@ -158,6 +159,8 @@ sasl
     $ otpcr cfg password=<frompwd>4
 
 rss
+
+::
  
     $ otpcr rss <url>
     $ otpcr dpl <url> <item1,item2>
@@ -166,14 +169,15 @@ rss
 
 opml
 
-    | ``$ otpcr exp``
-    | ``$ otpcr imp <filename>``
+::
+    $ otpcr exp
+    $ otpcr imp <filename>
 
 
 **SYSTEMD**
 
 
-edit ``/etc/systemd/system/otpcr.service`` and
+edit ``/etc/systemd/system/otpcr.service``
 replace {name} with the user running pipx
 
 ::
