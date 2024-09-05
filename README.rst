@@ -33,15 +33,17 @@ torture and kills members of the
 victim groups.
 
 ``OTPCR`` contains correspondence
-<writings> with the International Criminal
-Court, asking for arrest of the king of the
-netherlands, for the genocide he is committing
-with his new treatement laws.
+<writings> with the International
+Criminal Court, asking for arrest of
+the king of the netherlands, for
+the genocide he is committing with
+his new treatement laws.
 
 Current status is a "no basis to proceed"
-<writings> judgement of the prosecutor which
-requires a "basis to prosecute" <reconsder>
-to have the king actually arrested.
+<writings> judgement of the prosecutor
+which requires a "basis to prosecute"
+<reconsder> to have the king actually
+arrested.
 
 
 **INSTALL**
@@ -143,33 +145,33 @@ here is a list of available commands
 **CONFIGURATION**
 
 
-irc
-
 ::
+
+    irc
 
     $ otpcr cfg server=<server>
     $ otpcr cfg channel=<channel>``
     $ otpcr cfg nick=<nick>
 
-sasl
-
 ::
+
+    sasl
 
     $ otpcr pwd <nsvnick> <nspass>
     $ otpcr cfg password=<frompwd>4
 
-rss
-
 ::
+
+    rss
  
     $ otpcr rss <url>
     $ otpcr dpl <url> <item1,item2>
     $ otpcr rem <url>
     $ otpcr nme <url> <name>
 
-opml
-
 ::
+
+    opml
 
     $ otpcr exp
     $ otpcr imp <filename>
@@ -177,11 +179,10 @@ opml
 
 **SYSTEMD**
 
-
-edit ``/etc/systemd/system/otpcr.service``
-replace {name} with the user running pipx
-
 ::
+
+    paste this into /etc/systemd/system/otpcr.service
+    and replace {name} with the user running pipx
 
     [Unit]
     Description=OTPCR
@@ -196,21 +197,19 @@ replace {name} with the user running pipx
     [Install]
     WantedBy=multi-user.target
 
-
-then run the following
-
-::
+    then run the following
 
     $ sudo systemctl enable otpcr --now
 
-
-joins #otpcr on localhost
+    joins #otpcr on localhost
 
 
 **SOURCE**
 
 
-source is at https://github.com/rssbotd/otpcr
+::
+
+    source is at https://github.com/rssbotd/otpcr
 
 
 **FILES**
