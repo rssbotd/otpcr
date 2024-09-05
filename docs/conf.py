@@ -44,8 +44,8 @@ source_encoding = 'utf-8-sig'
 modindex_common_prefix = [""]
 keep_warnings = False
 templates_path = ['_templates']
-add_function_parentheses = False
-add_module_names = False
+add_function_parentheses = True
+add_module_names = True
 show_authors = False
 pygments_style = 'colorful'
 extensions = [
@@ -79,12 +79,12 @@ html_favicon = "skull3.png"
 html_extra_path = ["robots.txt", "googlea6568bcc05c8d50b.html"]
 html_last_updated_fmt = '%Y-%b-%d'
 html_additional_pages = {}
-html_domain_indices = True
+html_domain_indices = False
 html_use_index = True
 html_split_index = True
 html_show_sourcelink = False
 html_show_sphinx = False
-html_show_copyright = True
+html_show_copyright = False
 html_copy_source = False
 html_use_opensearch = 'http://%s.rtfd.io/' % NAME
 html_file_suffix = '.html'
@@ -100,7 +100,7 @@ intersphinx_cache_limit = 1
 rst_prolog = '''.. image:: genocide.png
     :width: 100%
     :height: 2.6cm
-    :target: about.html
+    :target: index.html
 
 .. raw:: html
 
@@ -118,7 +118,7 @@ rst_epilog = '''.. raw:: html
     <center>
     <b>
 
-:ref:`\! <home>` :ref:`reconsider <reconsider>` - :ref:`evidence <evidence>` - :ref:`guilty <guilty>` - :ref:`writings <writings>` :ref:`\! <about>`
+:ref:`reconsider <reconsider>` - :ref:`evidence <evidence>` - :ref:`guilty <guilty>` - :ref:`writings <writings>`
 
 
 .. raw: html

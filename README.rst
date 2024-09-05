@@ -17,13 +17,6 @@
 
 **DESCRIPTION**
 
-``OTPCR`` is a IRC bot, it can connect
-to IRC, fetch and display RSS feeds, take
-todo notes, keep a shopping list and log
-text. You can also copy/paste the service
-file and run it under systemd for 24/7
-presence in a IRC channel.
-
 ``OTPCR`` holds evidence that king
 netherlands is doing a genocide, a
 written response where king
@@ -53,6 +46,7 @@ arrested.
 
 ``OTP-CR-117/19`` has been duly entered in the 
 Communications Register of the Office.
+
 
 Since ``4 march 2019``
 

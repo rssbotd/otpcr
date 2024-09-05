@@ -1,10 +1,23 @@
-.. _manual:
+.. _home:
 
 .. raw:: html
 
     <br><br>
 
-.. title:: Manual
+.. title:: Home
+
+
+.. raw:: html
+
+    <center>
+
+.. image:: skull3.png
+    :width: 100%
+    :target: source.html
+
+.. raw:: html
+
+    </center>
 
 
 **NAME**
@@ -23,6 +36,8 @@
 
 
 **DESCRIPTION**
+
+
 
 
     ``OTPCR`` holds evidence that king
@@ -47,13 +62,15 @@
 
     Current status is a :ref:`"no basis to proceed"
     <writings>` judgement of the prosecutor which
-    requires a :ref:`"basis to prosecute" <home>`
+    requires a :ref:`"basis to prosecute" <reconsider>`
     to have the king actually arrested.
+
 
     ``OTP-CR-117/19`` has been duly entered in the 
     Communications Register of the Office.
 
     Since ``4 march 2019``
+
 
 **INSTALL**
 
@@ -156,7 +173,7 @@
 **SYSTEMD**
 
     put the following in ``/etc/systemd/system/otpcr.service`` and
-    replace ``{name}`` with the user running ``pipx``
+    replace {name} with the user running pipx
 
     | ``[Unit]``
     | ``Description=OTPCR``
