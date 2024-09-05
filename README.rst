@@ -47,8 +47,10 @@ to have the king actually arrested.
 
 installation is done with pipx
 
-    | ``$ pipx install otpcr``
-    | ``$ pipx ensurepath``
+::
+
+    $ pipx install otpcr
+    $ pipx ensurepath
 
 
 **USAGE**
