@@ -145,25 +145,33 @@ here is a list of available commands
 **CONFIGURATION**
 
 
-irc
+*irc*
+
+::
 
     $ otpcr cfg server=<server>
     $ otpcr cfg channel=<channel>
     $ otpcr cfg nick=<nick>
 
-sasl
+*sasl*
+
+::
 
     $ otpcr pwd <nsvnick> <nspass>
     $ otpcr cfg password=<frompwd>4
 
-rss
+*rss*
+
+::
  
     $ otpcr rss <url>
     $ otpcr dpl <url> <item1,item2>
     $ otpcr rem <url>
     $ otpcr nme <url> <name>
 
-opml
+*opml*
+
+::
 
     $ otpcr exp
     $ otpcr imp <filename>
