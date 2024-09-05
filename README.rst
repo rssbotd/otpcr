@@ -1,16 +1,16 @@
 **NAME**
 
 
-    ``OTPCR`` - Since ``4 march 2019``
+     ``OTPCR`` - Since ``4 march 2019``
 
 
 **SYNOPSIS**
 
 
-    | ``otpcr  <cmd> [key=val] [key==val]``
-    | ``otpcrc [-i] [-v]``
-    | ``otpcrd`` 
-    | ``otpcrs``
+     | ``otpcr  <cmd> [key=val] [key==val]``
+     | ``otpcrc [-i] [-v]``
+     | ``otpcrd`` 
+     | ``otpcrs``
 
 
 **DESCRIPTION**
