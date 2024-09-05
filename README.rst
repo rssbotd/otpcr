@@ -17,6 +17,12 @@
 
 **DESCRIPTION**
 
+``OTPCR`` has a python3 bot, it can connect
+to IRC, fetch and display RSS feeds, take
+todo notes, keep a shopping list and log
+text. You can also copy/paste the service
+file and run it under systemd for 24/7
+presence in a IRC channel.
 
 ``OTPCR`` holds evidence that king
 netherlands is doing a genocide, a
@@ -179,7 +185,7 @@ here is a list of available commands
 
 **SYSTEMD**
 
-paste this into /etc/systemd/system/otpcr.service
+paste this into ``/etc/systemd/system/otpcr.service``
 and replace {name} with the user running pipx
 
 ::
@@ -199,10 +205,10 @@ and replace {name} with the user running pipx
 
 then run the following
 
-
 ::
 
     $ sudo systemctl enable otpcr --now
+
 
 joins #otpcr on localhost
 
