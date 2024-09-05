@@ -11,7 +11,7 @@
 
 
 .. image:: skull3.png
-    :width: 500px
+    :scale: 30%
     :target: source.html
 
 
