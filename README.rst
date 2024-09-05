@@ -1,16 +1,7 @@
-.. _manual:
-
-.. raw:: html
-
-    <br><br>
-
-.. title:: Manual
-
-
 **NAME**
 
 
-    ``OTPCR`` - Since ``4 march 2019`` `! <source.html>`_
+    ``OTPCR`` - Since ``4 march 2019``
 
 
 **SYNOPSIS**
@@ -39,15 +30,15 @@
     torture and kills members of the
     victim groups.
 
-    ``OTPCR`` contains :ref:`correspondence
-    <writings>` with the International Criminal
+    ``OTPCR`` contains correspondence
+    <writings> with the International Criminal
     Court, asking for arrest of the king of the
     netherlands, for the genocide he is committing
     with his new treatement laws.
 
-    Current status is a :ref:`"no basis to proceed"
-    <writings>` judgement of the prosecutor which
-    requires a :ref:`"basis to prosecute" <home>`
+    Current status is a "no basis to proceed"
+    <writings> judgement of the prosecutor which
+    requires a "basis to prosecute" <reconsder>
     to have the king actually arrested.
 
 **INSTALL**
@@ -150,7 +141,7 @@
 
 **SYSTEMD**
 
-    put the following in ``/etc/systemd/system/otpcr.service`` and
+    edit ``/etc/systemd/system/otpcr.service`` and
     replace {name} with the user running pipx
 
     | ``[Unit]``
