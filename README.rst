@@ -41,14 +41,18 @@ Current status is a "no basis to proceed"
 requires a "basis to prosecute" <reconsder>
 to have the king actually arrested.
 
+
 **INSTALL**
+
 
 installation is done with pipx
 
     | ``$ pipx install otpcr``
     | ``$ pipx ensurepath``
 
+
 **USAGE**
+
 
 without any argument the bot does nothing
 
@@ -91,7 +95,9 @@ show request to the prosecutor
    | 2500 CM The Hague
    | The Netherlands
 
+
 **COMMANDS**
+
 
 here is a list of available commands
 
@@ -116,6 +122,7 @@ here is a list of available commands
 
 **CONFIGURATION**
 
+
     irc
 
     | ``$ otpcr cfg server=<server>``
@@ -139,7 +146,9 @@ opml
     | ``$ otpcr exp``
     | ``$ otpcr imp <filename>``
 
+
 **SYSTEMD**
+
 
 edit ``/etc/systemd/system/otpcr.service`` and
 replace {name} with the user running pipx
@@ -173,6 +182,7 @@ source is at https://github.com/rssbotd/otpcr
 
 **FILES**
 
+
     | ``~/.otpcr``
     | ``~/.local/bin/otpcr``
     | ``~/.local/bin/otpcrc``
@@ -183,9 +193,11 @@ source is at https://github.com/rssbotd/otpcr
 
 **AUTHOR**
 
+
 | Bart Thate ``<rssbotd@gmail.com>``
 
 
 **COPYRIGHT**
+
 
 | ``OTPCR`` is Public Domain.
