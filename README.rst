@@ -62,6 +62,53 @@ installation is done with pipx
     $ pipx ensurepath
 
 
+**SYSTEMD**
+
+::
+
+    $ otpcr srv > otpcr.service
+    $ sudo mv otpcr.service /etc/systemd/system/
+    $ sudo systemctl enable otpcr --now
+
+
+    joins #otpcr on localhost
+
+
+**CONFIGURATION**
+
+
+*irc*
+
+::
+
+    $ otpcr cfg server=<server>
+    $ otpcr cfg channel=<channel>
+    $ otpcr cfg nick=<nick>
+
+*sasl*
+
+::
+
+    $ otpcr pwd <nsvnick> <nspass>
+    $ otpcr cfg password=<frompwd>4
+
+*rss*
+
+::
+ 
+    $ otpcr rss <url>
+    $ otpcr dpl <url> <item1,item2>
+    $ otpcr rem <url>
+    $ otpcr nme <url> <name>
+
+*opml*
+
+::
+
+    $ otpcr exp
+    $ otpcr imp <filename>
+
+
 **USAGE**
 
 
@@ -121,41 +168,6 @@ show request to the prosecutor
    The Netherlands
 
 
-**CONFIGURATION**
-
-
-*irc*
-
-::
-
-    $ otpcr cfg server=<server>
-    $ otpcr cfg channel=<channel>
-    $ otpcr cfg nick=<nick>
-
-*sasl*
-
-::
-
-    $ otpcr pwd <nsvnick> <nspass>
-    $ otpcr cfg password=<frompwd>4
-
-*rss*
-
-::
- 
-    $ otpcr rss <url>
-    $ otpcr dpl <url> <item1,item2>
-    $ otpcr rem <url>
-    $ otpcr nme <url> <name>
-
-*opml*
-
-::
-
-    $ otpcr exp
-    $ otpcr imp <filename>
-
-
 **COMMANDS**
 
 
@@ -180,18 +192,6 @@ here is a list of available commands
     tdo - add todo item
     thr - show running threads
     upt - show uptime
-
-
-**SYSTEMD**
-
-::
-
-    $ otpcr srv > otpcr.service
-    $ sudo mv otpcr.service /etc/systemd/system/
-    $ sudo systemctl enable otpcr --now
-
-
-    joins #otpcr on localhost
 
 
 **SOURCE**
