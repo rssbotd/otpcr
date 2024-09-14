@@ -169,19 +169,18 @@ class Commands:
 
 def command(bot, evt):
     "check for and run a command."
-    if not evt.txt:
-        evt.ready()
-        return
     parse(evt, evt.txt)
     func = Commands.cmds.get(evt.cmd, None)
-    if func:
-        try:
-            func(evt)
-            bot.display(evt)
-        except Exception as ex:
-            later(ex)
-        if "ready" in dir(evt):
-            evt.ready()
+    if not func and "ready" in dir(evt):
+        evt.ready()
+        return
+    try:
+        func(evt)
+        bot.display(evt)
+    except Exception as ex:
+        later(ex)
+    if "ready" in dir(evt):
+        evt.ready()
 
 
 "utilities"

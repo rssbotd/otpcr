@@ -2,6 +2,7 @@
 # pylint: disable=W0401,W0614,W0622
 # ruff: noqa: F403,F405
 
+
 "interface"
 
 
@@ -26,26 +27,15 @@ PACKAGE = [
     '__package__',
     '__path__',
     '__spec__',
-    'client',
-    'command',
-    'decoder',
-    'default',
-    'disk',
-    'encoder',
+    'console',
+    'daemon',
     'errors',
-    'event',
-    'find',
-    'face',
-    'lock',
-    'log',
     'main',
+    'modules',
     'object',
-    'parse',
     'reactor',
-    'repeater',
+    'service',
     'thread',
-    'timer',
-    'utils',
     'workdir'
 ]
 
