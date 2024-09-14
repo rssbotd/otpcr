@@ -16,6 +16,7 @@ def srv(event):
         name = event.args[0]
     else:
         name  = getpass.getuser()
+    progname = Config.name
     txt = """[Unit]
 Description=%s
 After=network-online.target
@@ -24,11 +25,11 @@ After=network-online.target
 Type=simple
 User=%s
 Group=%s
-ExecStart=/home/%s/.local/bin/nixts
+ExecStart=/home/%s/.local/bin/%ss
 
 [Install]
 WantedBy=multi-user.target"""
-    event.reply(txt % (Config.name.upper(), name, name, name))
+    event.reply(txt % (progname.upper(), name, name, name, progname))
 
 
 Commands.add(srv)

@@ -20,28 +20,17 @@
     :toctree: 
     :template: base.rst
 
-    otpcr.config
-    otpcr.client
-    otpcr.command
+
     otpcr.console
-    otpcr.decoder
-    otpcr.default
-    otpcr.disk
-    otpcr.encoder
+    otpcr.daemon
     otpcr.errors
-    otpcr.event
-    otpcr.find
-    otpcr.fleet
-    otpcr.log
     otpcr.main
     otpcr.object
-    otpcr.parse
     otpcr.reactor
-    otpcr.repeater
+    otpcr.service
     otpcr.thread
-    otpcr.timer
-    otpcr.utils
     otpcr.workdir
+
 
 .. raw:: html
 
