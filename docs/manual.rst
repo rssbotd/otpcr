@@ -5,7 +5,7 @@
 
     <br>
 
-.. title:: Home
+.. title:: Manual
 
 
 **NAME**
@@ -24,8 +24,6 @@
 
 
 **DESCRIPTION**
-
-
 
 
     ``OTPCR`` holds evidence that king
@@ -62,12 +60,15 @@
 
 **INSTALL**
 
+
     installation is done with pipx
 
     | ``$ pipx install otpcr``
     | ``$ pipx ensurepath``
 
+
 **USAGE**
+
 
     without any argument the bot does nothing
 
@@ -110,7 +111,9 @@
     | 2500 CM The Hague
     | The Netherlands
 
+
 **COMMANDS**
+
 
     here is a list of available commands
 
@@ -135,6 +138,7 @@
 
 **CONFIGURATION**
 
+
     irc
 
     | ``$ otpcr cfg server=<server>``
@@ -158,28 +162,15 @@
     | ``$ otpcr exp``
     | ``$ otpcr imp <filename>``
 
+
 **SYSTEMD**
 
-    put the following in ``/etc/systemd/system/otpcr.service`` and
-    replace {name} with the user running pipx
+::
 
-    | ``[Unit]``
-    | ``Description=OTPCR``
-    | ``After=network-online.target``
-    |
-    | ``[Service]``
-    | ``Type=simple``
-    | ``User={name}``
-    | ``Group={name}``
-    | ``ExecStart=/home/{name}/.local/bin/otpcrs``
-    |
-    | ``[Install]``
-    | ``WantedBy=multi-user.target``
+    $ otpcr srv > otpcr.service
+    $ sudo mv otpcr.service /etc/systemd/system/
+    $ sudo systemctl enable otpcr --now
 
-
-    then run the following
-
-    | ``$ sudo systemctl enable otpcr --now``
 
     joins #otpcr on localhost
 
