@@ -112,29 +112,6 @@
     | The Netherlands
 
 
-**COMMANDS**
-
-
-    here is a list of available commands
-
-    | ``cfg`` - irc configuration
-    | ``cmd`` - commands
-    | ``dpl`` - sets display items
-    | ``err`` - show errors
-    | ``exp`` - export opml (stdout)
-    | ``imp`` - import opml
-    | ``log`` - log text
-    | ``mre`` - display cached output
-    | ``pwd`` - sasl nickserv name/pass
-    | ``rem`` - removes a rss feed
-    | ``res`` - restore deleted feeds
-    | ``req`` - reconsider
-    | ``rss`` - add a feed
-    | ``syn`` - sync rss feeds
-    | ``tdo`` - add todo item
-    | ``thr`` - show running threads
-    | ``upt`` - show uptime
-
 
 **CONFIGURATION**
 
@@ -163,6 +140,30 @@
     | ``$ otpcr imp <filename>``
 
 
+**COMMANDS**
+
+
+    here is a list of available commands
+
+    | ``cfg`` - irc configuration
+    | ``cmd`` - commands
+    | ``dpl`` - sets display items
+    | ``err`` - show errors
+    | ``exp`` - export opml (stdout)
+    | ``imp`` - import opml
+    | ``log`` - log text
+    | ``mre`` - display cached output
+    | ``pwd`` - sasl nickserv name/pass
+    | ``rem`` - removes a rss feed
+    | ``res`` - restore deleted feeds
+    | ``req`` - reconsider
+    | ``rss`` - add a feed
+    | ``syn`` - sync rss feeds
+    | ``tdo`` - add todo item
+    | ``thr`` - show running threads
+    | ``upt`` - show uptime
+
+
 **SYSTEMD**
 
 ::
@@ -178,6 +179,7 @@
 **SOURCE**
 
     source is :ref:`here <source>`
+
 
 **FILES**
 
@@ -197,4 +199,3 @@
 **COPYRIGHT**
 
     | ``OTPCR`` is Public Domain.
-
