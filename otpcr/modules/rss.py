@@ -20,23 +20,17 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote_plus, urlencode
 
 
-from ..command  import Commands
-from ..default  import Default
-from ..disk     import sync
-from ..find     import find, last
-from ..fleet    import Fleet
-from ..log      import debug
-from ..object   import Object, construct, fmt, update
-from ..repeater import Repeater
-from ..thread   import launch
-from ..utils    import fntime, laps, spl
+from ..thread  import Repeater, launch
+from ..workdir import find, fntime, last, sync
+from ..object  import Default, Object, construct, fmt, update
+from ..main    import Broker, Commands, debug, laps, spl
 
 
 def init():
     "start fetcher."
     fetcher = Fetcher()
     fetcher.start()
-    debug(f'started rss {fmt(fetcher,skip="seen,seenfn")}')
+    debug(f'RSS {fmt(fetcher,skip="seen,seenfn")}')
     return fetcher
 
 
@@ -139,7 +133,9 @@ class Fetcher(Object):
             txt = f'[{feedname}] '
         for obj in result:
             txt2 = txt + self.display(obj)
-            Fleet.announce(txt2.rstrip())
+            for bot in Broker.objs:
+                if "announce" in dir(bot):
+                    bot.announce(txt2.rstrip())
         return counter
 
     def run(self, silent=False):

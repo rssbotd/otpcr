@@ -1,16 +1,22 @@
 # This file is placed in the Public Domain.
-# pylint: disable=C,I,R
+# pylint: disable=R0903,W0105
 
 
 "workdir"
 
 
+import datetime
+import time
 import os
 import pathlib
+import _thread
 
 
-from .config import Config
-from .utils  import fqn
+from .object import Default, dump, fqn, load, search, update
+
+
+lock = _thread.allocate_lock()
+disklock = _thread.allocate_lock()
 
 
 class Workdir:
@@ -18,7 +24,7 @@ class Workdir:
     "Workdir"
 
     fqns = []
-    wdr = Config.wdr
+    wdr = ""
 
 
 def long(name):
@@ -30,10 +36,6 @@ def long(name):
             res = names
             break
     return res
-
-
-def setwd(path=None):
-    Workdir.wdr = path or os.path.expanduser(f"~/.{Config.name}")
 
 
 def skel():
@@ -62,13 +64,134 @@ def whitelist(clz):
     Workdir.fqns.append(fqn(clz))
 
 
+"utilities"
+
+
+def cdir(pth):
+    "create directory."
+    path = pathlib.Path(pth)
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+
+def ident(obj):
+    "return an id for an object."
+    return os.path.join(fqn(obj), *str(datetime.datetime.now()).split())
+
+
+def find(mtc, selector=None, index=None, deleted=False):
+    "find object matching the selector dict."
+    clz = long(mtc)
+    nrs = -1
+    for fnm in sorted(fns(clz), key=fntime):
+        obj = Default()
+        fetch(obj, fnm)
+        if not deleted and '__deleted__' in obj and obj.__deleted__:
+            continue
+        if selector and not search(obj, selector):
+            continue
+        nrs += 1
+        if index is not None and nrs != int(index):
+            continue
+        yield (fnm, obj)
+
+
+def fns(mtc=""):
+    "show list of files."
+    dname = ''
+    pth = store(mtc)
+    for rootdir, dirs, _files in os.walk(pth, topdown=False):
+        if dirs:
+            for dname in sorted(dirs):
+                if dname.count('-') == 2:
+                    ddd = os.path.join(rootdir, dname)
+                    for fll in os.scandir(ddd):
+                        yield strip(os.path.join(ddd, fll))
+
+
+def fntime(daystr):
+    "convert file name to it's saved time."
+    daystr = daystr.replace('_', ':')
+    datestr = ' '.join(daystr.split(os.sep)[-2:])
+    if '.' in datestr:
+        datestr, rest = datestr.rsplit('.', 1)
+    else:
+        rest = ''
+    timed = time.mktime(time.strptime(datestr, '%Y-%m-%d %H:%M:%S'))
+    if rest:
+        timed += float('.' + rest)
+    return timed
+
+
+def strip(pth, nmr=3):
+    "reduce to path with directory."
+    return os.sep.join(pth.split(os.sep)[-nmr:])
+
+
+"methods"
+
+
+def fetch(obj, pth):
+    "read object from disk."
+    with disklock:
+        pth2 = store(pth)
+        read(obj, pth2)
+        return os.sep.join(pth.split(os.sep)[-3:])
+
+
+def last(obj, selector=None):
+    "return last object saved."
+    if selector is None:
+        selector = {}
+    result = sorted(
+                    find(fqn(obj), selector),
+                    key=lambda x: fntime(x[0])
+                   )
+    res = None
+    if result:
+        inp = result[-1]
+        update(obj, inp[-1])
+        res = inp[0]
+    return res
+
+
+def read(obj, pth):
+    "read an object from file path."
+    with lock:
+        with open(pth, 'r', encoding='utf-8') as ofile:
+            update(obj, load(ofile))
+
+
+def sync(obj, pth=None):
+    "sync object to disk."
+    with disklock:
+        if pth is None:
+            pth = ident(obj)
+        pth2 = store(pth)
+        write(obj, pth2)
+        return pth
+
+
+def write(obj, pth):
+    "write an object to disk."
+    with lock:
+        cdir(pth)
+        with open(pth, 'w', encoding='utf-8') as ofile:
+            dump(obj, ofile, indent=4)
+
+
 def __dir__():
     return (
         'Workdir',
-        'setwd',
+        'find',
+        'fns',
+        'fetch',
+        'last'
         'long',
+        'read',
         'skel',
         'store',
+        'sync',
         'types',
-        'whitelist'
+        'whitelist',
+        'write'
     )

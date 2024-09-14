@@ -4,8 +4,8 @@
 "list of commands"
 
 
-from ..command import Commands
-from ..object  import keys
+from ..object import keys
+from ..main   import Commands
 
 
 def cmd(event):

@@ -1,5 +1,5 @@
 # This file is placed in the Public Domain.
-# pylint: disable=E1102
+# pylint: disable=R0902,R0903,R0911,W0105,W0718
 
 
 "deferred exception handling"
@@ -13,9 +13,7 @@ class Errors:
 
     "Errors"
 
-    cache  = []
     errors = []
-    out    = None
 
     @staticmethod
     def format(exc):
@@ -27,25 +25,16 @@ class Errors:
                                                        exc,
                                                        exc.__traceback__
                                                       )
-                            )
+                           )
         for line in stream.readlines():
             res += line + "\n"
         return res
 
-    @staticmethod
-    def output(exc):
-        "check if output function is set."
-        if Errors.out:
-            text = Errors.format(exc)
-            if text not in Errors.cache:
-                Errors.cache.append(text)
-                Errors.out(text)
 
-
-def errors():
-    "show exceptions"
+def errors(outer):
+    "display errors."
     for exc in Errors.errors:
-        Errors.output(exc)
+        outer(Errors.format(exc))
 
 
 def later(exc):

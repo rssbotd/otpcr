@@ -77,7 +77,7 @@ p.s.
 """
 
 
-from ..command import Commands
+from ..main import Commands
 
 
 def req(event):

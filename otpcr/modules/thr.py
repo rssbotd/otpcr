@@ -8,9 +8,8 @@ import threading
 import time
 
 
-from ..command import Commands
-from ..object  import Object, update
-from ..utils   import laps
+from ..object import Object, update
+from ..main   import Commands, laps
 
 
 STARTTIME = time.time()

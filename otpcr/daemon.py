@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # This file is placed in the Public Domain.
 # pylint: disable=C0413,W0212
 
@@ -11,17 +10,17 @@ import os
 import sys
 
 
-from otpcr.config  import Config
+sys.path.insert(0, os.getcwd())
+
+
+from .main    import Config, forever, initer, pidfile
+from .main    import privileges, wrap
+from .modules import face
 
 
 Cfg = Config()
 Cfg.mod = "cmd,err,mod,irc,rss,thr"
 Cfg.user = getpass.getuser()
-
-
-from otpcr.main    import init, wrap
-from otpcr.modules import face
-from otpcr.utils   import forever, pidfile, privileges
 
 
 def daemon(verbose=False):
@@ -45,14 +44,23 @@ def daemon(verbose=False):
     os.nice(10)
 
 
+ever = forever
+
+
 def main():
     "main"
     daemon()
     privileges(Cfg.user)
     pidfile(Cfg.pidfile)
-    init(Cfg.mod, face)
-    forever()
+    initer(Cfg.mod, face)
+    ever()
+
+
+def wrapping():
+    "Wrap main."
+    wrap(main)
 
 
 if __name__ == "__main__":
-    wrap(main)
+    wrapping()
+    

@@ -1,5 +1,5 @@
 # This file is placed in the Public Domain.
-# pylint: disable=R,W0718
+# pylint: disable=R,W0201,W0718
 
 
 "internet relay chat"
@@ -16,17 +16,11 @@ import time
 import _thread
 
 
-from ..client  import Client, command
-from ..command import Commands
-from ..default import Default
-from ..disk    import sync
 from ..errors  import later
-from ..event   import Event
-from ..find    import last
-from ..fleet   import Fleet
-from ..log     import Logging, debug
-from ..object  import Object, edit, fmt, keys
 from ..thread  import launch
+from ..workdir import last, sync
+from ..object  import Default, Object, edit, fmt, keys
+from ..main    import Broker, Client, Commands, Logging, command, debug
 
 
 Logging.filter = ["PING", "PONG", "PRIVMSG"]
@@ -38,8 +32,8 @@ def init():
     "initialize a irc bot."
     irc = IRC()
     irc.start()
-    irc.events.joined.wait()
-    debug(f'started irc {fmt(irc.cfg, skip="password")}')
+    irc.events.ready.wait()
+    debug(f'IRC {fmt(irc.cfg, skip="password")}')
     return irc
 
 
@@ -71,6 +65,21 @@ class Config(Default):
         self.realname = self.realname or Config.realname
         self.server = self.server or Config.server
         self.username = self.username or Config.username
+
+
+class Event(Default):
+
+    "Event"
+
+    def __init__(self):
+        Default.__init__(self)
+        self.orig    = ""
+        self.result  = []
+        self.txt     = ""
+
+    def reply(self, txt):
+        "add text to the result"
+        self.result.append(txt)
 
 
 class TextWrap(textwrap.TextWrapper):
@@ -194,7 +203,6 @@ class IRC(Client, Output):
         self.register('PRIVMSG', cb_privmsg)
         self.register('QUIT', cb_quit)
         self.register("366", cb_ready)
-        Fleet.register(self)
 
     def announce(self, txt):
         "announce on all channels."
@@ -631,7 +639,7 @@ def mre(event):
     if not event.channel:
         event.reply('channel is not set.')
         return
-    bot = Fleet.get(event.orig)
+    bot = Broker.get(event.orig)
     if 'cache' not in dir(bot):
         event.reply('bot is missing cache')
         return
