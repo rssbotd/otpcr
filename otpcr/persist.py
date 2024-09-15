@@ -6,17 +6,22 @@
 
 
 import datetime
-import time
+import json
 import os
 import pathlib
+import time
 import _thread
 
 
-from .object import Default, dump, fqn, load, search, update
+from .object import Default, dump, fqn, load, match, search, update
 
 
 lock = _thread.allocate_lock()
 disklock = _thread.allocate_lock()
+
+
+class ReadError(Exception):
+    "error reading json file."
 
 
 class Workdir:
@@ -78,38 +83,36 @@ def ident(obj):
     return os.path.join(fqn(obj), *str(datetime.datetime.now()).split())
 
 
-def find(mtc, selector=None, index=None, deleted=False):
+def find(mtc, selector=None, index=None, deleted=False, matching=False):
     "find object matching the selector dict."
     clz = long(mtc)
     nrs = -1
-    res = []
     for fnm in sorted(fns(clz), key=fntime):
         obj = Default()
         fetch(obj, fnm)
         if not deleted and '__deleted__' in obj and obj.__deleted__:
             continue
-        if selector and not search(obj, selector):
+        if matching and not match(obj, selector):
+            continue
+        elif selector and not search(obj, selector):
             continue
         nrs += 1
         if index is not None and nrs != int(index):
             continue
-        res.append((fnm, obj))
-    return res
+        yield (fnm, obj)
 
 
 def fns(mtc=""):
     "show list of files."
     dname = ''
     pth = store(mtc)
-    res = []
     for rootdir, dirs, _files in os.walk(pth, topdown=False):
         if dirs:
             for dname in sorted(dirs):
                 if dname.count('-') == 2:
                     ddd = os.path.join(rootdir, dname)
                     for fll in os.scandir(ddd):
-                        res.append(strip(os.path.join(ddd, fll)))
-    return res
+                        yield strip(os.path.join(ddd, fll))
 
 
 def fntime(daystr):
@@ -162,7 +165,10 @@ def read(obj, pth):
     "read an object from file path."
     with lock:
         with open(pth, 'r', encoding='utf-8') as ofile:
-            update(obj, load(ofile))
+            try:
+                update(obj, load(ofile))
+            except json.decoder.JSONDecodeError as ex:
+                raise ReadError(pth) from ex
 
 
 def sync(obj, pth=None):

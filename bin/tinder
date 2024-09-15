@@ -110,6 +110,8 @@ def wrapped(function):
         function()
     except (KeyboardInterrupt, EOFError):
         print("")
+    except Exception as ex:
+        later(ex)
     finally:
         if old2:
             termios.tcsetattr(sys.stdin.fileno(), termios.TCSADRAIN, old2)
@@ -120,6 +122,8 @@ def mainer():
     Cfg.mod = ",".join(modnames(face))
     clt = CLI()
     clt.start()
+    if "t" not in Cfg.opts:
+        clt.threaded = False
     thrs = []
     for _nr in range(nrs):
         thrs.append(launch(payload, clt))
@@ -127,6 +131,12 @@ def mainer():
         thr.join()
     consume(events)
     clt.wait()
+    errors(print)
+    if "v" in Cfg.opts:
+        endtime = time.time()
+        lap = laps(endtime-STARTTIME)
+        percall = (endtime-STARTTIME)/(nrs*NRCOMMAND)
+        print(f"{lap} {nrs} {NRCOMMAND} {percall}")
 
 
 if __name__ == "__main__":
@@ -144,10 +154,4 @@ if __name__ == "__main__":
         profile.runctx(mainer.__code__, globals(), locals())
     else:
         wrapped(mainer)
-    errors(print)
-    if "v" in Cfg.opts:
-        endtime = time.time()
-        lap = laps(endtime-STARTTIME)
-        percall = (endtime-STARTTIME)/(nrs*NRCOMMAND)
-        print(f"{lap} {nrs} {NRCOMMAND} {percall}")
-    sys.exit()
+    os._exit(0)

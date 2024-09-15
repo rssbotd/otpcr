@@ -9,6 +9,7 @@ import queue
 import threading
 import time
 import types as rtypes
+import _thread
 
 
 from .errors import later
@@ -21,7 +22,7 @@ class Thread(threading.Thread):
 
     "Thread"
 
-    def __init__(self, func, thrname, *args, daemon=True, **kwargs):
+    def __init__(self, func, thrname, *args, daemon=False, **kwargs):
         super().__init__(None, self.run, thrname, (), {}, daemon=daemon)
         self._result   = None
         self.name      = thrname or (func and named(func)) or named(self).split(".")[-1]
@@ -51,6 +52,8 @@ class Thread(threading.Thread):
         func, args = self.queue.get()
         try:
             self._result = func(*args)
+        except (KeyboardInterrupt, EOFError):
+            _thread.interrupt_main()
         except Exception as ex:
             later(ex)
             if args and "ready" in dir(args[0]):

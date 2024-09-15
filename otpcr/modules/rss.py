@@ -20,7 +20,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote_plus, urlencode
 
 
-from ..main    import Broker, Commands, debug, laps, spl
+from ..main    import Broker, Commands, Config, debug, laps, spl
 from ..object  import Default, Object, construct, fmt, update
 from ..persist import find, fntime, last, sync
 from ..thread  import Repeater, launch
@@ -37,15 +37,16 @@ def init():
 DEBUG = False
 
 
-TEMPLATE = """<opml version="1.0">
+TEMPLATE = f"""<opml version="1.0">
     <head>
-        <title>OPML</title>
+        <title>{Config.name.upper()} OPML</title>
     </head>
     <body>
         <outline title="opml" text="rss feeds">"""
 
 
 fetchlock  = _thread.allocate_lock()
+importlock = _thread.allocate_lock()
 
 
 class Feed(Default):
@@ -394,6 +395,7 @@ def syn(event):
 
 Commands.add(syn)
 
+
 "OPML"
 
 
@@ -509,24 +511,25 @@ def imp(event):
         txt = file.read()
     prs = OPMLParser()
     nrs = 0
+    nrskip = 0
     insertid = shortid()
-    for obj in prs.parse(txt, 'outline', "name,display_list,xmlUrl"):
-        url = obj.xmlUrl
-        if not url.startswith("http"):
-            continue
-        goturl = False
-        for _fnm, result in find("rss", {'rss': url}):
-            if result:
-                goturl = True
-                break
-        if goturl:
-            continue
-        feed = Rss()
-        construct(feed, obj)
-        feed.rss = obj.xmlUrl
-        feed.insertid = insertid
-        sync(feed)
-        nrs += 1
+    with importlock:
+        for obj in prs.parse(txt, 'outline', "name,display_list,xmlUrl"):
+            url = obj.xmlUrl
+            if not url.startswith("http"):
+                nrskip += 1
+                continue
+            if find("rss", {'rss': url}, matching=True):
+                nrskip += 1
+                continue
+            feed = Rss()
+            construct(feed, obj)
+            feed.rss = obj.xmlUrl
+            feed.insertid = insertid
+            sync(feed)
+            nrs += 1
+    if nrskip:
+        event.reply(f"skipped {nrskip} urls.")
     if nrs:
         event.reply(f"added {nrs} urls.")
 

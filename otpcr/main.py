@@ -125,8 +125,8 @@ class Event(Default):
         self.result.append(txt)
 
     def wait(self):
-        if self._thr:
-            self._thr.join()
+        #if self._thr:
+        #    self._thr.join()
         self._ready.wait()
 
 
@@ -178,12 +178,9 @@ def command(evt):
     parse(evt, evt.txt)
     func = Commands.cmds.get(evt.cmd, None)
     if func:
-        try:
-            func(evt)
-            evt.display()
-        except Exception as ex:
-            later(ex)
-    evt.ready()
+        func(evt)
+        evt.display()
+        evt.ready()
 
 
 "utilities"

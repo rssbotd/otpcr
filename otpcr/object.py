@@ -220,12 +220,29 @@ def keys(obj):
     return list(obj.__dict__.keys())
 
 
-def match(obj, txt):
+def matchkey(obj, txt):
     "check if object has matching keys."
     for key in keys(obj):
         if txt in key:
             return True
     return False
+
+
+def match(obj, selector):
+    res = False
+    if not selector:
+        return res
+    for key, value in items(selector):
+        val = getattr(obj, key, None)
+        if not val:
+            res = False
+            break
+        if value == val:
+            res = True
+        else:
+            res = False
+            break
+    return res
 
 
 def search(obj, selector):
@@ -279,6 +296,7 @@ def __dir__():
         'load',
         'loads',
         'match',
+        'matchkey',
         'search',
         'update',
         'values'

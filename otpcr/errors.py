@@ -5,7 +5,6 @@
 "deferred exception handling"
 
 
-import io
 import traceback
 
 
