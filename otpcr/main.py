@@ -2,7 +2,7 @@
 # pylint: disable=R,W0105,W0718,E1102
 
 
-"shell"
+"main"
 
 
 import os
@@ -104,15 +104,10 @@ class Event(Default):
 
     def __init__(self):
         Default.__init__(self)
-        self._ready  = threading.Event()
         self._thr    = None
         self.orig    = ""
         self.result  = []
         self.txt     = ""
-
-    def ready(self):
-        "flag event as ready."
-        self._ready.set()
 
     def reply(self, txt):
         "add text to the result."
@@ -122,7 +117,6 @@ class Event(Default):
         "wait for result."
         if self._thr:
             self._thr.join()
-        self._ready.wait()
 
 
 "logging"
@@ -171,16 +165,12 @@ def command(bot, evt):
     "check for and run a command."
     parse(evt, evt.txt)
     func = Commands.cmds.get(evt.cmd, None)
-    if not func and "ready" in dir(evt):
-        evt.ready()
-        return
-    try:
-        func(evt)
-        bot.display(evt)
-    except Exception as ex:
-        later(ex)
-    if "ready" in dir(evt):
-        evt.ready()
+    if func:
+        try:
+            func(evt)
+            bot.display(evt)
+        except Exception as ex:
+            later(ex)
 
 
 "utilities"
@@ -207,7 +197,7 @@ def initer(modstr, *pkgs, disable=None):
                 continue
             if "init" not in dir(modi):
                 continue
-            launch(modi.init)
+            thrs.append(launch(modi.init))
             break
     return thrs
 

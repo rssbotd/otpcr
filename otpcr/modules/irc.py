@@ -504,6 +504,7 @@ class IRC(Client, Output):
         last(self.cfg)
         if self.cfg.channel not in self.channels:
             self.channels.append(self.cfg.channel)
+        self.events.ready.clear()
         self.events.connected.clear()
         self.events.joined.clear()
         launch(Output.out, self)
