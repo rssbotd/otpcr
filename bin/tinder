@@ -123,7 +123,7 @@ def mainer():
     "main"
     Cfg.mod = ",".join(modnames(face))
     clt = CLI()
-    launch(clt.start)
+    clt.start()
     thrs = []
     for _nr in range(nrs):
         thrs.append(launch(payload, clt))
