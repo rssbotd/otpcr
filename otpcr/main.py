@@ -84,15 +84,16 @@ class Client(Reactor):
 class Config(Default):
 
     "Config"
-    name    = Default.__module__.split(".", maxsplit=2)[-2]
-    wdr     = os.path.expanduser(f"~/.{name}")
+
+    name = Default.__module__.split(".", maxsplit=2)[-2]
+    wdr = os.path.expanduser(f"~/.{name}")
     pidfile = os.path.join(wdr, f"{name}.pid")
 
     def __init__(self, name=None):
         self.name = name or Config.name
-        self.wdr  = Config.wdr
+        self.wdr = Config.wdr
         self.pidfile = Config.pidfile
-        Workdir.wdr  = self.wdr
+        Workdir.wdr = self.wdr
 
 
 "event"
@@ -117,7 +118,6 @@ class Event(Default):
             bot.display(self)
 
     def ready(self):
-        "flag event as ready."
         self._ready.set()
 
     def reply(self, txt):
@@ -125,7 +125,8 @@ class Event(Default):
         self.result.append(txt)
 
     def wait(self):
-        "wait for result."
+        if self._thr:
+            self._thr.join()
         self._ready.wait()
 
 

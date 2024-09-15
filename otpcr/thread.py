@@ -41,7 +41,7 @@ class Thread(threading.Thread):
         "return qsize"
         return self.queue.qsize()
 
-    def join(self, timeout=1.0):
+    def join(self, timeout=None):
         "join this thread."
         super().join(timeout)
         return self._result
@@ -52,7 +52,6 @@ class Thread(threading.Thread):
         try:
             self._result = func(*args)
         except Exception as ex:
-            time.sleep(0.1)
             later(ex)
             if args and "ready" in dir(args[0]):
                 args[0].ready()

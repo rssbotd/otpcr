@@ -368,7 +368,6 @@ def rss(event):
         return
     for fnm, result in find("rss", {'rss': url}):
         if result:
-            event.reply(f'already got {url}')
             return
     feed = Rss()
     feed.rss = event.args[0]
@@ -513,11 +512,12 @@ def imp(event):
     insertid = shortid()
     for obj in prs.parse(txt, 'outline', "name,display_list,xmlUrl"):
         url = obj.xmlUrl
+        if not url.startswith("http"):
+            continue
         goturl = False
         for _fnm, result in find("rss", {'rss': url}):
             if result:
                 goturl = True
-                event.reply(f"already got {url}")
                 break
         if goturl:
             continue

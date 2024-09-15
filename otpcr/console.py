@@ -21,7 +21,10 @@ from .modules import face
 
 
 Cfg = Config()
-Cfg.mod = "cmd,err,mod,srv,thr"
+Cfg.mod = "cmd,dbg,err,mod,srv,thr"
+
+
+rpr = object.__repr__
 
 
 class Console(Client):
@@ -35,9 +38,9 @@ class Console(Client):
     def poll(self):
         "poll console and create event."
         evt      = Event()
+        evt.orig = rpr(self)
         evt.txt  = input("> ")
         evt.type = "command"
-        parse(evt, evt.txt)
         return evt
 
     def raw(self, txt):
@@ -61,7 +64,7 @@ def wrap(func):
     try:
         func()
     except (KeyboardInterrupt, EOFError):
-        pass
+        print("")
     finally:
         if old3:
             termios.tcsetattr(sys.stdin.fileno(), termios.TCSADRAIN, old3)

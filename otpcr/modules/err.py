@@ -12,9 +12,7 @@ def err(event):
     "show errors."
     nmr = 0
     for exc in Errors.errors:
-        txt = Errors.format(exc)
-        for line in txt.split():
-            event.reply(line)
+        event.reply(exc)
         nmr += 1
     if not nmr:
         event.reply("no errors")

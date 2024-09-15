@@ -43,8 +43,7 @@ class Reactor:
                 _thread.interrupt_main()
             except Exception as ex:
                 later(ex)
-                if evt:
-                    evt.ready()
+                evt.ready()
 
     def poll(self):
         "function to return event."
