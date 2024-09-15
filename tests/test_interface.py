@@ -33,10 +33,10 @@ PACKAGE = [
     'main',
     'modules',
     'object',
+    'persist',
     'reactor',
     'service',
-    'thread',
-    'workdir'
+    'thread'
 ]
 
 

@@ -23,6 +23,7 @@
 
     otpcr.console
     otpcr.daemon
+    otpcr.disk
     otpcr.errors
     otpcr.main
     otpcr.object

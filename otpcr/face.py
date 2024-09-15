@@ -5,8 +5,8 @@
 "interface"
 
 
-from . import console, daemon, errors, main, object, reactor, service
-from . import thread, workdir
+from . import console, daemon, errors, main, object
+from . import persist, reactor, service, thread
 
 
 from .console import *
@@ -14,7 +14,7 @@ from .daemon  import *
 from .errors  import *
 from .main    import *
 from .object  import *
+from .persist import *
 from .reactor import *
 from .service import *
 from .thread  import *
-from .workdir import *

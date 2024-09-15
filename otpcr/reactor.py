@@ -19,6 +19,8 @@ class Reactor:
 
     "Reactor"
 
+    threaded = True
+
     def __init__(self):
         self.cbs      = {}
         self.queue    = queue.Queue()
@@ -28,11 +30,12 @@ class Reactor:
         "call callback based on event type."
         func = self.cbs.get(evt.type, None)
         if func:
-            evt._thr = launch(func, self, evt)
+            evt._thr = launch(func, evt)
 
     def loop(self):
         "proces events until interrupted."
         while not self.stopped.is_set():
+            evt = None
             try:
                 evt = self.poll()
                 self.callback(evt)
@@ -40,6 +43,8 @@ class Reactor:
                 _thread.interrupt_main()
             except Exception as ex:
                 later(ex)
+                if evt:
+                    evt.ready()
 
     def poll(self):
         "function to return event."
@@ -67,7 +72,7 @@ class Reactor:
         while 1:
             if self.queue.qsize() == 0:
                 break
-            time.sleep(0.1)
+            time.sleep(1.0)
 
 
 def __dir__():

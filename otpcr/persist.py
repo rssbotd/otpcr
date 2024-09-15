@@ -2,7 +2,7 @@
 # pylint: disable=R0903,W0105
 
 
-"workdir"
+"disk"
 
 
 import datetime
@@ -82,6 +82,7 @@ def find(mtc, selector=None, index=None, deleted=False):
     "find object matching the selector dict."
     clz = long(mtc)
     nrs = -1
+    res = []
     for fnm in sorted(fns(clz), key=fntime):
         obj = Default()
         fetch(obj, fnm)
@@ -92,20 +93,23 @@ def find(mtc, selector=None, index=None, deleted=False):
         nrs += 1
         if index is not None and nrs != int(index):
             continue
-        yield (fnm, obj)
+        res.append((fnm, obj))
+    return res
 
 
 def fns(mtc=""):
     "show list of files."
     dname = ''
     pth = store(mtc)
+    res = []
     for rootdir, dirs, _files in os.walk(pth, topdown=False):
         if dirs:
             for dname in sorted(dirs):
                 if dname.count('-') == 2:
                     ddd = os.path.join(rootdir, dname)
                     for fll in os.scandir(ddd):
-                        yield strip(os.path.join(ddd, fll))
+                        res.append(strip(os.path.join(ddd, fll)))
+    return res
 
 
 def fntime(daystr):

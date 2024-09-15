@@ -74,16 +74,13 @@ class CLI(Client):
     def raw(self, txt):
         if "v" in Cfg.opts:
             print(txt)
-            sys.stdout.flush()
 
 
 def consume(evts):
     "wait for events."
-    res = []
     for evt in evts:
+        print(evt)
         evt.wait()
-        res.append(evt)
-    return res
 
 
 def payload(clt):
@@ -94,7 +91,6 @@ def payload(clt):
         for cmdd in cmdz:
             for ex in getattr(param, cmdd, [""]):
                 evt = Event()
-                evt.channel = "#objbot"
                 evt.orig = repr(clt)
                 evt.txt = cmdd + " " + ex
                 evt.type = "command"
@@ -131,7 +127,6 @@ def mainer():
     for thr in thrs:
         thr.join()
     consume(events)
-    clt.wait()
 
 
 if __name__ == "__main__":
@@ -142,6 +137,8 @@ if __name__ == "__main__":
     if "f" in Cfg.opts:
         if os.path.exists(Workdir.wdr):
             shutil.rmtree(Workdir.wdr)
+    if "t" not in Cfg.opts:
+        CLI.threaded = False
     skel()
     nrs = Cfg.index or 1
     NRCOMMAND = len(Commands.cmds) or 1

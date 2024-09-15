@@ -40,11 +40,12 @@ def wrapped():
 def main():
     "main"
     parse(Cfg, " ".join(sys.argv[1:]))
+    clt = CLI()
     if Cfg.txt:
         evt = Event()
+        evt.orig = repr(clt)
         parse(evt, Cfg.otxt)
-        clt = CLI()
-        command(clt, evt)
+        command(evt)
 
 
 if __name__ == "__main__":

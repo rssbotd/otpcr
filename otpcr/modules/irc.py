@@ -17,10 +17,10 @@ import _thread
 
 
 from ..errors  import later
-from ..thread  import launch
-from ..workdir import last, sync
-from ..object  import Default, Object, edit, fmt, keys
 from ..main    import Broker, Client, Commands, Logging, command, debug
+from ..object  import Default, Object, edit, fmt, keys
+from ..persist import last, sync
+from ..thread  import launch
 
 
 Logging.filter = ["PING", "PONG", "PRIVMSG"]
@@ -35,6 +35,12 @@ def init():
     irc.events.ready.wait()
     debug(f'IRC {fmt(irc.cfg, skip="password")}')
     return irc
+
+
+
+def getbot(evt):
+    "return bot originating the event."
+    return Broker.get(evt.orig)
 
 
 class Config(Default):
@@ -531,21 +537,24 @@ class IRC(Client, Output):
         self.events.ready.wait()
 
 
-def cb_auth(bot, evt):
+def cb_auth(evt):
     "auth callback."
+    bot = getbot(evt)
     bot.docommand(f'AUTHENTICATE {bot.cfg.password}')
 
 
-def cb_cap(bot, evt):
+def cb_cap(evt):
     "capabilities callback."
+    bot = getbot(evt)
     if bot.cfg.password and 'ACK' in evt.arguments:
         bot.direct('AUTHENTICATE PLAIN')
     else:
         bot.direct('CAP REQ :sasl')
 
 
-def cb_error(bot, evt):
+def cb_error(evt):
     "error callback."
+    bot = getbot(evt)
     if not bot.state.nrerror:
         bot.state.nrerror = 0
     bot.state.nrerror += 1
@@ -553,45 +562,51 @@ def cb_error(bot, evt):
     debug(evt.txt)
 
 
-def cb_h903(bot, evt):
+def cb_h903(evt):
     "auth succeded callback."
+    bot = getbot(evt)
     bot.direct('CAP END')
     bot.events.authed.set()
 
 
-def cb_h904(bot, evt):
+def cb_h904(evt):
     "auth succeded callback."
+    bot = getbot(evt)
     bot.direct('CAP END')
     bot.events.authed.set()
 
 
-def cb_kill(bot, evt):
+def cb_kill(evt):
     "got killed callback."
 
 
-def cb_log(bot, evt):
+def cb_log(evt):
     "log callback."
 
 
-def cb_ready(bot, evt):
+def cb_ready(evt):
     "bot is ready callback."
+    bot = getbot(evt)
     bot.events.ready.set()
 
 
-def cb_001(bot, evt):
+def cb_001(evt):
     "first line received callback."
+    bot = getbot(evt)
     bot.logon()
 
 
-def cb_notice(bot, evt):
+def cb_notice(evt):
     "notice callback."
+    bot = getbot(evt)
     if evt.txt.startswith('VERSION'):
         txt = f'\001VERSION {NAME.upper()} 140 - {bot.cfg.username}\001'
         bot.docommand('NOTICE', evt.channel, txt)
 
 
-def cb_privmsg(bot, evt):
+def cb_privmsg(evt):
     "privmsg callback."
+    bot = getbot(evt)
     if not bot.cfg.commands:
         return
     if evt.txt:
@@ -604,11 +619,12 @@ def cb_privmsg(bot, evt):
         if evt.txt:
             evt.txt = evt.txt[0].lower() + evt.txt[1:]
         debug(f"command from {evt.origin}: {evt.txt}")
-        command(bot, evt)
+        command(evt)
 
 
-def cb_quit(bot, evt):
+def cb_quit(evt):
     "quit callback."
+    bot = getbot(evt)
     debug(f"quit from {bot.cfg.server}")
     if evt.orig and evt.orig in bot.zelf:
         bot.stop()

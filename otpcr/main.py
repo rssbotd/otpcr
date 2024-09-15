@@ -9,13 +9,14 @@ import os
 import pathlib
 import pwd
 import time
+import threading
 import _thread
 
 
 from .object  import Default
+from .persist import Workdir
 from .reactor import Reactor
 from .thread  import launch, later
-from .workdir import Workdir
 
 
 rpr = object.__repr__
@@ -103,10 +104,21 @@ class Event(Default):
 
     def __init__(self):
         Default.__init__(self)
-        self._thr    = None
-        self.orig    = ""
-        self.result  = []
-        self.txt     = ""
+        self._ready = threading.Event()
+        self._thr   = None
+        self.orig   = ""
+        self.result = []
+        self.txt    = ""
+
+    def display(self):
+        "display results."
+        bot = Broker.get(self.orig)
+        if bot:
+            bot.display(self)
+
+    def ready(self):
+        "flag event as ready."
+        self._ready.set()
 
     def reply(self, txt):
         "add text to the result."
@@ -114,11 +126,11 @@ class Event(Default):
 
     def wait(self):
         "wait for result."
-        if self._thr:
-            self._thr.join()
+        self._ready.wait()
 
 
 "logging"
+
 
 class Logging:
 
@@ -160,16 +172,17 @@ class Commands:
             Commands.modnames[func.__name__] = func.__module__
 
 
-def command(bot, evt):
+def command(evt):
     "check for and run a command."
     parse(evt, evt.txt)
     func = Commands.cmds.get(evt.cmd, None)
     if func:
         try:
             func(evt)
-            bot.display(evt)
+            evt.display()
         except Exception as ex:
             later(ex)
+    evt.ready()
 
 
 "utilities"

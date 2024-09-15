@@ -54,6 +54,8 @@ class Thread(threading.Thread):
         except Exception as ex:
             time.sleep(0.1)
             later(ex)
+            if args and "ready" in dir(args[0]):
+                args[0].ready()
 
 
 def named(obj):

@@ -20,10 +20,10 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote_plus, urlencode
 
 
-from ..thread  import Repeater, launch
-from ..workdir import find, fntime, last, sync
-from ..object  import Default, Object, construct, fmt, update
 from ..main    import Broker, Commands, debug, laps, spl
+from ..object  import Default, Object, construct, fmt, update
+from ..persist import find, fntime, last, sync
+from ..thread  import Repeater, launch
 
 
 def init():
@@ -512,6 +512,15 @@ def imp(event):
     nrs = 0
     insertid = shortid()
     for obj in prs.parse(txt, 'outline', "name,display_list,xmlUrl"):
+        url = obj.xmlUrl
+        goturl = False
+        for _fnm, result in find("rss", {'rss': url}):
+            if result:
+                goturl = True
+                event.reply(f"already got {url}")
+                break
+        if goturl:
+            continue
         feed = Rss()
         construct(feed, obj)
         feed.rss = obj.xmlUrl
