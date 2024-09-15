@@ -12,9 +12,6 @@ import termios
 import time
 
 
-sys.path.insert(0, os.getcwd())
-
-
 from .errors  import errors
 from .thread  import launch
 from .object  import Default

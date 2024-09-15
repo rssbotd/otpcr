@@ -316,6 +316,7 @@ def parse(obj, txt=None):
         obj.txt = obj.cmd or ""
     return obj
 
+
 def pidfile(pid):
     "write the pid to a file."
     if os.path.exists(pid):

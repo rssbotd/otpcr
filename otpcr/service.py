@@ -10,9 +10,6 @@ import os
 import sys
 
 
-sys.path.insert(0, os.getcwd())
-
-
 from .errors  import errors
 from .main    import Config, forever, initer, pidfile, privileges, wrap
 from .modules import face

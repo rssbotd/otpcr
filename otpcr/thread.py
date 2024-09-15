@@ -52,7 +52,7 @@ class Thread(threading.Thread):
         try:
             self._result = func(*args)
         except Exception as ex:
-            time.sleep(1.0)
+            time.sleep(0.1)
             later(ex)
 
 

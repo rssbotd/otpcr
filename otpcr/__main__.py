@@ -12,9 +12,6 @@ import sys
 import termios
 
 
-sys.path.insert(0, os.getcwd())
-
-
 from .errors  import errors
 from .object  import Default, construct, fmt
 from .main    import Broker, Client, Commands, Config, Event
