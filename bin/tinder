@@ -74,6 +74,7 @@ class CLI(Client):
     def raw(self, txt):
         if "v" in Cfg.opts:
             print(txt)
+            sys.stdout.flush()
 
 
 def consume(evts):
@@ -130,6 +131,7 @@ def mainer():
     for thr in thrs:
         thr.join()
     consume(events)
+    clt.wait()
 
 
 if __name__ == "__main__":
