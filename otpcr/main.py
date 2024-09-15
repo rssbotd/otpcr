@@ -9,7 +9,6 @@ import os
 import pathlib
 import pwd
 import time
-import threading
 import _thread
 
 

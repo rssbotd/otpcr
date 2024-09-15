@@ -6,8 +6,6 @@
 
 
 import getpass
-import os
-import sys
 
 
 from .errors  import errors
