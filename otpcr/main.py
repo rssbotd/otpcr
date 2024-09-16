@@ -1,5 +1,5 @@
 # This file is placed in the Public Domain.
-# pylint: disable=R,W0105,W0718,E1102
+# pylint: disable=R,W0718,E1102
 
 
 "main"
@@ -9,8 +9,6 @@ import os
 import pathlib
 import pwd
 import time
-import threading
-import _thread
 
 
 from .persist import Workdir
@@ -19,9 +17,6 @@ from .runtime import Reactor, launch
 
 
 rpr = object.__repr__
-
-
-"broker"
 
 
 class Broker:
@@ -51,9 +46,6 @@ class Broker:
         Broker.objs.append(obj)
 
 
-"client"
-
-
 class Client(Reactor):
 
     "Client"
@@ -77,9 +69,6 @@ class Client(Reactor):
         raise NotImplementedError
 
 
-"config"
-
-
 class Config(Default):
 
     "Config"
@@ -93,9 +82,6 @@ class Config(Default):
         self.wdr = Config.wdr
         self.pidfile = Config.pidfile
         Workdir.wdr = self.wdr
-
-
-"event"
 
 
 class Event(Default):
@@ -120,32 +106,12 @@ class Event(Default):
         self.result.append(txt)
 
 
-"logging"
-
-
 class Logging:
 
     "Logging"
 
     filter = []
     out = None
-
-
-def debug(txt):
-    "print to console."
-    for skp in Logging.filter:
-        if skp in txt:
-            return
-    if Logging.out:
-        Logging.out(txt)
-
-
-def enable(outer):
-    "enable logging"
-    Logging.out = outer
-
-
-"commands"
 
 
 class Commands:
@@ -172,8 +138,18 @@ def command(bot, evt):
         bot.display(evt)
 
 
-"utilities"
+def debug(txt):
+    "print to console."
+    for skp in Logging.filter:
+        if skp in txt:
+            return
+    if Logging.out:
+        Logging.out(txt)
 
+
+def enable(outer):
+    "enable logging"
+    Logging.out = outer
 
 def forever():
     "it doesn't stop, until ctrl-c"
