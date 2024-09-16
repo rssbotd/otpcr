@@ -2,7 +2,7 @@
 # pylint: disable=R,W0105,W0718,E1102
 
 
-"main"
+"main program"
 
 
 import os
@@ -69,6 +69,30 @@ class Client(Reactor):
         raise NotImplementedError
 
 
+class Commands:
+
+    "Commands"
+
+    cmds     = {}
+    modnames = {}
+
+    @staticmethod
+    def add(func):
+        "add command."
+        Commands.cmds[func.__name__] = func
+        if func.__module__ != "__main__":
+            Commands.modnames[func.__name__] = func.__module__
+
+
+def command(bot, evt):
+    "check for and run a command."
+    parse(evt, evt.txt)
+    func = Commands.cmds.get(evt.cmd, None)
+    if func:
+        func(evt)
+        bot.display(evt)
+
+
 class Config(Default):
 
     "Config"
@@ -94,12 +118,6 @@ class Event(Default):
         self.orig   = ""
         self.result = []
         self.txt    = ""
-
-    def display(self):
-        "display results."
-        bot = Broker.get(self.orig)
-        if bot:
-            bot.display(self)
 
     def reply(self, txt):
         "add text to the result."
@@ -128,28 +146,6 @@ def enable(outer):
     Logging.out = outer
 
 
-class Commands:
-
-    "Commands"
-
-    cmds     = {}
-    modnames = {}
-
-    @staticmethod
-    def add(func):
-        "add command."
-        Commands.cmds[func.__name__] = func
-        if func.__module__ != "__main__":
-            Commands.modnames[func.__name__] = func.__module__
-
-
-def command(bot, evt):
-    "check for and run a command."
-    parse(evt, evt.txt)
-    func = Commands.cmds.get(evt.cmd, None)
-    if func:
-        func(evt)
-        bot.display(evt)
 
 
 "utilities"
@@ -322,10 +318,12 @@ def wrap(func):
 
 def __dir__():
     return (
-        'Broker', 
+        'Broker',
+        'Client',
+        'Comamnds', 
         'Config',
-        'Logging',
         'Event',
+        'Logging',
         'debug',
         'enable'
         'forever',

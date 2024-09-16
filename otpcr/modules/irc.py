@@ -17,7 +17,7 @@ import _thread
 
 
 from ..errors  import later
-from ..main    import Broker, Client, Commands, Logging, command, debug
+from ..main    import Broker, Client, Commands, Event, Logging, command, debug
 from ..object  import Default, Object, edit, fmt, keys
 from ..persist import last, sync
 from ..runtime import launch
@@ -65,21 +65,6 @@ class Config(Default):
         self.realname = self.realname or Config.realname
         self.server = self.server or Config.server
         self.username = self.username or Config.username
-
-
-class Event(Default):
-
-    "Event"
-
-    def __init__(self):
-        Default.__init__(self)
-        self.orig    = ""
-        self.result  = []
-        self.txt     = ""
-
-    def reply(self, txt):
-        "add text to the result"
-        self.result.append(txt)
 
 
 class TextWrap(textwrap.TextWrapper):
@@ -641,10 +626,10 @@ def mre(event):
         event.reply('channel is not set.')
         return
     bot = Broker.get(event.orig)
-    if 'cache' not in bot:
+    if 'cache' not in dir(bot):
         event.reply('bot is missing cache')
         return
-    if event.channel not in Output.cache:
+    if event.channel not in dir(Output.cache):
         event.reply(f'no output in {event.channel} cache.')
         return
     for _x in range(3):

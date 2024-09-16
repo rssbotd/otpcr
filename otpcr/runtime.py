@@ -69,6 +69,7 @@ class Reactor:
         while not self.stopped.is_set():
             if not self.queue.qsize():
                 break
+            time.sleep(0.1)
 
 
 class Thread(threading.Thread):
@@ -112,24 +113,6 @@ class Thread(threading.Thread):
             _thread.interrupt_main()
         except Exception as ex:
             later(ex)
-
-
-def named(obj):
-    "return a full qualified name of an object/function/module."
-    if isinstance(obj, types.ModuleType):
-        return obj.__name__
-    typ = type(obj)
-    if '__builtins__' in dir(typ):
-        return obj.__name__
-    if '__self__' in dir(obj):
-        return f'{obj.__self__.__class__.__name__}.{obj.__name__}'
-    if '__class__' in dir(obj) and '__name__' in dir(obj):
-        return f'{obj.__class__.__name__}.{obj.__name__}'
-    if '__class__' in dir(obj):
-        return f"{obj.__class__.__module__}.{obj.__class__.__name__}"
-    if '__name__' in dir(obj):
-        return f'{obj.__class__.__name__}.{obj.__name__}'
-    return None
 
 
 def launch(func, *args, **kwargs):
@@ -188,16 +171,36 @@ class Repeater(Timer):
         super().run()
 
 
+"utilitites"
+
+
+def named(obj):
+    "return a full qualified name of an object/function/module."
+    if isinstance(obj, types.ModuleType):
+        return obj.__name__
+    typ = type(obj)
+    if '__builtins__' in dir(typ):
+        return obj.__name__
+    if '__self__' in dir(obj):
+        return f'{obj.__self__.__class__.__name__}.{obj.__name__}'
+    if '__class__' in dir(obj) and '__name__' in dir(obj):
+        return f'{obj.__class__.__name__}.{obj.__name__}'
+    if '__class__' in dir(obj):
+        return f"{obj.__class__.__module__}.{obj.__class__.__name__}"
+    if '__name__' in dir(obj):
+        return f'{obj.__class__.__name__}.{obj.__name__}'
+    return None
+
+
 "interface"
 
 
 def __dir__():
     return (
-        'Errors',
+        'Reactor',
         'Repeater',
         'Thread',
         'Timer',
-        'errors',
-        'later',
-        'launch'
+        'launch',
+        'named'
     )
