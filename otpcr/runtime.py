@@ -61,6 +61,11 @@ class Reactor:
         "stop the event loop."
         self.stopped.set()
 
+    def wait(self):
+        while not self.stopped.is_set():
+            if not self.queue.qsize():
+                break
+
 
 class Thread(threading.Thread):
 

@@ -27,7 +27,7 @@ from otpcr.persist import Workdir, skel
 from otpcr.runtime import launch
 
 
-Cfg = Config(".test")
+Cfg = Config()
 Cfg.debug  = True
 Cfg.name = "tinder"
 Cfg.silent = False
@@ -69,11 +69,6 @@ param.ver = [""]
 class CLI(Client):
 
     "command line interface."
-
-    def __init__(self):
-        Client.__init__(self)
-        Broker.register(self)
-        self.register("command", command)
 
     def raw(self, txt):
         if "v" in Cfg.opts:
@@ -128,9 +123,8 @@ def mainer():
     clt.start()
     thrs = []
     for _nr in range(nrs):
-        thrs.append(launch(payload, clt))
-    for thr in thrs:
-        thr.join()
+        launch(payload, clt)
+    clt.wait()
     consume(events)
     errors(print)
     if "v" in Cfg.opts:
@@ -155,3 +149,4 @@ if __name__ == "__main__":
         profile.runctx(mainer.__code__, globals(), locals())
     else:
         wrapped(mainer)
+    os._exit(0)
