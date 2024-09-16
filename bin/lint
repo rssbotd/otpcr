@@ -21,4 +21,5 @@ def popen(txt):
 
 if os.path.exists("bin/clean"):
     popen("bin/clean")
-popen(f"pylint {NAME}/*.py {NAME}/modules/*.py bin/* tests/*.py")
+
+popen(f"pylint otpcr bin tests")
