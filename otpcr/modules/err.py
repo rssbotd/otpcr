@@ -12,7 +12,8 @@ def err(event):
     "show errors."
     nmr = 0
     for exc in Errors.errors:
-        event.reply(exc)
+        for line in exc:
+            event.reply(line.strip())
         nmr += 1
     if not nmr:
         event.reply("no errors")

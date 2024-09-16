@@ -15,29 +15,26 @@ class Errors:
     errors = []
 
 
-def formatexc(exc):
+def format(exc):
     "format an exception"
-    res = ""
-    ress = traceback.format_exception(
+    return traceback.format_exception(
                                type(exc),
                                exc,
                                exc.__traceback__
                               )
-    for line in ress:
-        res += line
-    return res
 
 
 def errors(outer):
     "display errors."
     for exc in Errors.errors:
-        outer(exc)
+        for line in exc:
+            outer(line.strip())
 
 
 def later(exc):
     "add an exception"
     excp = exc.with_traceback(exc.__traceback__)
-    fmt = formatexc(excp)
+    fmt = format(excp)
     if fmt not in Errors.errors:
         Errors.errors.append(fmt)
 
