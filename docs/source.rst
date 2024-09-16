@@ -21,15 +21,11 @@
     :template: base.rst
 
 
-    otpcr.console
-    otpcr.daemon
     otpcr.errors
     otpcr.main
     otpcr.object
     otpcr.persist
-    otpcr.reactor
-    otpcr.service
-    otpcr.thread
+    otpcr.runtime
 
 
 .. raw:: html
