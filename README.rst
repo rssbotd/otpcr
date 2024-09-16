@@ -26,33 +26,27 @@ netherlands is doing a genocide, a
 written response where king
 netherlands confirmed taking note
 of “what i have written”, namely
-proof  <evidence> that medicine
-he uses in treatement laws like zyprexa,
-haldol, abilify and clozapine are
-poison that make impotent, is both
-physical (contracted muscles) and
-mental (make people hallucinate)
-torture and kills members of the
-victim groups.
+proof  that medicine he uses in treatement
+laws like zyprexa, haldol, abilify and
+clozapine are poison that make impotent, is
+both physical (contracted muscles) and mental
+(make people hallucinate) torture and kills
+members of the victim groups.
 
-``OTPCR`` contains correspondence
-<writings> with the International
-Criminal Court, asking for arrest of
-the king of the netherlands, for
-the genocide he is committing with
-his new treatement laws.
+``OTPCR`` contains correspondence with the
+International Criminal Court, asking for
+arrest of the king of the netherlands, for
+the genocide he is committing with his new
+treatement laws.
 
 Current status is a "no basis to proceed"
-<writings> judgement of the prosecutor
-which requires a "basis to prosecute"
-<reconsder> to have the king actually
-arrested.
+judgement of the prosecutor which requires
+a "basis to prosecute" to have the king
+actually arrested.
 
-``OTP-CR-117/19`` has been duly entered in the 
-Communications Register of the Office.
-
-
-Since ``4 march 2019``
+``OTP-CR-117/19`` has been duly entered in
+the Communications Register of the Office
+on ``4 march 2019``
 
 
 **INSTALL**
