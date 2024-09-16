@@ -11,7 +11,7 @@ import sys
 import unittest
 
 
-from otpcr.face import *
+from otpcr.object import *
 
 
 import otpcr
@@ -27,16 +27,12 @@ PACKAGE = [
     '__package__',
     '__path__',
     '__spec__',
-    'console',
-    'daemon',
     'errors',
     'main',
     'modules',
     'object',
     'persist',
-    'reactor',
-    'service',
-    'thread'
+    'runtime'
 ]
 
 

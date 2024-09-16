@@ -18,16 +18,20 @@ import _thread
 sys.path.insert(0, os.getcwd())
 
 
-from otpcr.face    import *
-from otpcr.modules import face
+from otpcr.disk import Workdir, skel
+from otpcr.error import errors, later
+from otpcr.main import Broker, Client, Commands, Config, Event
+from otpcr.main import command, enable, laps, parse
+from otpcr.mods import face
+from otpcr.object import Object
+from otpcr.thread import launch
 
 
-Cfg         = Config("objbot")
-Cfg.mod     = ",".join(modnames(face))
-Cfg.debug   = True
-Cfg.name    = "tinder"
-Cfg.silent  = False
-Cfg.skip    = ["debug",]
+Cfg = Config(".test")
+Cfg.debug  = True
+Cfg.name = "tinder"
+Cfg.silent = False
+Cfg.skip = ["debug",]
 
 
 face.rss.DEBUG = True
@@ -79,7 +83,8 @@ class CLI(Client):
 def consume(evts):
     "wait for events."
     for evt in evts:
-        evt._ready.wait()
+        if "_thr" in evt and evt._thr:
+            evt._thr.join()
 
 
 def payload(clt):
@@ -119,18 +124,14 @@ def wrapped(function):
 
 def mainer():
     "main"
-    Cfg.mod = ",".join(modnames(face))
     clt = CLI()
     clt.start()
-    if "t" not in Cfg.opts:
-        clt.threaded = False
     thrs = []
     for _nr in range(nrs):
         thrs.append(launch(payload, clt))
     for thr in thrs:
         thr.join()
     consume(events)
-    clt.wait()
     errors(print)
     if "v" in Cfg.opts:
         endtime = time.time()
@@ -154,4 +155,3 @@ if __name__ == "__main__":
         profile.runctx(mainer.__code__, globals(), locals())
     else:
         wrapped(mainer)
-    os._exit(0)

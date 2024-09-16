@@ -13,12 +13,15 @@ import termios
 import time
 
 
-from otpcr.error  import errors
-from otpcr.thread import launch
-from otpcr.object import Default
-from otpcr.main   import Broker, Client, Config, Event, command, debug
-from otpcr.main   import enable, forever, initer, modnames, parse, spl
-from otpcr.mods   import face
+sys.path.insert(0, os.getcwd())
+
+
+from otpcr.errors  import errors
+from otpcr.main    import Broker, Client, Config, Event, command, debug
+from otpcr.main    import enable, forever, initer, modnames, parse, spl
+from otpcr.modules import face
+from otpcr.object  import Default
+from otpcr.runtime import launch
 
 
 Cfg = Config()
@@ -69,6 +72,7 @@ def wrap(func):
     finally:
         if old3:
             termios.tcsetattr(sys.stdin.fileno(), termios.TCSADRAIN, old3)
+    errors(print)
 
 
 def main():
@@ -89,8 +93,8 @@ def main():
 def wraps():
     "Wrap main."
     wrap(main)
-    errors(print)
 
 
 if __name__ == "__main__":
     wraps()
+    

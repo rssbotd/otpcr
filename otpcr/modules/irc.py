@@ -16,11 +16,11 @@ import time
 import _thread
 
 
-from ..disk   import last, sync
-from ..error  import later
-from ..main   import Broker, Client, Commands, Logging, command, debug
-from ..object import Default, Object, edit, fmt, keys
-from ..thread import launch
+from ..errors  import later
+from ..main    import Broker, Client, Commands, Logging, command, debug
+from ..object  import Default, Object, edit, fmt, keys
+from ..persist import last, sync
+from ..runtime import launch
 
 
 Logging.filter = ["PING", "PONG", "PRIVMSG"]
@@ -35,12 +35,6 @@ def init():
     irc.events.ready.wait()
     debug(f'IRC {fmt(irc.cfg, skip="password")}')
     return irc
-
-
-
-def getbot(evt):
-    "return bot originating the event."
-    return Broker.get(evt.orig)
 
 
 class Config(Default):
@@ -141,7 +135,7 @@ class Output:
 
     def oput(self, channel, txt):
         "put text to output queue."
-        if channel and channel not in dir(Output.cache):
+        if channel and channel not in Output.cache:
             setattr(Output.cache, channel, [])
         self.oqueue.put_nowait((channel, txt))
 
@@ -537,24 +531,21 @@ class IRC(Client, Output):
         self.events.ready.wait()
 
 
-def cb_auth(evt):
+def cb_auth(bot, evt):
     "auth callback."
-    bot = getbot(evt)
     bot.docommand(f'AUTHENTICATE {bot.cfg.password}')
 
 
-def cb_cap(evt):
+def cb_cap(bot, evt):
     "capabilities callback."
-    bot = getbot(evt)
     if bot.cfg.password and 'ACK' in evt.arguments:
         bot.direct('AUTHENTICATE PLAIN')
     else:
         bot.direct('CAP REQ :sasl')
 
 
-def cb_error(evt):
+def cb_error(bot, evt):
     "error callback."
-    bot = getbot(evt)
     if not bot.state.nrerror:
         bot.state.nrerror = 0
     bot.state.nrerror += 1
@@ -562,51 +553,45 @@ def cb_error(evt):
     debug(evt.txt)
 
 
-def cb_h903(evt):
+def cb_h903(bot, evt):
     "auth succeded callback."
-    bot = getbot(evt)
     bot.direct('CAP END')
     bot.events.authed.set()
 
 
-def cb_h904(evt):
+def cb_h904(bot, evt):
     "auth succeded callback."
-    bot = getbot(evt)
     bot.direct('CAP END')
     bot.events.authed.set()
 
 
-def cb_kill(evt):
+def cb_kill(bot, evt):
     "got killed callback."
 
 
-def cb_log(evt):
+def cb_log(bot, evt):
     "log callback."
 
 
-def cb_ready(evt):
+def cb_ready(bot, evt):
     "bot is ready callback."
-    bot = getbot(evt)
     bot.events.ready.set()
 
 
-def cb_001(evt):
+def cb_001(bot, evt):
     "first line received callback."
-    bot = getbot(evt)
     bot.logon()
 
 
-def cb_notice(evt):
+def cb_notice(bot, evt):
     "notice callback."
-    bot = getbot(evt)
     if evt.txt.startswith('VERSION'):
         txt = f'\001VERSION {NAME.upper()} 140 - {bot.cfg.username}\001'
         bot.docommand('NOTICE', evt.channel, txt)
 
 
-def cb_privmsg(evt):
+def cb_privmsg(bot, evt):
     "privmsg callback."
-    bot = getbot(evt)
     if not bot.cfg.commands:
         return
     if evt.txt:
@@ -619,12 +604,11 @@ def cb_privmsg(evt):
         if evt.txt:
             evt.txt = evt.txt[0].lower() + evt.txt[1:]
         debug(f"command from {evt.origin}: {evt.txt}")
-        command(evt)
+        command(bot, evt)
 
 
-def cb_quit(evt):
+def cb_quit(bot, evt):
     "quit callback."
-    bot = getbot(evt)
     debug(f"quit from {bot.cfg.server}")
     if evt.orig and evt.orig in bot.zelf:
         bot.stop()
@@ -657,7 +641,7 @@ def mre(event):
         event.reply('channel is not set.')
         return
     bot = Broker.get(event.orig)
-    if 'cache' not in dir(bot):
+    if 'cache' not in bot:
         event.reply('bot is missing cache')
         return
     if event.channel not in Output.cache:

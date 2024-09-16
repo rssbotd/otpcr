@@ -13,11 +13,11 @@ import sys
 import termios
 
 
-from otpcr.error  import errors
-from otpcr.object import Default, construct, fmt
-from otpcr.main   import Broker, Client, Commands, Config, Event
-from otpcr.main   import command, forever, modnames, parse, wrap
-from otpcr.mods   import face
+from otpcr.errors  import errors
+from otpcr.object  import Default, construct, fmt
+from otpcr.main    import Broker, Client, Commands, Config, Event
+from otpcr.main    import command, forever, modnames, parse, wrap
+from otpcr.modules import face
 
 
 Cfg = Config()
@@ -32,6 +32,28 @@ class CLI(Client):
         print(txt)
 
 
+def srv(event):
+    "create service file (pipx)."
+    if event.args:
+        name = event.args[0]
+    else:
+        name  = getpass.getuser()
+    progname = Config.name
+    txt = """[Unit]
+Description=%s
+After=network-online.target
+
+[Service]
+Type=simple
+User=%s
+Group=%s
+ExecStart=/home/%s/.local/bin/%ss
+
+[Install]
+WantedBy=multi-user.target"""
+    event.reply(txt % (progname.upper(), name, name, name, progname))
+
+
 def wrapped():
     "wrap main."
     wrap(main)
@@ -40,13 +62,14 @@ def wrapped():
 
 def main():
     "main"
+    Commands.add(srv)
     parse(Cfg, " ".join(sys.argv[1:]))
-    clt = CLI()
     if Cfg.txt:
+        clt = CLI()
         evt = Event()
         evt.orig = repr(clt)
         parse(evt, Cfg.otxt)
-        command(evt)
+        command(clt, evt)
 
 
 if __name__ == "__main__":

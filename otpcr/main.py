@@ -13,10 +13,9 @@ import threading
 import _thread
 
 
-from .disk    import Workdir
+from .persist import Workdir
 from .object  import Default
-from .reactor import Reactor
-from .thread  import launch
+from .runtime import Reactor, launch
 
 
 rpr = object.__repr__
@@ -164,13 +163,13 @@ class Commands:
             Commands.modnames[func.__name__] = func.__module__
 
 
-def command(evt):
+def command(bot, evt):
     "check for and run a command."
     parse(evt, evt.txt)
     func = Commands.cmds.get(evt.cmd, None)
     if func:
         func(evt)
-        evt.display()
+        bot.display(evt)
 
 
 "utilities"
@@ -179,10 +178,8 @@ def command(evt):
 def forever():
     "it doesn't stop, until ctrl-c"
     while True:
-        try:
-            time.sleep(1.0)
-        except (KeyboardInterrupt, EOFError):
-            _thread.interrupt_main()
+        time.sleep(1.0)
+
 
 def initer(modstr, *pkgs, disable=None):
     "scan modules for commands and classes"
