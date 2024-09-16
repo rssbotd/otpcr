@@ -151,6 +151,7 @@ def enable(outer):
     "enable logging"
     Logging.out = outer
 
+
 def forever():
     "it doesn't stop, until ctrl-c"
     while True:

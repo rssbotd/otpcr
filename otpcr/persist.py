@@ -20,10 +20,6 @@ lock = _thread.allocate_lock()
 disklock = _thread.allocate_lock()
 
 
-class ReadError(Exception):
-    "error reading json file."
-
-
 class Workdir:
 
     "Workdir"
@@ -69,7 +65,8 @@ def whitelist(clz):
     Workdir.fqns.append(fqn(clz))
 
 
-"utilities"
+class ReadError(Exception):
+    "error reading json file."
 
 
 def cdir(pth):
@@ -134,9 +131,6 @@ def strip(pth, nmr=3):
     return os.sep.join(pth.split(os.sep)[-nmr:])
 
 
-"methods"
-
-
 def fetch(obj, pth):
     "read object from disk."
     with disklock:
@@ -191,6 +185,7 @@ def write(obj, pth):
 
 def __dir__():
     return (
+        'ReadError',
         'Workdir',
         'find',
         'fns',

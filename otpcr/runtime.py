@@ -1,5 +1,5 @@
 # This file is placed in the Public Domain.
-# pylint: disable=R,W0105,W0212,W0718,E1102
+# pylint: disable=R0911,W0212,W0718
 
 
 "runtime"
@@ -62,6 +62,7 @@ class Reactor:
         self.stopped.set()
 
     def wait(self):
+        "wait till empty queue."
         while not self.stopped.is_set():
             if not self.queue.qsize():
                 break
