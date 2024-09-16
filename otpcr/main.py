@@ -1,5 +1,5 @@
 # This file is placed in the Public Domain.
-# pylint: disable=R,W0718,E1102
+# pylint: disable=R,W0105,W0718,E1102
 
 
 "main"
@@ -114,6 +114,20 @@ class Logging:
     out = None
 
 
+def debug(txt):
+    "print to console."
+    for skp in Logging.filter:
+        if skp in txt:
+            return
+    if Logging.out:
+        Logging.out(txt)
+
+
+def enable(outer):
+    "enable logging"
+    Logging.out = outer
+
+
 class Commands:
 
     "Commands"
@@ -138,18 +152,7 @@ def command(bot, evt):
         bot.display(evt)
 
 
-def debug(txt):
-    "print to console."
-    for skp in Logging.filter:
-        if skp in txt:
-            return
-    if Logging.out:
-        Logging.out(txt)
-
-
-def enable(outer):
-    "enable logging"
-    Logging.out = outer
+"utilities"
 
 
 def forever():
@@ -312,6 +315,9 @@ def wrap(func):
         func()
     except (KeyboardInterrupt, EOFError):
         pass
+
+
+"interface"
 
 
 def __dir__():

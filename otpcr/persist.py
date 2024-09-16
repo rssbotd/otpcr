@@ -69,7 +69,6 @@ def whitelist(clz):
     Workdir.fqns.append(fqn(clz))
 
 
-
 "utilities"
 
 
@@ -188,6 +187,9 @@ def write(obj, pth):
         cdir(pth)
         with open(pth, 'w', encoding='utf-8') as ofile:
             dump(obj, ofile, indent=4)
+
+
+"interface"
 
 
 def __dir__():

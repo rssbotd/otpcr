@@ -1,5 +1,5 @@
 # This file is placed in the Public Domain.
-# pylint: disable=R0903,W0622
+# pylint: disable=R,W0105,W0622
 
 
 "deferred exception handling"
@@ -37,6 +37,9 @@ def later(exc):
     fmt = format(excp)
     if fmt not in Errors.errors:
         Errors.errors.append(fmt)
+
+
+"interface"
 
 
 def __dir__():

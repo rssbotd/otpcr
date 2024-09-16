@@ -1,5 +1,5 @@
 # This file is placed in the Public Domain.
-# pylint: disable=R0911,W0212,W0718
+# pylint: disable=R,W0105,W0212,W0718
 
 
 "runtime"
@@ -111,6 +111,35 @@ class Thread(threading.Thread):
             later(ex)
 
 
+def named(obj):
+    "return a full qualified name of an object/function/module."
+    if isinstance(obj, types.ModuleType):
+        return obj.__name__
+    typ = type(obj)
+    if '__builtins__' in dir(typ):
+        return obj.__name__
+    if '__self__' in dir(obj):
+        return f'{obj.__self__.__class__.__name__}.{obj.__name__}'
+    if '__class__' in dir(obj) and '__name__' in dir(obj):
+        return f'{obj.__class__.__name__}.{obj.__name__}'
+    if '__class__' in dir(obj):
+        return f"{obj.__class__.__module__}.{obj.__class__.__name__}"
+    if '__name__' in dir(obj):
+        return f'{obj.__class__.__name__}.{obj.__name__}'
+    return None
+
+
+def launch(func, *args, **kwargs):
+    "launch a thread."
+    nme = kwargs.get("name", named(func))
+    thread = Thread(func, nme, *args, **kwargs)
+    thread.start()
+    return thread
+
+
+"timers"
+
+
 class Timer:
 
     "Timer"
@@ -156,30 +185,7 @@ class Repeater(Timer):
         super().run()
 
 
-def named(obj):
-    "return a full qualified name of an object/function/module."
-    if isinstance(obj, types.ModuleType):
-        return obj.__name__
-    typ = type(obj)
-    if '__builtins__' in dir(typ):
-        return obj.__name__
-    if '__self__' in dir(obj):
-        return f'{obj.__self__.__class__.__name__}.{obj.__name__}'
-    if '__class__' in dir(obj) and '__name__' in dir(obj):
-        return f'{obj.__class__.__name__}.{obj.__name__}'
-    if '__class__' in dir(obj):
-        return f"{obj.__class__.__module__}.{obj.__class__.__name__}"
-    if '__name__' in dir(obj):
-        return f'{obj.__class__.__name__}.{obj.__name__}'
-    return None
-
-
-def launch(func, *args, **kwargs):
-    "launch a thread."
-    nme = kwargs.get("name", named(func))
-    thread = Thread(func, nme, *args, **kwargs)
-    thread.start()
-    return thread
+"interface"
 
 
 def __dir__():
