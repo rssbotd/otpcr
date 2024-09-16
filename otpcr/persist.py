@@ -94,7 +94,7 @@ def find(mtc, selector=None, index=None, deleted=False, matching=False):
             continue
         if matching and not match(obj, selector):
             continue
-        elif selector and not search(obj, selector):
+        if selector and not search(obj, selector):
             continue
         nrs += 1
         if index is not None and nrs != int(index):

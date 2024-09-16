@@ -16,7 +16,7 @@ import _thread
 from .object  import Default
 from .persist import Workdir
 from .reactor import Reactor
-from .thread  import launch, later
+from .thread  import launch
 
 
 rpr = object.__repr__
@@ -118,6 +118,7 @@ class Event(Default):
             bot.display(self)
 
     def ready(self):
+        "flag this event as ready."
         self._ready.set()
 
     def reply(self, txt):
@@ -125,6 +126,7 @@ class Event(Default):
         self.result.append(txt)
 
     def wait(self):
+        "wait for results."
         #if self._thr:
         #    self._thr.join()
         self._ready.wait()

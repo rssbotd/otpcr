@@ -229,6 +229,7 @@ def matchkey(obj, txt):
 
 
 def match(obj, selector):
+    "do an exact match on the selector's values."
     res = False
     if not selector:
         return res

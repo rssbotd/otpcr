@@ -23,14 +23,13 @@
 
     otpcr.console
     otpcr.daemon
-    otpcr.disk
     otpcr.errors
     otpcr.main
     otpcr.object
+    otpcr.persist
     otpcr.reactor
     otpcr.service
     otpcr.thread
-    otpcr.workdir
 
 
 .. raw:: html

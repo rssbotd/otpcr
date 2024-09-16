@@ -11,7 +11,6 @@ import time
 import _thread
 
 
-from .errors import later
 from .thread import launch
 
 
