@@ -15,7 +15,9 @@ NAME = "otpcr"
 def cprint(txt):
     "check for verbose"
     if "-v" in sys.argv:
-        print(txt)
+        print("")
+        print(txt.upper())
+        print("")
         sys.stdout.flush()
 
 
