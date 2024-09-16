@@ -2,7 +2,7 @@
 # pylint: disable=R0903,W0105
 
 
-"disk"
+"persistence"
 
 
 import datetime
@@ -18,6 +18,10 @@ from .object import Default, dump, fqn, load, match, search, update
 
 lock = _thread.allocate_lock()
 disklock = _thread.allocate_lock()
+
+
+class ReadError(Exception):
+    "error reading json file."
 
 
 class Workdir:
@@ -65,8 +69,8 @@ def whitelist(clz):
     Workdir.fqns.append(fqn(clz))
 
 
-class ReadError(Exception):
-    "error reading json file."
+
+"utilities"
 
 
 def cdir(pth):
@@ -129,6 +133,9 @@ def fntime(daystr):
 def strip(pth, nmr=3):
     "reduce to path with directory."
     return os.sep.join(pth.split(os.sep)[-nmr:])
+
+
+"methods"
 
 
 def fetch(obj, pth):
