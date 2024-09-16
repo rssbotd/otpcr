@@ -16,11 +16,11 @@ import time
 import _thread
 
 
-from ..errors  import later
-from ..main    import Broker, Client, Commands, Logging, command, debug
-from ..object  import Default, Object, edit, fmt, keys
-from ..persist import last, sync
-from ..thread  import launch
+from ..disk   import last, sync
+from ..error  import later
+from ..main   import Broker, Client, Commands, Logging, command, debug
+from ..object import Default, Object, edit, fmt, keys
+from ..thread import launch
 
 
 Logging.filter = ["PING", "PONG", "PRIVMSG"]

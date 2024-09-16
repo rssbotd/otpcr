@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # This file is placed in the Public Domain.
 # pylint: disable=C0413,W0611
 
@@ -12,12 +13,12 @@ import termios
 import time
 
 
-from .errors  import errors
-from .thread  import launch
-from .object  import Default
-from .main    import Broker, Client, Config, Event, command, debug
-from .main    import enable, forever, initer, modnames, parse, spl
-from .modules import face
+from otpcr.error  import errors
+from otpcr.thread import launch
+from otpcr.object import Default
+from otpcr.main   import Broker, Client, Config, Event, command, debug
+from otpcr.main   import enable, forever, initer, modnames, parse, spl
+from otpcr.mods   import face
 
 
 Cfg = Config()
@@ -33,7 +34,7 @@ class Console(Client):
 
     def callback(self, evt):
         Client.callback(self, evt)
-        evt.wait()
+        evt._thr.join()
 
     def poll(self):
         "poll console and create event."

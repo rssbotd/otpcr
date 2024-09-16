@@ -11,14 +11,13 @@ import time
 import _thread
 
 
+from .error  import later
 from .thread import launch
 
 
 class Reactor:
 
     "Reactor"
-
-    threaded = True
 
     def __init__(self):
         self.cbs      = {}
@@ -29,10 +28,7 @@ class Reactor:
         "call callback based on event type."
         func = self.cbs.get(evt.type, None)
         if func:
-            if Reactor.threaded:
-                evt._thr = launch(func, evt)
-            else:
-                func(evt)
+            evt._thr = launch(func, evt)
 
     def loop(self):
         "proces events until interrupted."
@@ -59,16 +55,6 @@ class Reactor:
     def stop(self):
         "stop the event loop."
         self.stopped.set()
-
-    def wait(self):
-        "wait until queue is empty."
-        while 1:
-            try:
-                if self.queue.qsize() == 0:
-                    break
-                time.sleep(1.0)
-            except (KeyboardInterrupt, EOFError):
-                _thread.interrupt_main()
 
 
 def __dir__():

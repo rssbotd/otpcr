@@ -13,8 +13,8 @@ import threading
 import _thread
 
 
+from .disk    import Workdir
 from .object  import Default
-from .persist import Workdir
 from .reactor import Reactor
 from .thread  import launch
 
@@ -105,7 +105,6 @@ class Event(Default):
 
     def __init__(self):
         Default.__init__(self)
-        self._ready = threading.Event()
         self._thr   = None
         self.orig   = ""
         self.result = []
@@ -117,19 +116,9 @@ class Event(Default):
         if bot:
             bot.display(self)
 
-    def ready(self):
-        "flag this event as ready."
-        self._ready.set()
-
     def reply(self, txt):
         "add text to the result."
         self.result.append(txt)
-
-    def wait(self):
-        "wait for results."
-        #if self._thr:
-        #    self._thr.join()
-        self._ready.wait()
 
 
 "logging"
@@ -182,7 +171,6 @@ def command(evt):
     if func:
         func(evt)
         evt.display()
-        evt.ready()
 
 
 "utilities"
@@ -195,7 +183,6 @@ def forever():
             time.sleep(1.0)
         except (KeyboardInterrupt, EOFError):
             _thread.interrupt_main()
-
 
 def initer(modstr, *pkgs, disable=None):
     "scan modules for commands and classes"

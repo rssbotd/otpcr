@@ -12,7 +12,7 @@ import types as rtypes
 import _thread
 
 
-from .errors import later
+from .error import later
 
 
 rpr = object.__repr__
@@ -49,15 +49,13 @@ class Thread(threading.Thread):
 
     def run(self):
         "run this thread's payload."
-        func, args = self.queue.get()
         try:
+            func, args = self.queue.get()
             self._result = func(*args)
         except (KeyboardInterrupt, EOFError):
             _thread.interrupt_main()
         except Exception as ex:
             later(ex)
-            if args and "ready" in dir(args[0]):
-                args[0].ready()
 
 
 def named(obj):
