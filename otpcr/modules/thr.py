@@ -9,10 +9,7 @@ import time
 
 
 from ..object import Object, update
-from ..main   import Commands, laps
-
-
-STARTTIME = time.time()
+from ..main   import STARTTIME, Commands, laps
 
 
 def thr(event):

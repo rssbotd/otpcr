@@ -27,8 +27,11 @@ class Reactor:
     def callback(self, evt):
         "call callback based on event type."
         func = self.cbs.get(evt.type, None)
-        if func:
-            evt._thr = launch(func, self, evt)
+        if not func:
+            return
+        if "target" in dir(func) and func.target not in str(self).lower():
+            return
+        evt._thr = launch(func, self, evt)
 
     def loop(self):
         "proces events until interrupted."

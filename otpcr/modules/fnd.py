@@ -35,4 +35,7 @@ def fnd(event):
         event.reply("no result")
 
 
+fnd.target = "cli"
+
+
 Commands.add(fnd)

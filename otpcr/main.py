@@ -16,7 +16,7 @@ from .object  import Default
 from .runtime import Reactor, launch
 
 
-rpr = object.__repr__
+STARTTIME = time.time()
 
 
 class Broker:
@@ -35,7 +35,7 @@ class Broker:
         "return object by matching repr."
         res = None
         for obj in Broker.objs:
-            if rpr(obj) == orig:
+            if repr(obj) == orig:
                 res = obj
                 break
         return res
