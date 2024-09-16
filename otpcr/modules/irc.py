@@ -239,8 +239,8 @@ class IRC(Client, Output):
     def direct(self, txt):
         "send text directly on the socket."
         with saylock:
-            self.raw(txt)
             time.sleep(2.0)
+            self.raw(txt)
 
     def disconnect(self):
         "disconnect from server."
