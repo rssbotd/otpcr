@@ -51,11 +51,8 @@
     requires a :ref:`"basis to prosecute" <reconsider>`
     to have the king actually arrested.
 
-
     ``OTP-CR-117/19`` has been duly entered in the 
-    Communications Register of the Office.
-
-    Since ``4 march 2019``
+    Communications Register of the Office since ``4 march 2019``
 
 
 **INSTALL**
@@ -66,43 +63,6 @@
     | ``$ pipx install otpcr``
     | ``$ pipx ensurepath``
 
-
-**SYSTEMD**
-
-
-    | $ otpcr srv > otpcr.service
-    | $ sudo mv otpcr.service /etc/systemd/system/
-    | $ sudo systemctl enable otpcr --now
-
-
-    | joins #otpcr on localhost
-
-
-**CONFIGURATION**
-
-
-    irc
-
-    | ``$ otpcr cfg server=<server>``
-    | ``$ otpcr cfg channel=<channel>``
-    | ``$ otpcr cfg nick=<nick>``
-
-    sasl
-
-    | ``$ otpcr pwd <nsvnick> <nspass>``
-    | ``$ otpcr cfg password=<frompwd>``
-
-    rss
-
-    | ``$ otpcr rss <url>``
-    | ``$ otpcr dpl <url> <item1,item2>``
-    | ``$ otpcr rem <url>``
-    | ``$ otpcr nme <url> <name>``
-
-    opml
-
-    | ``$ otpcr exp``
-    | ``$ otpcr imp <filename>``
 
 
 **USAGE**
@@ -150,6 +110,43 @@
     | The Netherlands
 
 
+**CONFIGURATION**
+
+
+    irc
+
+    | ``$ otpcr cfg server=<server>``
+    | ``$ otpcr cfg channel=<channel>``
+    | ``$ otpcr cfg nick=<nick>``
+
+    sasl
+
+    | ``$ otpcr pwd <nsvnick> <nspass>``
+    | ``$ otpcr cfg password=<frompwd>``
+
+    rss
+
+    | ``$ otpcr rss <url>``
+    | ``$ otpcr dpl <url> <item1,item2>``
+    | ``$ otpcr rem <url>``
+    | ``$ otpcr nme <url> <name>``
+
+    opml
+
+    | ``$ otpcr exp``
+    | ``$ otpcr imp <filename>``
+
+
+**SYSTEMD**
+
+
+    | $ otpcr srv > otpcr.service
+    | $ sudo mv otpcr.service /etc/systemd/system/
+    | $ sudo systemctl enable otpcr --now
+    |
+    | joins #otpcr on localhost
+
+
 **COMMANDS**
 
 
@@ -168,10 +165,10 @@
     | ``res`` - restore deleted feeds
     | ``req`` - reconsider
     | ``rss`` - add a feed
+    | ``srv`` - create service file
     | ``syn`` - sync rss feeds
     | ``tdo`` - add todo item
     | ``thr`` - show running threads
-    | ``upt`` - show uptime
 
 
 **SOURCE**
@@ -182,10 +179,10 @@
 **FILES**
 
     | ``~/.otpcr``
-    | ``~/.local/bin/otpcr``
-    | ``~/.local/bin/otpcrc``
-    | ``~/.local/bin/otpcrd``
-    | ``~/.local/bin/otpcrs``
+    | ``~/.local/bin/otpcr``   (cli)
+    | ``~/.local/bin/otpcrc``  (console)
+    | ``~/.local/bin/otpcrd``  (daemon)
+    | ``~/.local/bin/otpcrs``  (service)
     | ``~/.local/pipx/venvs/otpcr/*``
 
 

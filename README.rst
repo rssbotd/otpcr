@@ -25,7 +25,7 @@ netherlands is doing a genocide, a
 written response where king
 netherlands confirmed taking note
 of “what i have written”, namely
-proof  that medicine he uses in treatement
+proof  that medicine he uses in treatment
 laws like zyprexa, haldol, abilify and
 clozapine are poison that make impotent, is
 both physical (contracted muscles) and mental
@@ -36,7 +36,7 @@ members of the victim groups.
 International Criminal Court, asking for
 arrest of the king of the netherlands, for
 the genocide he is committing with his new
-treatement laws.
+treatment laws.
 
 Current status is a "no basis to proceed"
 judgement of the prosecutor which requires
