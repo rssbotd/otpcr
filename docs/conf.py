@@ -97,11 +97,7 @@ intersphinx_mapping = {
 intersphinx_cache_limit = 1
 
 
-rst_prolog = '''.. raw:: pdf
-
-   PageBreak
-   
-.. image:: genocide.png
+rst_prolog = '''.. image:: genocide.png
     :width: 100%
     :height: 2.6cm
     :target: manual.html
@@ -130,9 +126,6 @@ rst_epilog = '''.. raw:: html
     </b>
     </center>
 
-.. raw:: pdf
-
-   PageBreak
 
 '''
 
@@ -148,6 +141,7 @@ nitpick_ignore = [
 
 latex_engine = 'pdflatex'
 latex_elements = {
+    'extraclassoptions': 'openany,oneside',
     'fontpkg': r'''
 \setmainfont{DejaVu Serif}
 \setsansfont{DejaVu Sans}
@@ -164,7 +158,9 @@ latex_elements = {
     'printindex': r'\footnotesize\raggedright\printindex',
 }
 latex_show_urls = 'footnote'
-
+latex_elements = {
+  'extraclassoptions': 'openany,oneside'
+}
 
 def setup(app):
     app.add_css_file("custom.css")
