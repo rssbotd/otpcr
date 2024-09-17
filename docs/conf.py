@@ -55,7 +55,7 @@ extensions = [
               #'sphinx.ext.autosummary',
               #'sphinx.ext.viewcode',
               'sphinx.ext.todo',
-              #'sphinx.ext.githubpages'
+              'sphinx.ext.githubpages'
              ]
 
 
