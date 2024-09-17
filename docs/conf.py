@@ -5,7 +5,7 @@
 # ruff: noqa: E402, E501
 
 
-"Office of the Prosecutor's Communication Record 117 of the year 2019."
+"The Office of the Prosecutor's Communication Record 117 of the year 2019."
 
 
 NAME = "otpcr"
