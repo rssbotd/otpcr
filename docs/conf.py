@@ -107,14 +107,6 @@ rst_prolog = '''.. image:: genocide.png
     :height: 2.6cm
     :target: index.html
 
-.. raw:: html
-
-    <center>
-    <i>
-    Elderly, Handicapped, Criminals, Wicked
-    </i>
-    </center>
-
 '''
 
 rst_epilog = '''.. raw:: html
