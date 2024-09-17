@@ -67,9 +67,8 @@ prosecute the king for making the commiting of the above mentioned crimes
 p.s.
 
 
-1) Entered in the Communications Register of the Office on 4 march 2019
-2) Your reference ``OTP-CR-117/19`` 
-3) Correspondence is :ref:`here <writings>`.
+``OTP-CR-117/19`` entered in the Communications Register of the Office on
+:ref:`4 march 2019 <writings>`
 
 
 .. toctree::
