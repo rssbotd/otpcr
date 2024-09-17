@@ -151,7 +151,7 @@ start service
 
 ::
 
-   otpcrs
+   $ otpcrs
    <runs until ctrl-c>
 
 show request to the prosecutor
@@ -203,10 +203,10 @@ source is at ``https://github.com/rssbotd/otpcr``
 ::
 
     ~/.otpcr
-    ~/.local/bin/otpcr
-    ~/.local/bin/otpcrc
-    ~/.local/bin/otpcrd
-    ~/.local/bin/otpcrs
+    ~/.local/bin/otpcr   (cli)
+    ~/.local/bin/otpcrc  (console)
+    ~/.local/bin/otpcrd  (daemon)
+    ~/.local/bin/otpcrs  (service)
     ~/.local/pipx/venvs/otpcr/*
 
 
