@@ -4,9 +4,8 @@ O T P C R
 
 **NAME**
 
-::
 
-    OTPCR - Since 4 march 2019.
+    ``OTPCR`` - Since 4 march 2019.
 
 
 **SYNOPSIS**
@@ -60,51 +59,6 @@ installation is done with pipx
     $ pipx ensurepath
 
 
-**SYSTEMD**
-
-::
-
-    $ otpcr srv > otpcr.service
-    $ sudo mv otpcr.service /etc/systemd/system/
-    $ sudo systemctl enable otpcr --now
-
-
-    joins #otpcr on localhost
-
-
-**CONFIGURATION**
-
-
-*irc*
-
-::
-
-    $ otpcr cfg server=<server>
-    $ otpcr cfg channel=<channel>
-    $ otpcr cfg nick=<nick>
-
-*sasl*
-
-::
-
-    $ otpcr pwd <nsvnick> <nspass>
-    $ otpcr cfg password=<frompwd>4
-
-*rss*
-
-::
- 
-    $ otpcr rss <url>
-    $ otpcr dpl <url> <item1,item2>
-    $ otpcr rem <url>
-    $ otpcr nme <url> <name>
-
-*opml*
-
-::
-
-    $ otpcr exp
-    $ otpcr imp <filename>
 
 
 **USAGE**
@@ -180,6 +134,53 @@ show request to the prosecutor
    The Netherlands
 
 
+**CONFIGURATION**
+
+
+*irc*
+
+::
+
+    $ otpcr cfg server=<server>
+    $ otpcr cfg channel=<channel>
+    $ otpcr cfg nick=<nick>
+
+*sasl*
+
+::
+
+    $ otpcr pwd <nsvnick> <nspass>
+    $ otpcr cfg password=<frompwd>4
+
+*rss*
+
+::
+ 
+    $ otpcr rss <url>
+    $ otpcr dpl <url> <item1,item2>
+    $ otpcr rem <url>
+    $ otpcr nme <url> <name>
+
+*opml*
+
+::
+
+    $ otpcr exp
+    $ otpcr imp <filename>
+
+
+**SYSTEMD**
+
+::
+
+    $ otpcr srv > otpcr.service
+    $ sudo mv otpcr.service /etc/systemd/system/
+    $ sudo systemctl enable otpcr --now
+
+
+    joins #otpcr on localhost
+
+
 **COMMANDS**
 
 
@@ -226,10 +227,10 @@ source is at ``https://github.com/rssbotd/otpcr``
 
 **AUTHOR**
 
-Bart Thate ``<rssbotd@gmail.com>``
+    Bart Thate ``<rssbotd@gmail.com>``
 
 
 **COPYRIGHT**
 
 
-``OTPCR`` is Public Domain.
+    ``OTPCR`` is Public Domain.
