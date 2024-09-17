@@ -1,16 +1,13 @@
 .. _home:
 
+.. raw:: html
+
+    <br>
 
 .. image:: genocide.png
     :width: 100%
     :height: 2.6cm
     :target: index.html
-
-
-.. raw:: html
-
-    <br>
-
 
 .. title:: Home
 
