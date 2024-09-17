@@ -5,7 +5,7 @@ O T P C R
 **NAME**
 
 
-    ``OTPCR`` - Since 4 march 2019.
+``OTPCR`` - Since 4 march 2019.
 
 
 **SYNOPSIS**
@@ -59,8 +59,6 @@ installation is done with pipx
     $ pipx ensurepath
 
 
-
-
 **USAGE**
 
 
@@ -92,7 +90,7 @@ use -v to enable verbose
 
 ::
 
-    $ otpcr -v
+    $ otpcrc -v
     OTPCR since Tue Sep 17 04:10:08 2024
     > 
 
@@ -227,10 +225,10 @@ source is at ``https://github.com/rssbotd/otpcr``
 
 **AUTHOR**
 
-    Bart Thate ``<rssbotd@gmail.com>``
+Bart Thate ``<rssbotd@gmail.com>``
 
 
 **COPYRIGHT**
 
 
-    ``OTPCR`` is Public Domain.
+``OTPCR`` is Public Domain.
