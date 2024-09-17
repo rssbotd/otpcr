@@ -11,7 +11,7 @@
 **NAME**
 
 
-    ``OTPCR`` - Since ``4 march 2019`` `! <reconsider.html>`_
+    ``OTPCR`` - The Office of the Prosecutor's Communication Record 117 of the year 2019.
 
 
 **SYNOPSIS**
@@ -77,7 +77,7 @@
 
     | ``$ otpcr cmd``
     | ``cfg,cmd,dne,dpl,err,exp,imp,log,mod,mre,nme,``
-    | ``pwd,rem,req,res,rss,srv,syn,tdo,thr,upt``
+    | ``pwd,rem,req,res,rss,srv,syn,tdo,thr``
 
 
     start a console

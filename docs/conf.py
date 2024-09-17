@@ -31,6 +31,8 @@ sys.path.insert(0, os.path.join(curdir))
 
 
 project = NAME
+author = 'Bart Thate <rssbotd@gmail.com>'
+project_copyright = "Public Domain"
 master_doc = 'index'
 version = '%s' % VERSION
 release = '%s' % VERSION
@@ -44,23 +46,23 @@ source_encoding = 'utf-8-sig'
 modindex_common_prefix = [""]
 keep_warnings = False
 templates_path = ['_templates']
-add_function_parentheses = True
+add_function_parentheses = False
 add_module_names = False
 show_authors = False
 pygments_style = 'colorful'
 extensions = [
-              'sphinx.ext.autodoc',
-              'sphinx.ext.autosummary',
-              'sphinx.ext.viewcode',
-              'sphinx.ext.todo',
-              'sphinx.ext.githubpages'
+              #'sphinx.ext.autodoc',
+              #'sphinx.ext.autosummary',
+              #'sphinx.ext.viewcode',
+              #'sphinx.ext.todo',
+              #'sphinx.ext.githubpages'
              ]
 
 
 # -- Options for HTML output -------------------------------------------------
 
 
-html_title = "Office of the Prosecutor's Communication Record 117 of the year 2019."
+html_title = "The Office of the Prosecutor's Communication Record 117 of the year 2019."
 html_style = 'otpcr.css'
 html_static_path = ["_static", "_static/otpcr.css", "files/sitemap.xml"]
 html_css_files = ["otpcr.css",]
@@ -80,8 +82,8 @@ html_extra_path = ["robots.txt", "googlea6568bcc05c8d50b.html"]
 html_last_updated_fmt = '%Y-%b-%d'
 html_additional_pages = {}
 html_domain_indices = False
-html_use_index = True
-html_split_index = True
+html_use_index = False
+html_split_index = False
 html_show_sourcelink = False
 html_show_sphinx = False
 html_show_copyright = False
@@ -100,23 +102,11 @@ intersphinx_cache_limit = 1
 rst_prolog = '''.. image:: genocide.png
     :width: 100%
     :height: 2.6cm
-    :target: manual.html
-
-.. raw:: html
-
-    <center>
-    <b>
-
-:ref:`reconsider <reconsider>` - :ref:`writings <writings>` - :ref:`evidence <evidence>` - :ref:`guilty <guilty>`
-
-.. raw:: html
-
-    </b>
-    </center>
+    :target: index.html
 
 '''
 
-autosummary_generate = True
+autosummary_generate = False
 autodoc_default_flags = ['members', 'undoc-members', 'private-members', "imported-members"]
 autodoc_member_order = 'groupwise'
 autodoc_docstring_signature = False
@@ -125,29 +115,6 @@ nitpick_ignore = [
                   ('py:class', 'builtins.BaseException'),
                  ]
 
-
-latex_engine = 'pdflatex'
-latex_elements = {
-    'extraclassoptions': 'openany,oneside',
-    'fontpkg': r'''
-\setmainfont{DejaVu Serif}
-\setsansfont{DejaVu Sans}
-\setmonofont{DejaVu Sans Mono}
-''',
-    'preamble': r'''
-\usepackage[titles]{tocloft}
-\cftsetpnumwidth {1.25cm}\cftsetrmarg{1.5cm}
-\setlength{\cftchapnumwidth}{0.75cm}
-\setlength{\cftsecindent}{\cftchapnumwidth}
-\setlength{\cftsecnumwidth}{1.25cm}
-''',
-    'fncychap': r'\usepackage[Bjornstrup]{fncychap}',
-    'printindex': r'\footnotesize\raggedright\printindex',
-}
-latex_show_urls = 'footnote'
-latex_elements = {
-  'extraclassoptions': 'openany,oneside'
-}
 
 def setup(app):
     app.add_css_file("custom.css")

@@ -71,7 +71,6 @@ p.s.
 
 
 .. toctree::
-    :hidden:
     :glob:
 
     *
