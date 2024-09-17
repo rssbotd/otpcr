@@ -105,27 +105,14 @@ rst_prolog = '''.. image:: genocide.png
 .. raw:: html
 
     <center>
-    <i>
-    Elderly, Handicapped, Criminals, Wicked
-    </i>
-    </center>
-
-'''
-
-rst_epilog = '''.. raw:: html
-
-    <br>
-    <center>
     <b>
 
-:ref:`reconsider <reconsider>` - :ref:`evidence <evidence>` - :ref:`guilty <guilty>` - :ref:`writings <writings>`
+:ref:`reconsider <reconsider>` - :ref:`writings <writings>` - :ref:`evidence <evidence>` - :ref:`guilty <guilty>`
 
-
-.. raw: html
+.. raw:: html
 
     </b>
     </center>
-
 
 '''
 
