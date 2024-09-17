@@ -21,7 +21,7 @@ version = "43"
 authors = [
     {name = "Bart Thate", email = "rssbotd@gmail.com" },
 ]
-description = "The Office of the Prosecutor's Communication Record 117 of the year 2019."
+description = "The Office of the Prosecutor's Communication Record 117 of the year 2019"
 readme = "README.rst"
 license = { text="Public Domain"}
 classifiers=[
@@ -60,7 +60,8 @@ packages = [
 
 [tool.setuptools.data-files]
 "share/doc/otpcr/" = [
-    'README.rst',
+    'MANUAL.rst',
+    'README.rst'
 ]
 "share/doc/otpcr/docs" = [
     'docs/googlea6568bcc05c8d50b.html',
