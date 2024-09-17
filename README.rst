@@ -175,7 +175,6 @@ show request to the prosecutor
     $ sudo mv otpcr.service /etc/systemd/system/
     $ sudo systemctl enable otpcr --now
 
-
     joins #otpcr on localhost
 
 
