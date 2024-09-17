@@ -3,7 +3,7 @@
 # pylint: disable=C0413,W0611
 
 
-"prompt"
+"cli"
 
 
 import getpass
@@ -21,7 +21,6 @@ from otpcr.modules import face
 
 
 Cfg = Config()
-Cfg.mod = ",".join(modnames(face))
 
 
 class CLI(Client):

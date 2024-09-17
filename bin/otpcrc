@@ -3,7 +3,7 @@
 # pylint: disable=C0413,W0212,W0611
 
 
-"prompt"
+"console"
 
 
 import os
@@ -25,10 +25,6 @@ from otpcr.runtime import launch
 
 
 Cfg = Config()
-Cfg.mod = "cmd,dbg,err,mod,srv,thr"
-
-
-rpr = object.__repr__
 
 
 class Console(Client):
@@ -36,13 +32,14 @@ class Console(Client):
     "Console"
 
     def callback(self, evt):
+        "wait for result."
         Client.callback(self, evt)
         evt._thr.join()
 
     def poll(self):
         "poll console and create event."
         evt      = Event()
-        evt.orig = rpr(self)
+        evt.orig = repr(self)
         evt.txt  = input("> ")
         evt.type = "command"
         return evt
@@ -93,6 +90,7 @@ def main():
 def wraps():
     "Wrap main."
     wrap(main)
+    errors(print)
 
 
 if __name__ == "__main__":
