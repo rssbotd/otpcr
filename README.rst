@@ -199,10 +199,10 @@ here is a list of available commands
     res - restore deleted feeds
     req - reconsider
     rss - add a feed
+    srv - create service file
     syn - sync rss feeds
     tdo - add todo item
     thr - show running threads
-    upt - show uptime
 
 
 **SOURCE**
