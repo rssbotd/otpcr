@@ -6,7 +6,7 @@ O T P C R
 
 ::
 
-    OTPCR - Since 4 march 2019
+    OTPCR - Since 4 march 2019.
 
 
 **SYNOPSIS**
@@ -46,7 +46,7 @@ actually arrested.
 
 ``OTP-CR-117/19`` has been duly entered in
 the Communications Register of the Office
-on ``4 march 2019``
+since ``4 march 2019``.
 
 
 **INSTALL**
