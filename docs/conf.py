@@ -126,6 +126,10 @@ rst_epilog = '''.. raw:: html
     </b>
     </center>
 
+.. raw:: pdf
+
+   PageBreak
+
 '''
 
 autosummary_generate = True
