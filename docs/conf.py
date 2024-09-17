@@ -51,9 +51,9 @@ add_module_names = False
 show_authors = False
 pygments_style = 'colorful'
 extensions = [
-              #'sphinx.ext.autodoc',
-              #'sphinx.ext.autosummary',
-              #'sphinx.ext.viewcode',
+              'sphinx.ext.autodoc',
+              'sphinx.ext.autosummary',
+              'sphinx.ext.viewcode',
               'sphinx.ext.todo',
               'sphinx.ext.githubpages'
              ]
