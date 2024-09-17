@@ -133,12 +133,24 @@ start a console
     $ otpcrc
     >
 
+
+use -v to enable verbose
+
+::
+
+    $ otpcr -v
+    OTPCR since Tue Sep 17 04:10:08 2024
+    > 
+
+
 use -i to init modules
 
 ::
 
     $ otpcrc -i
     >
+
+
 
 start daemon
 
@@ -147,12 +159,14 @@ start daemon
     $ otpcrd
     $
 
+
 start service
 
 ::
 
    $ otpcrs
    <runs until ctrl-c>
+
 
 show request to the prosecutor
 
