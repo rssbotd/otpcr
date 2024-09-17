@@ -99,6 +99,34 @@ intersphinx_mapping = {
 intersphinx_cache_limit = 1
 
 
+# header/footer
+
+
+rst_prolog = '''.. image:: genocide.png
+    :width: 100%
+    :height: 2.6cm
+    :target: index.html
+
+.. raw:: html
+
+    <center>
+    <i>
+    Elderly, Handicapped, Criminals, Wicked
+    </i>
+    </center>
+
+'''
+
+rst_epilog = '''.. raw:: html
+
+    <br><br>
+
+'''
+
+
+# code generation
+
+
 autosummary_generate = False
 autodoc_default_flags = ['members', 'undoc-members', 'private-members', "imported-members"]
 autodoc_member_order = 'groupwise'

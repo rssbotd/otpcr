@@ -3,7 +3,7 @@
 
 .. raw:: html
 
-    <br><br>
+    <br>
 
 .. title:: Writings
 
@@ -33,7 +33,7 @@ see :ref:`reconsider <home>` for content.
 
     <br>
 
-.. image:: ack.png
+.. image:: ack3.png
     :width: 100%
 
 

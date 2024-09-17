@@ -4,11 +4,6 @@
 
     <br>
 
-.. image:: genocide.png
-    :width: 100%
-    :height: 2.6cm
-    :target: index.html
-
 .. title:: Home
 
 
@@ -71,8 +66,8 @@ prosecute the king for making the commiting of the above mentioned crimes
 p.s.
 
 
-``OTP-CR-117/19`` entered in the Communications Register of the Office on
-:ref:`4 march 2019 <writings>`
+1) Duly entered in the Communications Register of the Office on :ref:`4 march 2019 <writings>`
+2) Your reference ``OTP-CR-117/19``
 
 
 .. toctree::
