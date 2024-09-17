@@ -2,12 +2,13 @@
 
 .. raw:: html
 
-    <br><br>
+    <br>
 
 
 .. title:: Home
 
 
+|
 | **Information and Evidence Unit**
 | **Office of the Prosecutor**
 | **Post Office Box 19519**
@@ -68,9 +69,11 @@ p.s.
 
 1) Entered in the Communications Register of the Office on 4 march 2019
 2) Your reference ``OTP-CR-117/19`` 
+3) Correspondence is :ref:`here <writings>`.
 
 
 .. toctree::
+    :hidden:
     :glob:
 
     *

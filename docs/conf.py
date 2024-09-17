@@ -106,6 +106,12 @@ rst_prolog = '''.. image:: genocide.png
 
 '''
 
+
+rst_epilog = """.. raw:: html
+
+    <br><br>
+
+"""
 autosummary_generate = False
 autodoc_default_flags = ['members', 'undoc-members', 'private-members', "imported-members"]
 autodoc_member_order = 'groupwise'
