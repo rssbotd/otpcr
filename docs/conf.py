@@ -9,7 +9,7 @@
 
 
 NAME = "otpcr"
-VERSION = "42"
+VERSION = "43"
 
 
 import os

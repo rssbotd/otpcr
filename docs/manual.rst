@@ -11,7 +11,7 @@
 **NAME**
 
 
-    ``OTPCR`` - Since ``4 march 2019`` `! <source.html>`_
+    ``OTPCR`` - Since ``4 march 2019`` `! <reconsider.html>`_
 
 
 **SYNOPSIS**
@@ -173,17 +173,17 @@
 
 **SOURCE**
 
-    source is :ref:`here <source>`
+    source is at ``https://github.com/rssbotd/otpcr``
 
 
 **FILES**
 
-    | ``~/.otpcr``
-    | ``~/.local/bin/otpcr``   (cli)
-    | ``~/.local/bin/otpcrc``  (console)
-    | ``~/.local/bin/otpcrd``  (daemon)
-    | ``~/.local/bin/otpcrs``  (service)
-    | ``~/.local/pipx/venvs/otpcr/*``
+    | ``~/.otpcr``                     ((datadir)
+    | ``~/.local/bin/otpcr``           (cli)
+    | ``~/.local/bin/otpcrc``          (console)
+    | ``~/.local/bin/otpcrd``          (daemon)
+    | ``~/.local/bin/otpcrs``          (service)
+    | ``~/.local/pipx/venvs/otpcr/*``  (lib/docs)
 
 
 **AUTHOR**
