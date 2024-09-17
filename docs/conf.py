@@ -82,8 +82,8 @@ html_extra_path = ["robots.txt", "googlea6568bcc05c8d50b.html"]
 html_last_updated_fmt = '%Y-%b-%d'
 html_additional_pages = {}
 html_domain_indices = False
-html_use_index = False
-html_split_index = False
+html_use_index = True
+html_split_index = True
 html_show_sourcelink = False
 html_show_sphinx = False
 html_show_copyright = False
@@ -114,8 +114,3 @@ autoclass_content = "class"
 nitpick_ignore = [
                   ('py:class', 'builtins.BaseException'),
                  ]
-
-
-def setup(app):
-    app.add_css_file("custom.css")
-    app.add_css_file("otpcr.css")
