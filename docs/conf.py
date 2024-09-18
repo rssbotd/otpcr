@@ -119,16 +119,6 @@ rst_prolog = '''.. image:: genocide.png
 
 rst_epilog = '''.. raw:: html
 
-    <br><br>
-
-.. raw:: html
-
-    <br>
-    <center>
-    <i>
-    Office of the Prosecutor Communication Record 117 of 2019
-    </i>
-    </center>
     <br>
 
 '''
