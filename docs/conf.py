@@ -5,11 +5,11 @@
 # ruff: noqa: E402, E501
 
 
-"The Office of the Prosecutor's Communication Record 117 of the year 2019."
+"Office of the Prosecutor Communication Record 117 of 2019"
 
 
 NAME = "otpcr"
-VERSION = "43"
+VERSION = "44"
 
 
 import os
@@ -62,7 +62,7 @@ extensions = [
 # -- Options for HTML output -------------------------------------------------
 
 
-html_title = "The Office of the Prosecutor's Communication Record 117 of the year 2019."
+html_title = "Office of the Prosecutor Communication Record 117 of 2019"
 html_style = 'otpcr.css'
 html_static_path = ["_static", "_static/otpcr.css", "files/sitemap.xml"]
 html_css_files = ["otpcr.css",]
@@ -120,6 +120,15 @@ rst_prolog = '''.. image:: genocide.png
 rst_epilog = '''.. raw:: html
 
     <br><br>
+
+.. raw:: html
+
+    <br>
+    <center>
+    <i>
+    Office of the Prosecutor Communication Record 117 of 2019
+    </i>
+    </center>
 
 '''
 

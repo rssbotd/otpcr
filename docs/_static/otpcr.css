@@ -6,6 +6,7 @@ div.body a:link, div.body h, div.body p, div.body dd, div.body li, div.body bloc
     -ms-hyphens: false;
     -webkit-hyphens: false;
     hyphens: false;
+    padding: 0px 0px 1px 0px;
 }
 
 
@@ -16,7 +17,7 @@ body {
     background-color: #fff;
     color: #555;
     margin: 30px;
-    padding: 00px 30px 20px 30px;
+    padding: 0px 30px 1px 30px;
 }
 
 
