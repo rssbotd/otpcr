@@ -58,3 +58,15 @@ a.image-reference, a.image-reference:hover {
 style {
     text-decoration: none;
 }
+
+li > p:first-child {
+    margin-top: 0;
+}
+
+li > p:last-child {
+    margin-bottom: 0;
+}
+
+div.admonition dl {
+    margin-bottom: 0;
+}
