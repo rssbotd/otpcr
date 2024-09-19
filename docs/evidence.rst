@@ -16,7 +16,6 @@ E V I D E N C E
 
     </b>
     </center>
-    <br>
 
 .. _haldol:
 
