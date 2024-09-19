@@ -31,7 +31,7 @@ W R I T I N G S
 | **Date**: Mon, 21 Jan 2019 16:17:13 +0100
 |
 
-see :ref:`reconsider <home>` for content.
+see :ref:`request <home>` for content.
 
 
 .. raw:: html
@@ -81,7 +81,7 @@ see :ref:`reconsider <home>` for content.
 | **Date:** Wed, 26 Jun 2019 21:05:13 +0200
 |
 
-see :ref:`request <request>` for content.
+see :ref:`reconsider <reconsider>` for content.
 
 .. raw:: html
 

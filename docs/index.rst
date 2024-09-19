@@ -1,21 +1,12 @@
 .. _home:
 
+
+.. raw:: html
+
+    <br><br>
+
+
 .. title:: Home
-
-
-.. raw:: html
-
-    <br><br>
-    <center>
-    <b>
-
- R E C O N S I D E R
-
-.. raw:: html
-
-    </b>
-    </center>
-    <br><br>
 
 
 | **Information and Evidence Unit**
@@ -84,8 +75,9 @@ p.s.
 .. toctree::
     :hidden:
 
-    request
+    reconsider
     writings
     evidence
     guilty
-    
+    about    
+    manual

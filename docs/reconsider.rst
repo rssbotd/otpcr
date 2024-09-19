@@ -1,6 +1,6 @@
-.. _request:
+.. _reconsider:
 
-.. title:: Request
+.. title:: Reconsider
 
 
 .. raw:: html
@@ -9,7 +9,7 @@
     <center>
     <b>
     
-R E Q U E S T
+R E C O N S I D E R
 
 
 .. raw:: html
