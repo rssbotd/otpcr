@@ -17,15 +17,17 @@ E V I D E N C E
     </b>
     </center>
 
+
+.. raw:: html
+
+  <br>
+
 .. _haldol:
 
 
 **HALDOL**
 
 
-.. raw:: html
-
-  <br>
 
 .. image:: ECHAhaldol.png
     :width: 100%
