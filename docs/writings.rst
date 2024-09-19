@@ -6,18 +6,8 @@
 
 .. raw:: html
 
-    <br>
-    <center>
-    <b>
-    
-W R I T I N G S
-
-
-.. raw:: html
-
-    </b>
-    </center>
-    <br>
+    <br><br>
+    <center><b>WRITINGS</b></center><br>
 
 
 **EMAIL 1**

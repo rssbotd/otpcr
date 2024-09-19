@@ -5,28 +5,18 @@
 
 .. raw:: html
 
-    <br>
-    <center>
-    <b>
-    
-E V I D E N C E
+    <br><br>
+    <center><b>EVIDENCE</b></center><br>
 
-
-.. raw:: html
-
-    </b>
-    </center>
-
-
-.. raw:: html
-
-  <br>
 
 .. _haldol:
 
 
 **HALDOL**
 
+.. raw:: html
+
+  <br>
 
 
 .. image:: ECHAhaldol.png

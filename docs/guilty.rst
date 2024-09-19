@@ -5,18 +5,8 @@
 
 .. raw:: html
 
-    <br>
-    <center>
-    <b>
-    
-G U I L T Y 
-
-
-.. raw:: html
-
-    </b>
-    </center>
-    <br>
+    <br><br>
+    <center><b>GUILTY</b></center><br>
 
 
 .. _informed:

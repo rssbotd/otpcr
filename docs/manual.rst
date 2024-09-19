@@ -1,17 +1,18 @@
 .. _manual:
 
+.. title:: Manual
+
 
 .. raw:: html
 
-    <br>
-
-.. title:: Home
+    <br><br>
+    <center><b>MANUAL</b></center><br>
 
 
 **NAME**
 
 
-    ``OTPCR`` - Since ``4 march 2019`` `! <source.html>`_
+    ``OTPCR`` - Office of the Prosecutor Communication Record 117 of 2019
 
 
 **SYNOPSIS**
@@ -159,11 +160,11 @@
 
 **SYSTEMD**
 
-    | $ otpcr srv > otpcr.service
-    | $ sudo mv otpcr.service /etc/systemd/system/
-    | $ sudo systemctl enable otpcr --now
+    | ``$ otpcr srv > otpcr.service``
+    | ``$ sudo mv otpcr.service /etc/systemd/system/``
+    | ``$ sudo systemctl enable otpcr --now``
     |
-    | joins #otpcr on localhost
+    | joins ``#otpcr`` on localhost
 
 
 **SOURCE**
@@ -182,7 +183,7 @@
 
 **AUTHOR**
 
-    | Bart Thate ``<rssbotd@gmail.com>``
+    | Bart Thate <``rssbotd@gmail.com``>
 
 
 **COPYRIGHT**
