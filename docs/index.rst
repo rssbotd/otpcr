@@ -1,10 +1,21 @@
 .. _home:
 
+.. title:: Home
+
+
 .. raw:: html
 
-    <br>
+    <br><br>
+    <center>
+    <b>
 
-.. title:: Home
+ R E C O N S I D E R
+
+.. raw:: html
+
+    </b>
+    </center>
+    <br><br>
 
 
 | **Information and Evidence Unit**

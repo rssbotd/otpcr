@@ -1,13 +1,23 @@
 .. _request:
 
-.. raw:: html
-
-    <br>
-
 .. title:: Request
 
 
-|
+.. raw:: html
+
+    <br>
+    <center>
+    <b>
+    
+R E Q U E S T
+
+
+.. raw:: html
+
+    </b>
+    </center>
+    <br>
+
 | **Information and Evidence Unit**
 | **Office of the Prosecutor**
 | **Post Office Box 19519**
