@@ -16,12 +16,11 @@ import time
 sys.path.insert(0, os.getcwd())
 
 
-from otpcr.errors  import errors
-from otpcr.main    import Broker, Client, Config, Event, command, debug
-from otpcr.main    import enable, forever, initer, modnames, parse, spl
+from otpcr.client  import Client, Config, Event, command, debug
+from otpcr.client  import enable, forever, initer, modnames, parse, spl
 from otpcr.modules import face
 from otpcr.object  import Default
-from otpcr.runtime import launch
+from otpcr.runtime import errors, launch
 
 
 Cfg = Config()
@@ -34,13 +33,14 @@ class Console(Client):
     def callback(self, evt):
         "wait for result."
         Client.callback(self, evt)
-        evt._thr.join()
+        if evt._thr:
+            evt._thr.join()
 
     def poll(self):
         "poll console and create event."
-        evt      = Event()
+        evt = Event()
         evt.orig = repr(self)
-        evt.txt  = input("> ")
+        evt.txt = input("> ")
         evt.type = "command"
         return evt
 

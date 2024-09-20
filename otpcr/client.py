@@ -11,39 +11,15 @@ import pwd
 import time
 
 
-from .persist import Workdir
 from .object  import Default
-from .runtime import Reactor, launch
+from .persist import Workdir
+from .runtime import Broker, Reactor, launch
 
 
 STARTTIME = time.time()
 
 
-class Broker:
-
-    "Broker"
-
-    objs = []
-
-    @staticmethod
-    def all():
-        "return all objects."
-        return Broker.objs
-
-    @staticmethod
-    def get(orig):
-        "return object by matching repr."
-        res = None
-        for obj in Broker.objs:
-            if repr(obj) == orig:
-                res = obj
-                break
-        return res
-
-    @staticmethod
-    def register(obj):
-        "add bot."
-        Broker.objs.append(obj)
+"client"
 
 
 class Client(Reactor):
@@ -52,7 +28,7 @@ class Client(Reactor):
 
     def __init__(self):
         Reactor.__init__(self)
-        Broker.register(self)
+        Broker.add(self, repr(self))
         self.register("command", command)
 
     def display(self, evt):
@@ -67,6 +43,9 @@ class Client(Reactor):
     def raw(self, txt):
         "print to screen."
         raise NotImplementedError
+
+
+"commands"
 
 
 class Commands:
@@ -93,6 +72,9 @@ def command(bot, evt):
         bot.display(evt)
 
 
+"config"
+
+
 class Config(Default):
 
     "Config"
@@ -106,6 +88,9 @@ class Config(Default):
         self.wdr = Config.wdr
         self.pidfile = Config.pidfile
         Workdir.wdr = self.wdr
+
+
+"event"
 
 
 class Event(Default):
@@ -122,6 +107,9 @@ class Event(Default):
     def reply(self, txt):
         "add text to the result."
         self.result.append(txt)
+
+
+"logging"
 
 
 class Logging:
@@ -144,8 +132,6 @@ def debug(txt):
 def enable(outer):
     "enable logging"
     Logging.out = outer
-
-
 
 
 "utilities"
@@ -318,7 +304,6 @@ def wrap(func):
 
 def __dir__():
     return (
-        'Broker',
         'Client',
         'Comamnds', 
         'Config',

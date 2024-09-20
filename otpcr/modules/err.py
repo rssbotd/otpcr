@@ -4,8 +4,8 @@
 "show errors"
 
 
-from ..errors import Errors
-from ..main   import Commands
+from ..client  import Commands
+from ..runtime import Errors
 
 
 def err(event):

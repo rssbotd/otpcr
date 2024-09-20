@@ -8,8 +8,8 @@ import threading
 import time
 
 
+from ..client import STARTTIME, Commands, laps
 from ..object import Object, update
-from ..main   import STARTTIME, Commands, laps
 
 
 def thr(event):

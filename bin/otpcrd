@@ -11,8 +11,8 @@ import os
 import sys
 
 
-from otpcr.main    import Config, forever, initer, pidfile
-from otpcr.main    import modnames, privileges, wrap
+from otpcr.client  import Config, forever, initer, pidfile
+from otpcr.client  import modnames, privileges, wrap
 from otpcr.modules import face
 
 

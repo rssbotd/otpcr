@@ -9,10 +9,10 @@
 import getpass
 
 
-from otpcr.errors  import errors
-from otpcr.main    import Config, forever, initer, pidfile
-from otpcr.main    import modnames, privileges, wrap
-from otpcr.modules import face
+from otprc.client  import Config, forever, initer, pidfile
+from otprc.client  import modnames, privileges, wrap
+from otprc.modules import face
+from otprc.runtime import errors
 
 
 Cfg = Config()

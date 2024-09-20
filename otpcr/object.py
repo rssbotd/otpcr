@@ -31,12 +31,18 @@ class Object:
         return str(self.__dict__)
 
 
+"default"
+
+
 class Default(Object):
 
     "Default"
 
     def __getattr__(self, key):
         return self.__dict__.get(key, "")
+
+
+"methods"
 
 
 def construct(obj, *args, **kwargs):
@@ -126,8 +132,7 @@ def matchkey(obj, txt):
     "check if object has matching keys."
     for key in keys(obj):
         if txt in key:
-            return True
-    return False
+            yield key
 
 
 def match(obj, selector):

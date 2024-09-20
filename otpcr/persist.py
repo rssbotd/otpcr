@@ -13,7 +13,8 @@ import time
 import _thread
 
 
-from .object import Default, dump, fqn, load, match, search, update
+from .object import Default
+from .object import dump, fqn, load, match, search, update
 
 
 lock = _thread.allocate_lock()
@@ -22,6 +23,9 @@ disklock = _thread.allocate_lock()
 
 class ReadError(Exception):
     "error reading json file."
+
+
+"workdir"
 
 
 class Workdir:
@@ -173,9 +177,9 @@ def read(obj, pth):
 
 def sync(obj, pth=None):
     "sync object to disk."
+    if pth is None:
+        pth = ident(obj)
     with disklock:
-        if pth is None:
-            pth = ident(obj)
         pth2 = store(pth)
         write(obj, pth2)
         return pth

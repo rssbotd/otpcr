@@ -20,10 +20,10 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote_plus, urlencode
 
 
-from ..main    import Broker, Commands, Config, debug, laps, spl
+from ..client  import Commands, Config, debug, laps, spl
 from ..object  import Default, Object, construct, fmt, update
 from ..persist import find, fntime, last, sync
-from ..runtime import Repeater, launch
+from ..runtime import Broker, Repeater, launch
 
 
 def init():
@@ -134,7 +134,7 @@ class Fetcher(Object):
             txt = f'[{feedname}] '
         for obj in result:
             txt2 = txt + self.display(obj)
-            for bot in Broker.objs:
+            for bot in Broker.all("IRC"):
                 if "announce" in dir(bot):
                     bot.announce(txt2.rstrip())
         return counter
@@ -519,7 +519,8 @@ def imp(event):
             if not url.startswith("http"):
                 nrskip += 1
                 continue
-            if find("rss", {'rss': url}, matching=True):
+            has = list(find("rss", {'rss': url}, matching=True))
+            if has:
                 nrskip += 1
                 continue
             feed = Rss()

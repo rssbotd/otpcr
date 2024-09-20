@@ -8,11 +8,74 @@
 import queue
 import threading
 import time
+import traceback
 import types
 import _thread
 
 
-from .errors  import later
+"broker"
+
+
+class Broker:
+
+    "Broker"
+
+    objs = {}
+
+    @staticmethod
+    def add(obj, key):
+        "add object."
+        Broker.objs[key] = obj
+
+    @staticmethod
+    def all(kind=None):
+        "return all objects."
+        if kind is not None:
+            for key in [x for x in Broker.objs if kind in x]:
+                yield Broker.get(key)
+        return Broker.objs.values()
+
+    @staticmethod
+    def get(orig):
+        "return object by matching repr."
+        return Broker.objs.get(orig)
+
+
+"errors"
+
+
+class Errors:
+
+    "Errors"
+
+    errors = []
+
+
+def fmat(exc):
+    "format an exception"
+    return traceback.format_exception(
+                               type(exc),
+                               exc,
+                               exc.__traceback__
+                              )
+
+
+def errors(outer):
+    "display errors."
+    for exc in Errors.errors:
+        for line in exc:
+            outer(line.strip())
+
+
+def later(exc):
+    "add an exception"
+    excp = exc.with_traceback(exc.__traceback__)
+    fmt = fmat(excp)
+    if fmt not in Errors.errors:
+        Errors.errors.append(fmt)
+
+
+"reactor"
 
 
 class Reactor:
@@ -72,6 +135,9 @@ class Reactor:
             time.sleep(0.1)
 
 
+"thread"
+
+
 class Thread(threading.Thread):
 
     "Thread"
@@ -115,15 +181,7 @@ class Thread(threading.Thread):
             later(ex)
 
 
-def launch(func, *args, **kwargs):
-    "launch a thread."
-    nme = kwargs.get("name", named(func))
-    thread = Thread(func, nme, *args, **kwargs)
-    thread.start()
-    return thread
-
-
-"timers"
+"timer"
 
 
 class Timer:
@@ -162,6 +220,9 @@ class Timer:
             self.timer.cancel()
 
 
+"repeater"
+
+
 class Repeater(Timer):
 
     "Repeater"
@@ -172,6 +233,17 @@ class Repeater(Timer):
 
 
 "utilitites"
+
+
+def launch(func, *args, **kwargs):
+    "launch a thread."
+    nme = kwargs.get("name", named(func))
+    thread = Thread(func, nme, *args, **kwargs)
+    thread.start()
+    return thread
+
+
+"methods"
 
 
 def named(obj):
@@ -197,10 +269,14 @@ def named(obj):
 
 def __dir__():
     return (
+        'Broker',
+        'Errors',
         'Reactor',
         'Repeater',
         'Thread',
         'Timer',
+        'errors',
+        'later'
         'launch',
         'named'
     )

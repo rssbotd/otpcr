@@ -5,7 +5,7 @@
 
 
 from ..object import keys
-from ..main   import Commands
+from ..client import Commands
 
 
 def cmd(event):

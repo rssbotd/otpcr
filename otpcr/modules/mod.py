@@ -7,7 +7,7 @@
 import os
 
 
-from ..main import Commands
+from ..client import Commands
 
 
 def mod(event):

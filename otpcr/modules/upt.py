@@ -7,7 +7,7 @@
 import time
 
 
-from ..main import STARTTIME, Commands, laps
+from ..client import STARTTIME, Commands, laps
 
 
 def upt(event):

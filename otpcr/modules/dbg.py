@@ -5,7 +5,7 @@
 "debug"
 
 
-from ..main import Commands
+from ..client import Commands
 
 
 def dbg(event):

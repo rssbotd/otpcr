@@ -13,11 +13,14 @@ import sys
 import termios
 
 
-from otpcr.errors  import errors
-from otpcr.object  import Default, construct, fmt
-from otpcr.main    import Broker, Client, Commands, Config, Event
-from otpcr.main    import command, forever, modnames, parse, wrap
+sys.path.insert(0, os.getcwd())
+
+
+from otpcr.client  import Client, Commands, Config, Event
+from otpcr.client  import command, forever, modnames, parse, wrap
 from otpcr.modules import face
+from otpcr.object  import Default, construct, fmt
+from otpcr.runtime import errors
 
 
 Cfg = Config()
