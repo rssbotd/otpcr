@@ -17,7 +17,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "otpcr"
-version = "45"
+version = "46"
 authors = [
     {name = "Bart Thate", email = "rssbotd@gmail.com" },
 ]
@@ -84,7 +84,6 @@ packages = [
     'docs/kamer2.png',
     'docs/OTP111.png',
     'docs/OTP222.png',
-    'docs/request.rst',
     'docs/robots.txt',
     'docs/since.png',
     'docs/skull3.png',
